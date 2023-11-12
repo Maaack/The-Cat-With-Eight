@@ -17,4 +17,3 @@ texture = ExtResource("1_3gvpn")
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
-drag_vertical_enabled = true

@@ -1,6 +1,85 @@
-[gd_scene load_steps=2 format=3 uid="uid://c6qgji2fo51hf"]
+[gd_scene load_steps=9 format=3 uid="uid://c6qgji2fo51hf"]
 
 [ext_resource type="PackedScene" uid="uid://d38nf5qko1hhh" path="res://Scenes/BaseLevel/BaseLevel.tscn" id="1_q24ab"]
+[ext_resource type="Script" path="res://Scenes/BaseLevel/Levels/Level1.gd" id="2_8n7xk"]
+[ext_resource type="Texture2D" uid="uid://b5dln0saq4lrh" path="res://Assets/Originals/MeowButton.png" id="3_jjmbl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v2vsk"]
+size = Vector2(213, 158)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxkcj"]
+atlas = ExtResource("3_jjmbl")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owuvr"]
+atlas = ExtResource("3_jjmbl")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kk7bf"]
+atlas = ExtResource("3_jjmbl")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ik8ka"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxkcj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owuvr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kk7bf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
 
 [node name="Level1" instance=ExtResource("1_q24ab")]
+script = ExtResource("2_8n7xk")
 opening_dialogue_title = "Story_1_1"
+
+[node name="TileMap" parent="." index="0"]
+layer_0/tile_data = PackedInt32Array(524288, 1, 0, 524289, 1, 0, 524290, 1, 0, 524291, 1, 0, 524292, 1, 0, 524293, 1, 0, 524294, 1, 0, 524295, 1, 0, 524296, 1, 0, 524297, 1, 0, 524298, 1, 0, 524299, 1, 0, 524300, 1, 0, 524301, 1, 0, 524302, 1, 0, 524303, 1, 0, 524304, 1, 0, 524305, 1, 0, 524306, 1, 0, 524307, 1, 0, 589823, 1, 0, 524287, 1, 0, 458751, 1, 0, 393215, 1, 0, 327679, 1, 0, 524308, 1, 0, 458772, 1, 0, 393236, 1, 0, 327700, 1, 0, 262164, 1, 0, 196628, 1, 0, 262143, 1, 0)
+
+[node name="Tiger" parent="." index="1"]
+position = Vector2(104, 237)
+jump_velocity = 0.0
+
+[node name="ExitArea2D" parent="." index="2"]
+position = Vector2(609, 12)
+
+[node name="MoveInstructionArea2D" type="Area2D" parent="." index="3"]
+position = Vector2(117, 182)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MoveInstructionArea2D" index="0"]
+shape = SubResource("RectangleShape2D_v2vsk")
+
+[node name="MeowArea2D" type="Area2D" parent="." index="4"]
+position = Vector2(534, 185)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeowArea2D" index="0"]
+shape = SubResource("RectangleShape2D_v2vsk")
+
+[node name="MoveInstructionsSprite2D" type="Sprite2D" parent="." index="5"]
+visible = false
+position = Vector2(108, 166)
+
+[node name="MeowSprite2D" type="AnimatedSprite2D" parent="." index="6"]
+visible = false
+position = Vector2(528, 101)
+sprite_frames = SubResource("SpriteFrames_ik8ka")
+autoplay = "default"
+frame_progress = 0.272347
+
+[node name="MoveInstructionsTimer" type="Timer" parent="." index="7"]
+
+[node name="MeowTimer" type="Timer" parent="." index="8"]
+wait_time = 5.0
+
+[connection signal="meowed" from="Tiger" to="." method="_on_tiger_meowed"]
+[connection signal="body_entered" from="MoveInstructionArea2D" to="." method="_on_move_instruction_area_2d_body_entered"]
+[connection signal="body_entered" from="MeowArea2D" to="." method="_on_meow_area_2d_body_entered"]
+[connection signal="timeout" from="MoveInstructionsTimer" to="." method="_on_move_instructions_timer_timeout"]
+[connection signal="timeout" from="MeowTimer" to="." method="_on_meow_timer_timeout"]

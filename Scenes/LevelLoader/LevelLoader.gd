@@ -9,6 +9,8 @@ extends Node
 		if dir_access:
 			level_files.clear()
 			for file in dir_access.get_files():
+				if not file.ends_with(".tscn"):
+					continue
 				level_files.append(level_dir + "/" + file)
 
 func get_current_level_file():

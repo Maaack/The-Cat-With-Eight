@@ -1,6 +1,9 @@
 extends CharacterBody2D
 class_name PlayerCharacter
 
+signal meowed
+signal jumped
+
 @export var acceleration : float = 600
 @export var max_speed : float = 7500
 @export var friction : float = 600
@@ -14,7 +17,7 @@ class_name PlayerCharacter
 var facing_direction : Vector2
 var is_jumping : bool = false
 var jump_input_flag : bool = false
-var is_acting : bool = false
+var is_interacting : bool = false
 var action_input_flag : bool = false
 var accessible_interactables : Array = []
 var active_node
@@ -27,12 +30,17 @@ func start_jump():
 	jump_input_flag = false
 	velocity.y -= jump_velocity
 	is_jumping = true
+	emit_signal("jumped")
 	await(get_tree().create_timer(0.5).timeout)
 	is_jumping = false
-	pass
 
-func start_action():
-	pass
+func start_interaction():
+	is_interacting = true
+	print("Meow")
+	emit_signal("meowed")
+	await(get_tree().create_timer(0.5).timeout)
+	is_interacting = false
+
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -45,14 +53,12 @@ func move_state(delta):
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	input_vector = input_vector.normalized()
-	if jump_input_flag and not is_jumping:
+	if Input.is_action_pressed("jump") and is_on_floor() and not is_jumping:
 		start_jump()
-	if action_input_flag and not is_acting:
-		start_action()
+	if Input.is_action_pressed("interact") and not is_interacting:
+		start_interaction()
 	if is_jumping:
 		pass
-	elif is_acting:
-		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
 	elif input_vector != Vector2.ZERO:
 		face_direction(input_vector)
 		var desired_velocity = input_vector * max_speed * delta * speed_mod
@@ -67,6 +73,3 @@ func move_state(delta):
 func _physics_process(delta):
 	move_state(delta)
 
-func _input(event):
-	if event.get_action_strength("jump"):
-		jump_input_flag = true
