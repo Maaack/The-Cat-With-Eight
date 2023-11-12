@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8rjjuc5upk7g"]
+
+[ext_resource type="PackedScene" uid="uid://d38nf5qko1hhh" path="res://Scenes/BaseLevel/BaseLevel.tscn" id="1_bvch1"]
+
+[node name="Level2" instance=ExtResource("1_bvch1")]
+
+[node name="Tiger" parent="." index="1"]
+position = Vector2(400, 234)

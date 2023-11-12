@@ -9,7 +9,8 @@ const KEY_DELETION_TEXT : String = "Are you sure you want to remove %s from %s?"
 	"move_down" : "Down",
 	"move_left" : "Left",
 	"move_right" : "Right",
-	"interact" : "Interact"
+	"interact" : "Interact",
+	"jump": "Jump",
 }
 @export var add_button_texture : Texture2D
 @export var remove_button_texture : Texture2D

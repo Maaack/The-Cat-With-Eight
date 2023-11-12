@@ -12,7 +12,7 @@ func _add_textures_to_container(textures : Array[Texture2D]):
 	for texture in textures:
 		var texture_rect : TextureRect = TextureRect.new()
 		texture_rect.texture = texture
-		texture_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		texture_rect.stretch_mode = TextureRect.STRETCH_KEEP_CENTERED
 		texture_rect.visible = false
 		%ImagesContainer.call_deferred("add_child", texture_rect)
 

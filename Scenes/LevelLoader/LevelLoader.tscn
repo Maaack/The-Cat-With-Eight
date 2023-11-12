@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://kqk1cmxf537m"]
+
+[ext_resource type="Script" path="res://Scenes/LevelLoader/LevelLoader.gd" id="1_a6xy4"]
+
+[node name="LevelLoader" type="Node"]
+script = ExtResource("1_a6xy4")
+level_files = Array[String](["res://Scenes/BaseLevel/Levels/Level1.tscn", "res://Scenes/BaseLevel/Levels/Level2.tscn"])
+level_dir = "res://Scenes/BaseLevel/Levels"

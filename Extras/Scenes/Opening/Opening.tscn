@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://sikc02ddepyt"]
+[gd_scene load_steps=8 format=3 uid="uid://sikc02ddepyt"]
 
 [ext_resource type="Script" path="res://Extras/Scenes/Opening/Opening.gd" id="1_fcjph"]
-[ext_resource type="Texture2D" uid="uid://b4xpcuksnx4y0" path="res://icon.svg" id="2_psnkk"]
+[ext_resource type="Texture2D" uid="uid://bmq7p581obxjb" path="res://Assets/Sourced/Sprites/GodotWildJam.png" id="2_fsx6j"]
+[ext_resource type="Texture2D" uid="uid://c5nmmyuobp4j3" path="res://Assets/Sourced/Sprites/63-Cats.png" id="3_e6q65"]
+[ext_resource type="Texture2D" uid="uid://bkr0nuwjqn0kw" path="res://Assets/Sourced/Sprites/63-All-Cards.png" id="4_dd2um"]
 
 [sub_resource type="Animation" id="Animation_nsnod"]
 resource_name = "FadeInOut"
@@ -49,7 +51,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fcjph")
 next_scene = "res://Extras/Scenes/Menus/MainMenu/MainMenu.tscn"
-images = Array[Texture2D]([ExtResource("2_psnkk")])
+images = Array[Texture2D]([ExtResource("2_fsx6j"), ExtResource("3_e6q65"), ExtResource("4_dd2um")])
 end_delay = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

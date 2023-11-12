@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqsr8ewmxco41"]
+
+[ext_resource type="Texture2D" uid="uid://d4gwa8spsv4tg" path="res://Assets/Originals/Cat.png" id="1_3gvpn"]
+[ext_resource type="Script" path="res://Scenes/Tiger/Tiger.gd" id="1_lvtha"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_br1sc"]
+
+[node name="Tiger" type="CharacterBody2D" groups=["tiger"]]
+script = ExtResource("1_lvtha")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_br1sc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3gvpn")
+
+[node name="Camera2D" type="Camera2D" parent="."]
