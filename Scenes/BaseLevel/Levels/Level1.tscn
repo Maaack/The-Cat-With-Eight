@@ -3,3 +3,4 @@
 [ext_resource type="PackedScene" uid="uid://d38nf5qko1hhh" path="res://Scenes/BaseLevel/BaseLevel.tscn" id="1_q24ab"]
 
 [node name="Level1" instance=ExtResource("1_q24ab")]
+opening_dialogue_title = "Story_1_1"
