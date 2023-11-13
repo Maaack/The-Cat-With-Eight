@@ -5,5 +5,5 @@
 [node name="Level2" instance=ExtResource("1_bvch1")]
 opening_dialogue_title = "Story_1_2"
 
-[node name="Tiger" parent="." index="1"]
-position = Vector2(400, 234)
+[node name="Tiger" parent="." index="2"]
+position = Vector2(319, 109)

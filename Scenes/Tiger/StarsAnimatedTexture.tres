@@ -1,0 +1,29 @@
+[gd_resource type="AnimatedTexture" load_steps=7 format=3 uid="uid://cxv2dxhypsqq6"]
+
+[ext_resource type="Texture2D" uid="uid://cr88kgq4ka3ip" path="res://Assets/Originals/Star.png" id="1_4cn1n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7qd1"]
+atlas = ExtResource("1_4cn1n")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3sj43"]
+load_path = "res://.godot/imported/Star.png-7091121f5137c260d000fb16ced1e4cb.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yv78c"]
+atlas = SubResource("CompressedTexture2D_3sj43")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dkwoj"]
+load_path = "res://.godot/imported/Star.png-7091121f5137c260d000fb16ced1e4cb.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wa0f6"]
+atlas = SubResource("CompressedTexture2D_dkwoj")
+region = Rect2(16, 0, 8, 8)
+
+[resource]
+frames = 3
+frame_0/texture = SubResource("AtlasTexture_i7qd1")
+frame_1/texture = SubResource("AtlasTexture_yv78c")
+frame_1/duration = 1.0
+frame_2/texture = SubResource("AtlasTexture_wa0f6")
+frame_2/duration = 1.0

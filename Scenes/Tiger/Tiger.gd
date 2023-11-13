@@ -40,9 +40,8 @@ func start_jump():
 
 func start_interaction():
 	is_interacting = true
-	print("Meow")
 	emit_signal("meowed")
-	await(get_tree().create_timer(2.0).timeout)
+	await(get_tree().create_timer(1.5).timeout)
 	is_interacting = false
 
 func try_interaction():
@@ -69,11 +68,11 @@ func move_state(delta):
 		pass
 	elif input_vector != Vector2.ZERO:
 		face_direction(input_vector)
-		var desired_velocity = input_vector * max_speed * delta * speed_mod
+		var desired_velocity = (input_vector * max_speed * delta * speed_mod) + Vector2(0, velocity.y)
 		var desired_acceleration = acceleration * delta * speed_mod
 		velocity = velocity.move_toward(desired_velocity, desired_acceleration)
 #		animation_state.travel("Walk")
-	else:
+	elif is_on_floor():
 		velocity = velocity.move_toward(Vector2.ZERO, friction * delta * speed_mod)
 #		animation_state.travel("Idle")
 	move_and_slide()

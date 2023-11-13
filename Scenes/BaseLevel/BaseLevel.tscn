@@ -1,25 +1,84 @@
-[gd_scene load_steps=7 format=3 uid="uid://d38nf5qko1hhh"]
+[gd_scene load_steps=11 format=3 uid="uid://d38nf5qko1hhh"]
 
 [ext_resource type="Script" path="res://Scenes/BaseLevel/BaseLevel.gd" id="1_1shd5"]
-[ext_resource type="Texture2D" uid="uid://ddqivuy2168yl" path="res://Assets/Originals/Ground.png" id="2_let53"]
+[ext_resource type="Texture2D" uid="uid://khw6g0nng2ng" path="res://Assets/Originals/Big Ground.png" id="2_80kej"]
+[ext_resource type="Texture2D" uid="uid://chetysq0477v3" path="res://Assets/Originals/Ground.png" id="2_let53"]
+[ext_resource type="PackedScene" uid="uid://b72ld0edcy0mk" path="res://Scenes/FloatingSprite/Instances/LittleMeow.tscn" id="2_oyas2"]
 [ext_resource type="PackedScene" uid="uid://dqsr8ewmxco41" path="res://Scenes/Tiger/Tiger.tscn" id="3_ya48t"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wdjxs"]
-texture = ExtResource("2_let53")
-texture_region_size = Vector2i(32, 32)
-0:0/animation_columns = 4
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u5b8d"]
+texture = ExtResource("2_80kej")
+texture_region_size = Vector2i(128, 128)
+0:0/animation_columns = 3
 0:0/animation_frame_0/duration = 1.0
 0:0/animation_frame_1/duration = 1.0
 0:0/animation_frame_2/duration = 1.0
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+0:1/animation_columns = 3
+0:1/animation_frame_0/duration = 1.0
+0:1/animation_frame_1/duration = 1.0
+0:1/animation_frame_2/duration = 1.0
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+0:2/animation_columns = 3
+0:2/animation_frame_0/duration = 1.0
+0:2/animation_frame_1/duration = 1.0
+0:2/animation_frame_2/duration = 1.0
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+0:3/animation_columns = 3
+0:3/animation_frame_0/duration = 1.0
+0:3/animation_frame_1/duration = 1.0
+0:3/animation_frame_2/duration = 1.0
+0:3/0 = 0
+0:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:3/0/physics_layer_0/angular_velocity = 0.0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
 [sub_resource type="TileSet" id="TileSet_x0qfd"]
-tile_size = Vector2i(32, 32)
+tile_size = Vector2i(128, 128)
 physics_layer_0/collision_layer = 1
-sources/1 = SubResource("TileSetAtlasSource_wdjxs")
+sources/1 = SubResource("TileSetAtlasSource_u5b8d")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5xnud"]
+texture = ExtResource("2_let53")
+texture_region_size = Vector2i(64, 64)
+0:0/animation_columns = 3
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/animation_frame_2/duration = 1.0
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:1/animation_columns = 3
+0:1/animation_frame_0/duration = 1.0
+0:1/animation_frame_1/duration = 1.0
+0:1/animation_frame_2/duration = 1.0
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:2/animation_columns = 3
+0:2/animation_frame_0/duration = 1.0
+0:2/animation_frame_1/duration = 1.0
+0:2/animation_frame_2/duration = 1.0
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="TileSet" id="TileSet_7xaj4"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_5xnud")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vvtya"]
 size = Vector2(186, 141)
@@ -27,11 +86,17 @@ size = Vector2(186, 141)
 [node name="BaseLevel" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_1shd5")
+floating_meow_scene = ExtResource("2_oyas2")
+meow_offset = Vector2(0, -16)
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="BigTileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_x0qfd")
 format = 2
-layer_0/tile_data = PackedInt32Array(524288, 1, 0, 524289, 1, 0, 524290, 1, 0, 524291, 1, 0, 524292, 1, 0, 524293, 1, 0, 524294, 1, 0, 524295, 1, 0, 524296, 1, 0, 524297, 1, 0, 524298, 1, 0, 524299, 1, 0, 524300, 1, 0, 524301, 1, 0, 524302, 1, 0, 524303, 1, 0, 524304, 1, 0, 524305, 1, 0, 524306, 1, 0, 524307, 1, 0)
+layer_0/tile_data = PackedInt32Array(65536, 1, 0, 65537, 1, 0, 65538, 1, 0, 65539, 1, 0, 65540, 1, 0, 65541, 1, 0, 65542, 1, 0, 65543, 1, 0, 131071, 1, 0, 131070, 1, 0, 131069, 1, 0, 131068, 1, 0, 131067, 1, 0, 196603, 1, 1, 196604, 1, 1, 196605, 1, 1, 196606, 1, 1, 196607, 1, 1, 131072, 1, 1, 131073, 1, 1, 131074, 1, 1, 131075, 1, 1, 131076, 1, 1, 131077, 1, 1, 131078, 1, 1, 131079, 1, 1, 262139, 1, 1, 262140, 1, 1, 262141, 1, 1, 262142, 1, 1, 262143, 1, 1, 196608, 1, 1, 196609, 1, 1, 196610, 1, 1, 196611, 1, 1, 196612, 1, 1, 196613, 1, 1, 196614, 1, 1, 196615, 1, 1)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_7xaj4")
+format = 2
 
 [node name="Tiger" parent="." instance=ExtResource("3_ya48t")]
 position = Vector2(112, 112)
@@ -41,6 +106,8 @@ jump_velocity = 300.0
 position = Vector2(547, 171)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitArea2D"]
+position = Vector2(-72, -117)
 shape = SubResource("RectangleShape2D_vvtya")
 
+[connection signal="meowed" from="Tiger" to="." method="_on_tiger_meowed"]
 [connection signal="body_entered" from="ExitArea2D" to="." method="_on_exit_area_2d_body_entered"]

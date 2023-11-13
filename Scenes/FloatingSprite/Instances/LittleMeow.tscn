@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://b72ld0edcy0mk"]
+
+[ext_resource type="PackedScene" uid="uid://c1xext4fpsefb" path="res://Scenes/FloatingSprite/FloatingSprite.tscn" id="1_napwn"]
+[ext_resource type="Texture2D" uid="uid://cmncwpscpgm2g" path="res://Assets/Originals/Meow.png" id="2_6xkc4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gues5"]
+atlas = ExtResource("2_6xkc4")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrgbh"]
+atlas = ExtResource("2_6xkc4")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8ouk"]
+atlas = ExtResource("2_6xkc4")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5nxyy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gues5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nrgbh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8ouk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.5
+}]
+
+[node name="LittleMeow" instance=ExtResource("1_napwn")]
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_5nxyy")
+autoplay = "default"

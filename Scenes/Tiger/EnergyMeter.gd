@@ -24,6 +24,7 @@ extends Node2D
 @export var energy_modulate : Color = Color.WHITE
 
 var current_energy = 0
+var light_up_new_energy = false
 
 func _check_energy_recharge():
 	if current_energy >= max_energy:
@@ -58,6 +59,9 @@ func raise_max_energy():
 	_reposition_elements()
 	_modulate_elements()
 	_check_energy_recharge()
+	if light_up_new_energy:
+		$GPUParticles2D.position = instance.position
+		$GPUParticles2D.emitting = true
 
 func lower_max_energy():
 	var child_count : int = $Container.get_child_count()
@@ -91,7 +95,7 @@ func lower_energy(amount : int = 1) -> bool:
 		return false
 	current_energy -= amount
 	_modulate_elements()
-	_check_energy_recharge()
+	$RechargeTimer.start()
 	return true
 
 func _on_recharge_timer_timeout():
@@ -101,3 +105,5 @@ func _ready():
 	max_energy = max_energy
 	_reposition_elements()
 	_modulate_elements()
+	await(get_tree().create_timer(0.1).timeout)
+	light_up_new_energy = true

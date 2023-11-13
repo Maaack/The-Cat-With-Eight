@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="The Cat With Eight"
-run/main_scene="res://Extras/Scenes/InitApp/InitApp.tscn"
+run/main_scene="res://Extras/Scenes/GameScene/GameUI.tscn"
 config/features=PackedStringArray("4.1")
 config/icon="res://icon.png"
 
