@@ -1,9 +1,49 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8rjjuc5upk7g"]
+[gd_scene load_steps=8 format=3 uid="uid://b8rjjuc5upk7g"]
 
 [ext_resource type="PackedScene" uid="uid://d38nf5qko1hhh" path="res://Scenes/BaseLevel/BaseLevel.tscn" id="1_bvch1"]
+[ext_resource type="Script" path="res://Scenes/BaseLevel/Levels/Level2.gd" id="2_cifsv"]
+[ext_resource type="Texture2D" uid="uid://b8xotnufhbrvu" path="res://Assets/Originals/Tiny Cat Paw.png" id="3_meqrs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5lxkt"]
+atlas = ExtResource("3_meqrs")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhs4y"]
+atlas = ExtResource("3_meqrs")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3b5a"]
+atlas = ExtResource("3_meqrs")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gtbou"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5lxkt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhs4y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3b5a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
 
 [node name="Level2" instance=ExtResource("1_bvch1")]
-opening_dialogue_title = "Story_1_2"
+script = ExtResource("2_cifsv")
+opening_dialogue_title = "Story_2_1"
 
 [node name="Tiger" parent="." index="2"]
 position = Vector2(319, 109)
+max_energy = 4
+
+[node name="EnergyMeter" parent="Tiger" index="3"]
+energy_sprite_frames = SubResource("SpriteFrames_gtbou")
+sprite_size = 16.0
+sprite_spacing = 2.0
+
+[editable path="Tiger"]

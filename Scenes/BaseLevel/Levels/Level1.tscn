@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://c6qgji2fo51hf"]
+[gd_scene load_steps=49 format=3 uid="uid://c6qgji2fo51hf"]
 
 [ext_resource type="PackedScene" uid="uid://d38nf5qko1hhh" path="res://Scenes/BaseLevel/BaseLevel.tscn" id="1_q24ab"]
 [ext_resource type="Script" path="res://Scenes/BaseLevel/Levels/Level1.gd" id="2_8n7xk"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://b8xotnufhbrvu" path="res://Assets/Originals/Tiny Cat Paw.png" id="3_qwmh8"]
 [ext_resource type="Texture2D" uid="uid://dxi0brhoki1c3" path="res://Assets/Originals/Keyboard Keys.png" id="4_q06dn"]
 [ext_resource type="Texture2D" uid="uid://bm51vumae865o" path="res://Assets/Originals/Front Door.png" id="6_bxeii"]
+[ext_resource type="Texture2D" uid="uid://cjbjtp175xyt8" path="res://Assets/Originals/Chatter.png" id="7_w7v57"]
+[ext_resource type="Texture2D" uid="uid://bfpk6kt535vg4" path="res://Assets/Originals/Sleeping Kitten.png" id="8_ach5s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5lxkt"]
 atlas = ExtResource("3_qwmh8")
@@ -222,6 +224,64 @@ size = Vector2(20, 80)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gjxp1"]
 size = Vector2(20, 80)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_qloyp"]
+atlas = ExtResource("7_w7v57")
+region = Rect2(0, 0, 48, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ig1d"]
+atlas = ExtResource("7_w7v57")
+region = Rect2(48, 0, 48, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rj0bh"]
+atlas = ExtResource("7_w7v57")
+region = Rect2(96, 0, 48, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_plhsn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qloyp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ig1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rj0bh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dseho"]
+atlas = ExtResource("8_ach5s")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_usvu0"]
+atlas = ExtResource("8_ach5s")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7l00"]
+atlas = ExtResource("8_ach5s")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h0c4r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dseho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_usvu0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h7l00")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
 [node name="Level1" instance=ExtResource("1_q24ab")]
 script = ExtResource("2_8n7xk")
 opening_dialogue_title = "Story_1_1"
@@ -233,7 +293,7 @@ layer_0/tile_data = PackedInt32Array(65536, 1, 0, 65537, 1, 0, 65538, 1, 0, 6553
 layer_0/tile_data = PackedInt32Array(131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 11, 0, 1, 65546, 0, 1)
 
 [node name="Tiger" parent="." index="2"]
-position = Vector2(144, 64)
+position = Vector2(144, 112)
 jump_velocity = 0.0
 
 [node name="EnergyMeter" parent="Tiger" index="3"]
@@ -327,17 +387,35 @@ wait_time = 5.0
 one_shot = true
 
 [node name="SilentTimer1" type="Timer" parent="." index="12"]
-wait_time = 2.5
+wait_time = 2.6
 one_shot = true
 
 [node name="SilentTimer2" type="Timer" parent="." index="13"]
-wait_time = 3.5
+wait_time = 4.5
 one_shot = true
 
 [node name="ExitArea2D" parent="." index="14"]
 position = Vector2(609, 12)
 
-[connection signal="jumped" from="Tiger" to="." method="_on_tiger_jumped"]
+[node name="ChatterMarker2D" type="Marker2D" parent="." index="15"]
+position = Vector2(704, -64)
+
+[node name="ChatterSprite2D" type="AnimatedSprite2D" parent="." index="16"]
+position = Vector2(704, -64)
+sprite_frames = SubResource("SpriteFrames_plhsn")
+autoplay = "default"
+
+[node name="SleepingKittySprite2D" type="AnimatedSprite2D" parent="." index="17"]
+process_mode = 2
+texture_filter = 1
+position = Vector2(0, -640)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_h0c4r")
+autoplay = "default"
+
+[node name="Camera2D" type="Camera2D" parent="SleepingKittySprite2D" index="0"]
+enabled = false
+
 [connection signal="body_entered" from="MeowArea2D" to="." method="_on_meow_area_2d_body_entered"]
 [connection signal="body_exited" from="MeowArea2D" to="." method="_on_meow_area_2d_body_exited"]
 [connection signal="body_entered" from="WrongWayArea2D" to="." method="_on_wrong_way_area_2d_body_entered"]
@@ -345,5 +423,6 @@ position = Vector2(609, 12)
 [connection signal="timeout" from="MeowTimer" to="." method="_on_meow_timer_timeout"]
 [connection signal="timeout" from="SilentTimer1" to="." method="_on_silent_timer_1_timeout"]
 [connection signal="timeout" from="SilentTimer2" to="." method="_on_silent_timer_2_timeout"]
+[connection signal="frame_changed" from="ChatterSprite2D" to="." method="_on_chatter_sprite_2d_frame_changed"]
 
 [editable path="Tiger"]

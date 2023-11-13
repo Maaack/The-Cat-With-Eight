@@ -1,12 +1,21 @@
 extends BaseLevel
 
+const CHATTER_OFFSET = 10.0
 var meow_counter : int = 0
 var story_flag_1_2 : bool = false
-var family_talking : bool = true
+var family_talking : bool = true :
+	set(value):
+		family_talking = value
+		if is_inside_tree():
+			$ChatterSprite2D.visible = family_talking
 var is_by_door : bool = false
 var tried_wrong_way : bool = false
 var tried_jumping : bool = false
 var tried_jumping_by_door : bool = false
+var tried_stronger_jumping : bool = false
+var meows_away_from_door : int = 0
+var meowed_away_from_door : bool = false
+var power_raised : bool = false
 
 func _on_move_instructions_timer_timeout():
 	$MoveInstructions.show()
@@ -25,16 +34,34 @@ func _on_meow_area_2d_body_exited(body):
 func _on_meow_timer_timeout():
 	$MeowInstructions.show()
 
+func _start_level_ending():
+	$SilentTimer2.stop()
+	await(get_tree().create_timer(2.5, false).timeout)
+	start_dialogue("Story_1_3")
+	await(DialogueManager.dialogue_ended)
+	var transition = get_tree().current_scene.transition
+	transition.close()
+	await(transition.transition_finished)
+	$Tiger/Camera2D.enabled = false
+	$SleepingKittySprite2D/Camera2D.enabled = true
+	transition.open()
+	await(transition.transition_finished)
+	start_dialogue("Story_1_4")
+	await(DialogueManager.dialogue_ended)
+	end_level()
+
 func _check_meow_by_door():
 	if not is_by_door:
+		meows_away_from_door += 1
+		if meows_away_from_door >= 3 and not meowed_away_from_door:
+			meowed_away_from_door = true
+			await(get_tree().create_timer(1.5, false).timeout)
+			start_dialogue("Cant_Hear_Me_Here")
 		return
 	family_talking = false
 	meow_counter += 1
 	if not $SilentTimer2.is_stopped():
-		await(get_tree().create_timer(2.0, false).timeout)
-		start_dialogue("Story_1_3")
-		await(DialogueManager.dialogue_ended)
-		end_level()
+		_start_level_ending()
 	if not $SilentTimer1.is_stopped():
 		$SilentTimer1.stop()
 		$SilentTimer2.start()
@@ -42,10 +69,11 @@ func _check_meow_by_door():
 		$SilentTimer1.start()
 	if meow_counter >= 3 and not story_flag_1_2:
 		story_flag_1_2 = true
-		await(get_tree().create_timer(2.0, false).timeout)
+		await(get_tree().create_timer(2.5, false).timeout)
 		start_dialogue("Story_1_2")
 		await(DialogueManager.dialogue_ended)
 		$Tiger.max_energy += 1
+		power_raised = true
 	
 
 func tiger_meowed(cat_position):
@@ -68,7 +96,7 @@ func _on_wrong_way_area_2d_body_entered(body):
 			tried_wrong_way = true
 			start_dialogue("Wrong_Way")
 
-func _on_tiger_jumped():
+func tiger_jump_tried():
 	if not tried_jumping:
 		tried_jumping = true
 		start_dialogue("Too_Weak_To_Jump")
@@ -76,3 +104,13 @@ func _on_tiger_jumped():
 	if is_by_door and not tried_jumping_by_door:
 		tried_jumping_by_door = true
 		start_dialogue("Cant_Jump_Up_Step")
+		await(DialogueManager.dialogue_ended)
+	if power_raised and not tried_stronger_jumping:
+		tried_stronger_jumping = true
+		start_dialogue("Still_Cant_Jump")
+
+func _on_chatter_sprite_2d_frame_changed():
+	var random_angle = randf_range(-2*PI, 2*PI)
+	var random_direction := Vector2.from_angle(random_angle)
+	$ChatterSprite2D.position = $ChatterMarker2D.position + random_direction * CHATTER_OFFSET
+	#$ChatterSprite2D.rotation = randf_range(-0.1*PI, 0.1*PI)

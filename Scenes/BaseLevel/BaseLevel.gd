@@ -36,3 +36,21 @@ func tiger_meowed(tiger_position : Vector2):
 
 func _on_tiger_meowed():
 	tiger_meowed($Tiger.position)
+
+func tiger_jumped():
+	pass
+
+func _on_tiger_jumped():
+	tiger_jumped()
+
+func tiger_meow_tried():
+	pass
+
+func tiger_jump_tried():
+	pass
+
+func _on_tiger_jump_tried():
+	tiger_jump_tried()
+
+func _on_tiger_meow_tried():
+	tiger_meow_tried()

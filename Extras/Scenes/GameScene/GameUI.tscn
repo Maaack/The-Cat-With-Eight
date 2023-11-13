@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxkq10mmjl517"]
+[gd_scene load_steps=6 format=3 uid="uid://dxkq10mmjl517"]
 
 [ext_resource type="Script" path="res://Extras/Scenes/GameScene/GameUI.gd" id="1_vn54u"]
 [ext_resource type="Script" path="res://App/Scripts/PauseMenuController.gd" id="2_bmhjc"]
 [ext_resource type="PackedScene" uid="uid://dtdpd6o5xj4dq" path="res://Extras/Scenes/Menus/PauseMenu/PauseMenu.tscn" id="3_n6jen"]
 [ext_resource type="PackedScene" uid="uid://kqk1cmxf537m" path="res://Scenes/LevelLoader/LevelLoader.tscn" id="4_7vduj"]
+[ext_resource type="PackedScene" uid="uid://dmoq4ilfi2wep" path="res://Scenes/Transition/Transition.tscn" id="5_cufeh"]
 
 [node name="GameUI" type="Control"]
 process_mode = 3
@@ -37,3 +38,6 @@ render_target_update_mode = 4
 
 [node name="LevelLoader" parent="." instance=ExtResource("4_7vduj")]
 unique_name_in_owner = true
+
+[node name="Transition" parent="." instance=ExtResource("5_cufeh")]
+layout_mode = 1

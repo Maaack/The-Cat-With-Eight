@@ -109,5 +109,8 @@ position = Vector2(547, 171)
 position = Vector2(-72, -117)
 shape = SubResource("RectangleShape2D_vvtya")
 
+[connection signal="jump_tried" from="Tiger" to="." method="_on_tiger_jump_tried"]
+[connection signal="jumped" from="Tiger" to="." method="_on_tiger_jumped"]
+[connection signal="meow_tried" from="Tiger" to="." method="_on_tiger_meow_tried"]
 [connection signal="meowed" from="Tiger" to="." method="_on_tiger_meowed"]
 [connection signal="body_entered" from="ExitArea2D" to="." method="_on_exit_area_2d_body_entered"]

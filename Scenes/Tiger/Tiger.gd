@@ -3,12 +3,16 @@ class_name PlayerCharacter
 
 signal meowed
 signal jumped
+signal jump_tried
+signal meow_tried
 
 @export var acceleration : float = 600
 @export var max_speed : float = 7500
 @export var friction : float = 600
 @export var speed_mod : float = 1.0
 @export var jump_velocity : float = 100
+@export var jump_energy_cost : int = 3
+@export var meow_energy_cost : int = 1
 @export var max_energy : int = 1 :
 	set(value):
 		max_energy = value
@@ -38,6 +42,12 @@ func start_jump():
 	await(get_tree().create_timer(0.5).timeout)
 	is_jumping = false
 
+func try_jumping():
+	emit_signal("jump_tried")
+	if not $EnergyMeter.lower_energy(jump_energy_cost):
+		return
+	start_jump()
+
 func start_interaction():
 	is_interacting = true
 	emit_signal("meowed")
@@ -45,7 +55,7 @@ func start_interaction():
 	is_interacting = false
 
 func try_interaction():
-	if not $EnergyMeter.lower_energy(1):
+	if not $EnergyMeter.lower_energy(meow_energy_cost):
 		return
 	start_interaction()
 
@@ -61,7 +71,7 @@ func move_state(delta):
 	input_vector.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	input_vector = input_vector.normalized()
 	if Input.is_action_pressed("jump") and is_on_floor() and not is_jumping:
-		start_jump()
+		try_jumping()
 	if Input.is_action_pressed("interact") and not is_interacting:
 		try_interaction()
 	if is_jumping:

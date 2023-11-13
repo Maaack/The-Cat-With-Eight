@@ -6,6 +6,10 @@ Then I remember hearing their voices. I remember going to them for help,
 -But they were somewhere I couldn't get to...
 => END
 
+~ Cant_Hear_Me_Here
+I was too far away from the door from them to hear me here.
+=> END
+
 ~ Wrong_Way
 It was very cat of me to do that...
 -But voices that could help me were the other way.
@@ -19,6 +23,10 @@ I was too weak to jump.
 I couldn't make it up the step.
 => END
 
+~ Still_Cant_Jump
+Even with the added strength, I was too weak to do anything more than meow.
+=> END
+
 ~ Story_1_2
 At one point they stopped. Did they hear me?
 But my voice was too weak.
@@ -30,18 +38,39 @@ I was hungry and thirsty, but in that moment...
 I meowed and meowed. I meowed as loudly as my little meak voice could.
 Then I heard some footsteps...
 -and the door opened...
--and my new family took me in, for the first time.
+-and my first real family took me in.
 => END
 
 ~ Story_1_4
-They didn't keep animals indoors. Only some people in the area did.
-But that night they let me stay.
-For a few nights after, too.
+They didn't keep animals indoors - few people living in the area did...
+-but that night they let me stay... and for a few nights after, too.
 => END
 
+~ Story_2_1
+My new human family was caring, but they knew nothing about hunting.
+Human mother and boy were clearly interested in a lesson, though.
+I didn't have experience, but I demonstrated my keen instinct.
+=> END
 
+~ Paws_Keep_Pushing_It
+I wanted to grab that ball and hold onto it, but...
+-my instinct to smack it away with my paws was too strong.
+=> END
 
-~ Story_1_0000
-Something more about cats
+~ Human_No_Like_Kitty_Jump
+Human mother did not appreciate me landing on her face.
+So I catapulted off quickly.
+=> END
 
+~ Human_Like_Kitty_Jump
+Human boy laughed off my misjump into his face.
+Totally unintentional.
+=> END
+
+~ Story_2_2
+I got it! I got that pesky evasive rolling thing.
+The humans would never get it back-
+-Oh, hey now. Come on. I just got it.
+...
+It seemed the humans wanted another lesson in hunting.
 => END

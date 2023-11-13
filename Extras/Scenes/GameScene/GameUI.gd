@@ -1,6 +1,7 @@
 extends Control
 
 @onready var action_names = AppSettings.get_filtered_action_names()
+@onready var transition = $Transition
 
 var balloon_packed_scene : PackedScene = preload("res://Scenes/DialogueBalloon/Balloon.tscn")
 
