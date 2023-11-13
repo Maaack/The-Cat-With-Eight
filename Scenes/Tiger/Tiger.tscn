@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqsr8ewmxco41"]
+[gd_scene load_steps=5 format=3 uid="uid://dqsr8ewmxco41"]
 
 [ext_resource type="Texture2D" uid="uid://d4gwa8spsv4tg" path="res://Assets/Originals/Cat.png" id="1_3gvpn"]
 [ext_resource type="Script" path="res://Scenes/Tiger/Tiger.gd" id="1_lvtha"]
+[ext_resource type="PackedScene" uid="uid://bw6kt07m32bwd" path="res://Scenes/Tiger/EnergyMeter.tscn" id="3_ejjd1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_br1sc"]
 
@@ -17,3 +18,7 @@ texture = ExtResource("1_3gvpn")
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
+
+[node name="EnergyMeter" parent="." instance=ExtResource("3_ejjd1")]
+position = Vector2(0, -40)
+energy_modulate = Color(0.352941, 0.352941, 0.352941, 1)

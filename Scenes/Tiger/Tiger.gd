@@ -9,6 +9,10 @@ signal jumped
 @export var friction : float = 600
 @export var speed_mod : float = 1.0
 @export var jump_velocity : float = 100
+@export var max_energy : int = 1 :
+	set(value):
+		max_energy = value
+		$EnergyMeter.max_energy = max_energy
 
 @onready var collision_shape_2d = $CollisionShape2D
 #@onready var animation_tree = %CharacterAnimationTree
@@ -38,9 +42,13 @@ func start_interaction():
 	is_interacting = true
 	print("Meow")
 	emit_signal("meowed")
-	await(get_tree().create_timer(0.5).timeout)
+	await(get_tree().create_timer(2.0).timeout)
 	is_interacting = false
 
+func try_interaction():
+	if not $EnergyMeter.lower_energy(1):
+		return
+	start_interaction()
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -56,7 +64,7 @@ func move_state(delta):
 	if Input.is_action_pressed("jump") and is_on_floor() and not is_jumping:
 		start_jump()
 	if Input.is_action_pressed("interact") and not is_interacting:
-		start_interaction()
+		try_interaction()
 	if is_jumping:
 		pass
 	elif input_vector != Vector2.ZERO:
@@ -73,3 +81,5 @@ func move_state(delta):
 func _physics_process(delta):
 	move_state(delta)
 
+func _ready():
+	max_energy = max_energy

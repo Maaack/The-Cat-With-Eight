@@ -6,27 +6,6 @@ var balloon_packed_scene : PackedScene = preload("res://Scenes/DialogueBalloon/B
 
 var balloon
 
-func _get_inputs_as_string():
-	var all_inputs : String = ""
-	var is_first : bool = true
-	for action_name in action_names:
-			if Input.is_action_pressed(action_name):
-				if is_first:
-					is_first = false
-					all_inputs += action_name
-				else:
-					all_inputs += " + " + action_name
-	return all_inputs
-
-func _process(delta):
-	if Input.is_anything_pressed():
-		$Label.text = _get_inputs_as_string()
-	else:
-		$Label.text = ""
-	if not get_tree().paused:
-		if is_instance_valid(balloon):
-			get_tree().paused = true
-
 func _on_dialogue_started(title : String):
 	balloon = balloon_packed_scene.instantiate()
 	get_tree().current_scene.add_child(balloon)

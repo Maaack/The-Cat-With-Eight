@@ -74,12 +74,25 @@ autoplay = "default"
 frame_progress = 0.272347
 
 [node name="MoveInstructionsTimer" type="Timer" parent="." index="7"]
+one_shot = true
 
 [node name="MeowTimer" type="Timer" parent="." index="8"]
 wait_time = 5.0
+one_shot = true
+
+[node name="SilentTimer1" type="Timer" parent="." index="9"]
+wait_time = 2.5
+one_shot = true
+
+[node name="SilentTimer2" type="Timer" parent="." index="10"]
+wait_time = 3.5
+one_shot = true
 
 [connection signal="meowed" from="Tiger" to="." method="_on_tiger_meowed"]
 [connection signal="body_entered" from="MoveInstructionArea2D" to="." method="_on_move_instruction_area_2d_body_entered"]
 [connection signal="body_entered" from="MeowArea2D" to="." method="_on_meow_area_2d_body_entered"]
+[connection signal="body_exited" from="MeowArea2D" to="." method="_on_meow_area_2d_body_exited"]
 [connection signal="timeout" from="MoveInstructionsTimer" to="." method="_on_move_instructions_timer_timeout"]
 [connection signal="timeout" from="MeowTimer" to="." method="_on_meow_timer_timeout"]
+[connection signal="timeout" from="SilentTimer1" to="." method="_on_silent_timer_1_timeout"]
+[connection signal="timeout" from="SilentTimer2" to="." method="_on_silent_timer_2_timeout"]
