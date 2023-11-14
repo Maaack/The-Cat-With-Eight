@@ -74,12 +74,12 @@ func move_state(delta):
 		try_jumping()
 	if Input.is_action_pressed("interact") and not is_interacting:
 		try_interaction()
-	if is_jumping:
-		pass
-	elif input_vector != Vector2.ZERO:
+	if input_vector != Vector2.ZERO:
 		face_direction(input_vector)
 		var desired_velocity = (input_vector * max_speed * delta * speed_mod) + Vector2(0, velocity.y)
 		var desired_acceleration = acceleration * delta * speed_mod
+		if is_jumping:
+			desired_acceleration *= 0.2
 		velocity = velocity.move_toward(desired_velocity, desired_acceleration)
 #		animation_state.travel("Walk")
 	elif is_on_floor():

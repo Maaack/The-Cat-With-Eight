@@ -24,8 +24,9 @@ func _on_move_instructions_timer_timeout():
 func _on_meow_area_2d_body_entered(body):
 	if body.is_in_group(Constants.TIGER_GROUP):
 		is_by_door = true
-		$MeowTimer.start()
 		$Tiger/EnergyMeter.show()
+		if $MeowTimer.is_stopped():
+			$MeowTimer.start()
 
 func _on_meow_area_2d_body_exited(body):
 	if body.is_in_group(Constants.TIGER_GROUP):
@@ -42,6 +43,7 @@ func _start_level_ending():
 	var game_ui = get_tree().current_scene
 	game_ui.transition_close()
 	await(game_ui.transition_finished)
+	$Tiger.set_physics_process(false)
 	$Tiger/Camera2D.enabled = false
 	$SleepingKittySprite2D/Camera2D.enabled = true
 	game_ui.transition_open()

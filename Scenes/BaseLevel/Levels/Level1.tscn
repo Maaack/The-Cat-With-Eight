@@ -298,6 +298,7 @@ jump_velocity = 0.0
 
 [node name="EnergyMeter" parent="Tiger" index="3"]
 energy_sprite_frames = SubResource("SpriteFrames_gtbou")
+energy_recharge_time = 3.0
 sprite_size = 16.0
 sprite_spacing = 2.0
 
@@ -406,7 +407,7 @@ sprite_frames = SubResource("SpriteFrames_plhsn")
 autoplay = "default"
 
 [node name="SleepingKittySprite2D" type="AnimatedSprite2D" parent="." index="17"]
-process_mode = 2
+process_mode = 3
 texture_filter = 1
 position = Vector2(0, -640)
 scale = Vector2(2, 2)

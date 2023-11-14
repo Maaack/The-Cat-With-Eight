@@ -61,6 +61,15 @@ I wanted to grab that ball and hold onto it, but...
 -my instinct to smack it away with my paws was too strong.
 => END
 
+~ Should_Attack_From_Above
+That darn evasive ball. I should come at it from where it has no angle of escape.
+I should try attacking from the sky!
+=> END
+
+~ Should_Jump_On_Ball
+I should try jumping on the ball...
+=> END
+
 ~ Human_No_Like_Kitty_Jump
 Human mother did not appreciate me landing on her face.
 So I catapulted off quickly.
