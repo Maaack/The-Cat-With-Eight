@@ -9,7 +9,7 @@ signal dialogue_started(title : String)
 @export var opening_dialogue_title : String
 
 func _ready():
-	await(get_tree().create_timer(0.1).timeout)
+	await(get_tree().create_timer(0.1, false).timeout)
 	start_dialogue(opening_dialogue_title)
 
 func end_level():

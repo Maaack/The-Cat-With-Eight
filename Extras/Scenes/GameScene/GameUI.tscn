@@ -41,3 +41,5 @@ unique_name_in_owner = true
 
 [node name="Transition" parent="." instance=ExtResource("5_cufeh")]
 layout_mode = 1
+
+[connection signal="transition_finished" from="Transition" to="." method="_on_transition_transition_finished"]

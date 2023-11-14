@@ -16,6 +16,7 @@ var tried_stronger_jumping : bool = false
 var meows_away_from_door : int = 0
 var meowed_away_from_door : bool = false
 var power_raised : bool = false
+var longer_chatting_pause : bool = false
 
 func _on_move_instructions_timer_timeout():
 	$MoveInstructions.show()
@@ -29,7 +30,6 @@ func _on_meow_area_2d_body_entered(body):
 func _on_meow_area_2d_body_exited(body):
 	if body.is_in_group(Constants.TIGER_GROUP):
 		is_by_door = false
-		$MeowTimer.stop()
 
 func _on_meow_timer_timeout():
 	$MeowInstructions.show()
@@ -39,15 +39,17 @@ func _start_level_ending():
 	await(get_tree().create_timer(2.5, false).timeout)
 	start_dialogue("Story_1_3")
 	await(DialogueManager.dialogue_ended)
-	var transition = get_tree().current_scene.transition
-	transition.close()
-	await(transition.transition_finished)
+	var game_ui = get_tree().current_scene
+	game_ui.transition_close()
+	await(game_ui.transition_finished)
 	$Tiger/Camera2D.enabled = false
 	$SleepingKittySprite2D/Camera2D.enabled = true
-	transition.open()
-	await(transition.transition_finished)
+	game_ui.transition_open()
+	await(game_ui.transition_finished)
 	start_dialogue("Story_1_4")
 	await(DialogueManager.dialogue_ended)
+	game_ui.transition_close()
+	await(game_ui.transition_finished)
 	end_level()
 
 func _check_meow_by_door():
@@ -58,7 +60,8 @@ func _check_meow_by_door():
 			await(get_tree().create_timer(1.5, false).timeout)
 			start_dialogue("Cant_Hear_Me_Here")
 		return
-	family_talking = false
+	if meow_counter > 0:
+		family_talking = false
 	meow_counter += 1
 	if not $SilentTimer2.is_stopped():
 		_start_level_ending()
@@ -85,6 +88,9 @@ func _on_silent_timer_1_timeout():
 
 func _on_silent_timer_2_timeout():
 	family_talking = true
+	if not longer_chatting_pause:
+		longer_chatting_pause = true
+		start_dialogue("Stopped_Chatting_Longer")
 
 func _ready():
 	super._ready()

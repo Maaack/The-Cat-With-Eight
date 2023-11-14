@@ -3,8 +3,10 @@ extends Control
 @onready var action_names = AppSettings.get_filtered_action_names()
 @onready var transition = $Transition
 
-var balloon_packed_scene : PackedScene = preload("res://Scenes/DialogueBalloon/Balloon.tscn")
 
+signal transition_finished
+
+var balloon_packed_scene : PackedScene = preload("res://Scenes/DialogueBalloon/Balloon.tscn")
 var balloon
 
 func _on_dialogue_started(title : String):
@@ -39,10 +41,29 @@ func _load_current_level():
 	SceneLoader.load_scene(level_file, true)
 	await(SceneLoader.scene_loaded)
 	_attach_level(SceneLoader.get_resource())
+	get_tree().paused = true
+	transition.instant_close()
+	transition.open()
+	await(transition.transition_finished)
+	get_tree().paused = false
 
 func _load_next_level():
 	%LevelLoader.increment_level()
 	_load_current_level()
+	transition.instant_close()
+	transition.open()
 
 func _ready():
 	_load_current_level()
+
+func transition_close():
+	get_tree().paused = true
+	transition.close()
+
+func transition_open():
+	transition.open()
+	await(transition.transition_finished)
+	get_tree().paused = false
+
+func _on_transition_transition_finished():
+	emit_signal("transition_finished")

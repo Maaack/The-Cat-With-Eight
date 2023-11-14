@@ -128,7 +128,7 @@ func _on_recharge_timer_timeout():
 func _ready():
 	_rebuild_sprites()
 	_reposition_elements()
-	_modulate_elements()
 	await(get_tree().create_timer(0.05).timeout)
 	current_energy = max_energy
 	light_up_new_energy = true
+	_modulate_elements()
