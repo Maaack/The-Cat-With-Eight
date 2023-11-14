@@ -17,12 +17,10 @@ shape = SubResource("RectangleShape2D_br1sc")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_3gvpn")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(0, -64)
-position_smoothing_enabled = true
-drag_horizontal_enabled = true
-
 [node name="EnergyMeter" parent="." instance=ExtResource("3_ejjd1")]
 position = Vector2(0, -40)
 energy_recharge_time = 1.5
 energy_modulate = Color(0.352941, 0.352941, 0.352941, 1)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+position = Vector2(0, -64)

@@ -102,6 +102,9 @@ format = 2
 position = Vector2(112, 112)
 jump_velocity = 300.0
 
+[node name="RemoteTransform2D" parent="Tiger" index="3"]
+remote_path = NodePath("../../MainCamera2D")
+
 [node name="ExitArea2D" type="Area2D" parent="."]
 position = Vector2(547, 171)
 
@@ -109,8 +112,16 @@ position = Vector2(547, 171)
 position = Vector2(-72, -117)
 shape = SubResource("RectangleShape2D_vvtya")
 
+[node name="MainCamera2D" type="Camera2D" parent="."]
+process_mode = 3
+position = Vector2(112, 48)
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+
 [connection signal="jump_tried" from="Tiger" to="." method="_on_tiger_jump_tried"]
 [connection signal="jumped" from="Tiger" to="." method="_on_tiger_jumped"]
 [connection signal="meow_tried" from="Tiger" to="." method="_on_tiger_meow_tried"]
 [connection signal="meowed" from="Tiger" to="." method="_on_tiger_meowed"]
 [connection signal="body_entered" from="ExitArea2D" to="." method="_on_exit_area_2d_body_entered"]
+
+[editable path="Tiger"]

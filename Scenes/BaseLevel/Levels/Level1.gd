@@ -44,7 +44,7 @@ func _start_level_ending():
 	game_ui.transition_close()
 	await(game_ui.transition_finished)
 	$Tiger.set_physics_process(false)
-	$Tiger/Camera2D.enabled = false
+	$MainCamera2D.enabled = false
 	$SleepingKittySprite2D/Camera2D.enabled = true
 	game_ui.transition_open()
 	await(game_ui.transition_finished)
@@ -120,5 +120,7 @@ func tiger_jump_tried():
 func _on_chatter_sprite_2d_frame_changed():
 	var random_angle = randf_range(-2*PI, 2*PI)
 	var random_direction := Vector2.from_angle(random_angle)
+	var main_camera_offset = min(0, $MainCamera2D.get_target_position().x-450)
 	$ChatterSprite2D.position = $ChatterMarker2D.position + random_direction * CHATTER_OFFSET
+	$ChatterSprite2D.position.x += main_camera_offset
 	#$ChatterSprite2D.rotation = randf_range(-0.1*PI, 0.1*PI)

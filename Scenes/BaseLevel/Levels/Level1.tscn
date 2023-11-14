@@ -296,11 +296,15 @@ layer_0/tile_data = PackedInt32Array(131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 1
 position = Vector2(144, 112)
 jump_velocity = 0.0
 
-[node name="EnergyMeter" parent="Tiger" index="3"]
+[node name="EnergyMeter" parent="Tiger" index="2"]
 energy_sprite_frames = SubResource("SpriteFrames_gtbou")
 energy_recharge_time = 3.0
 sprite_size = 16.0
 sprite_spacing = 2.0
+
+[node name="RemoteTransform2D" parent="Tiger" index="3"]
+update_rotation = false
+update_scale = false
 
 [node name="MeowArea2D" type="Area2D" parent="." index="3"]
 position = Vector2(592, 64)
@@ -399,10 +403,10 @@ one_shot = true
 position = Vector2(609, 12)
 
 [node name="ChatterMarker2D" type="Marker2D" parent="." index="15"]
-position = Vector2(704, -64)
+position = Vector2(720, -64)
 
 [node name="ChatterSprite2D" type="AnimatedSprite2D" parent="." index="16"]
-position = Vector2(704, -64)
+position = Vector2(720, -64)
 sprite_frames = SubResource("SpriteFrames_plhsn")
 autoplay = "default"
 
@@ -416,6 +420,9 @@ autoplay = "default"
 
 [node name="Camera2D" type="Camera2D" parent="SleepingKittySprite2D" index="0"]
 enabled = false
+
+[node name="MainCamera2D" parent="." index="18"]
+position = Vector2(144, 48)
 
 [connection signal="body_entered" from="MeowArea2D" to="." method="_on_meow_area_2d_body_entered"]
 [connection signal="body_exited" from="MeowArea2D" to="." method="_on_meow_area_2d_body_exited"]
