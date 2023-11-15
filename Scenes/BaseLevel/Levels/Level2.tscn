@@ -47,8 +47,8 @@ size = Vector2(128, 128)
 [node name="Level2" instance=ExtResource("1_bvch1")]
 script = ExtResource("2_cifsv")
 swat_force_mod = 750.0
-mother_throw_force = Vector2(250, -40)
-boy_throw_force = Vector2(-300, -80)
+mother_throw_force = Vector2(220, -40)
+boy_throw_force = Vector2(-255, -80)
 boy_low_throw_force = Vector2(-700, 0)
 opening_dialogue_title = "Story_2_1"
 
@@ -81,7 +81,7 @@ shape = SubResource("RectangleShape2D_0jwt5")
 position = Vector2(840, -224)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." index="4"]
-position = Vector2(-112, 64)
+position = Vector2(-64, 66)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
 shape = SubResource("RectangleShape2D_rxx7o")
@@ -90,7 +90,7 @@ shape = SubResource("RectangleShape2D_rxx7o")
 texture = ExtResource("4_htuup")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="." index="5"]
-position = Vector2(776, 64)
+position = Vector2(706, 66)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" index="0"]
 shape = SubResource("RectangleShape2D_rxx7o")
@@ -107,7 +107,7 @@ linear_velocity = Vector2(-50, 0)
 position = Vector2(320, 40)
 
 [node name="MomCatchesArea2D" type="Area2D" parent="." index="8"]
-position = Vector2(-48, 120)
+position = Vector2(0, 122)
 collision_layer = 0
 monitorable = false
 
@@ -115,7 +115,7 @@ monitorable = false
 shape = SubResource("RectangleShape2D_541to")
 
 [node name="BoyCatchesArea2D" type="Area2D" parent="." index="9"]
-position = Vector2(712, 120)
+position = Vector2(642, 122)
 collision_layer = 0
 monitorable = false
 
@@ -123,13 +123,13 @@ monitorable = false
 shape = SubResource("RectangleShape2D_541to")
 
 [node name="MotherThrowMarker2D" type="Marker2D" parent="." index="10"]
-position = Vector2(-40, 24)
+position = Vector2(8, 26)
 
 [node name="BoyThrowMarker2D" type="Marker2D" parent="." index="11"]
-position = Vector2(704, 24)
+position = Vector2(634, 26)
 
 [node name="BoyLowThrowMarker2D" type="Marker2D" parent="." index="12"]
-position = Vector2(704, 96)
+position = Vector2(634, 98)
 
 [connection signal="body_entered" from="Tiger/SmackArea2D" to="." method="_on_smack_area_2d_body_entered"]
 [connection signal="body_entered" from="Tiger/CaptureArea2D" to="." method="_on_capture_area_2d_body_entered"]

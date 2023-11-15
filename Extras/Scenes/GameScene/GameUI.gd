@@ -67,3 +67,8 @@ func transition_open():
 
 func _on_transition_transition_finished():
 	emit_signal("transition_finished")
+
+func _process(_delta):
+	if not get_tree().paused:
+		if is_instance_valid(balloon):
+			get_tree().paused = true

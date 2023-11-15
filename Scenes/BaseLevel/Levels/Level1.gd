@@ -17,6 +17,7 @@ var meows_away_from_door : int = 0
 var meowed_away_from_door : bool = false
 var power_raised : bool = false
 var longer_chatting_pause : bool = false
+var consecutive_unheard_meows : int = 0
 
 func _on_move_instructions_timer_timeout():
 	$MoveInstructions.show()
@@ -63,6 +64,10 @@ func _check_meow_by_door():
 			start_dialogue("Cant_Hear_Me_Here")
 		return
 	if meow_counter > 0:
+		if family_talking:
+			consecutive_unheard_meows += 1
+		else:
+			consecutive_unheard_meows = 0
 		family_talking = false
 	meow_counter += 1
 	if not $SilentTimer2.is_stopped():
@@ -79,6 +84,12 @@ func _check_meow_by_door():
 		await(DialogueManager.dialogue_ended)
 		$Tiger.max_energy += 1
 		power_raised = true
+	elif story_flag_1_2 and consecutive_unheard_meows > 0 and consecutive_unheard_meows % 8 == 0:
+		await(get_tree().create_timer(1.0, false).timeout)
+		start_dialogue("Meow_Twice_In_A_Row")
+	elif story_flag_1_2 and consecutive_unheard_meows > 0 and consecutive_unheard_meows % 4 == 0:
+		await(get_tree().create_timer(1.0, false).timeout)
+		start_dialogue("Need_To_Wait")
 	
 
 func tiger_meowed(cat_position):

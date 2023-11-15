@@ -27,6 +27,14 @@ I couldn't make it up the step.
 Even with the added strength, I was too weak to do anything more than meow.
 => END
 
+~ Need_To_Wait
+I needed to wait to gather my maximum strength.
+=> END
+
+~ Meow_Twice_In_A_Row
+If I waited to gather my strength, I could meow twice in a row faster.
+=> END
+
 ~ Stopped_Chatting_Longer
 They did stop talking for longer that time. A few meows in a row should get their attention.
 => END

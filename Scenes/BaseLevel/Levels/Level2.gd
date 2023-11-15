@@ -35,15 +35,15 @@ func _check_ball_catches():
 		first_capture = true
 		start_dialogue("Story_2_2")
 		await(DialogueManager.dialogue_ended)
-		mother_throws_ball()
+		random_throws_ball()
 	elif ball_captures >= 2 and not second_capture:
 		second_capture = true
 		start_dialogue("Story_2_3")
 		await(DialogueManager.dialogue_ended)
-		mother_throws_ball()
+		random_throws_ball()
 	elif ball_captures >= 3 and not third_capture:
 		third_capture = true
-		$Tiger/EnergyMeter.energy_recharge_time = 30.0
+		$Tiger/EnergyMeter.max_energy = 1
 		$Tiger/EnergyMeter.current_energy = 0
 		start_dialogue("Story_2_5")
 		await(DialogueManager.dialogue_ended)
@@ -52,7 +52,7 @@ func _check_ball_catches():
 func _on_smack_area_2d_body_entered(body):
 	if body.is_in_group(Constants.BALL_GROUP):
 		if third_capture:
-			$Tiger.velocity += Vector2(0, -400)
+			$Tiger.velocity += Vector2(0, -350)
 			await(get_tree().create_timer(0.75, false).timeout)
 			start_dialogue("Story_2_6")
 			await(DialogueManager.dialogue_ended)
@@ -94,6 +94,12 @@ func mother_throws_ball():
 
 func boy_throws_ball():
 	throw_ball($Ball, $BoyThrowMarker2D.position, boy_throw_force * (1 + randf()))
+
+func random_throws_ball():
+	if randf() < 0.5:
+		mother_throws_ball()
+	else:
+		boy_throws_ball()
 
 func boy_low_throws_ball():
 	throw_ball($Ball, $BoyLowThrowMarker2D.position, boy_low_throw_force)

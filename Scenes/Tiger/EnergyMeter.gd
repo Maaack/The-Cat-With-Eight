@@ -31,7 +31,10 @@ extends Node2D
 
 @export var energy_modulate : Color = Color.WHITE
 
-var current_energy = 0
+var current_energy = 0 :
+	set(value):
+		current_energy = value
+		_modulate_elements()
 var light_up_new_energy = false
 
 func _check_energy_recharge():
@@ -89,8 +92,9 @@ func lower_max_energy():
 	var child_count : int = $Container.get_child_count()
 	if child_count == 0:
 		return
-	var last_child = $Container.get_child(child_count - 1)
-	last_child.queue_free()
+	for i in range(max_energy, child_count):
+		var child = $Container.get_child(i)
+		child.queue_free()
 	if not is_inside_tree():
 		return
 	await(get_tree().create_timer(0.1).timeout)
@@ -131,4 +135,3 @@ func _ready():
 	await(get_tree().create_timer(0.05).timeout)
 	current_energy = max_energy
 	light_up_new_energy = true
-	_modulate_elements()
