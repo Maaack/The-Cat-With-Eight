@@ -57,17 +57,18 @@ I didn't have experience, but I demonstrated my keen instinct.
 => END
 
 ~ Paws_Keep_Pushing_It
-I wanted to grab that ball and hold onto it, but...
+I wanted to grab that moving thing and hold onto it, but...
 -my instinct to smack it away with my paws was too strong.
 => END
 
 ~ Should_Attack_From_Above
-That darn evasive ball. I should come at it from where it has no angle of escape.
+That darn evasive rolling thing.
+It always has an angle of escape.
 I should try attacking from the sky!
 => END
 
 ~ Should_Jump_On_Ball
-I should try jumping on the ball...
+I should try jumping on that thing...
 => END
 
 ~ Human_No_Like_Kitty_Jump
@@ -86,4 +87,26 @@ The humans would never get it back-
 -Oh, hey now. Come on. I just got it.
 ...
 It seemed the humans wanted another lesson in hunting.
+=> END
+
+~ Story_2_3
+I got it, again! Now I'll tear it to pieces before the humans take it-
+I swear I'll fight! -To the death!!!
+How are the humans so strong?
+Fine, I relinquish the rolling thing. I've lost interest.
+=> END
+
+~ Story_2_4
+There's that thing again! It's rolling again!
+My interest has peaked!
+=> END
+
+~ Story_2_5
+There! Got it!
+You taking it? Fine. I'm not doing that again.
+I'm tired.
+=> END
+
+~ Story_2_6
+What a brat!
 => END
