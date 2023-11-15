@@ -1,10 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://b8rjjuc5upk7g"]
+[gd_scene load_steps=13 format=3 uid="uid://b8rjjuc5upk7g"]
 
 [ext_resource type="PackedScene" uid="uid://d38nf5qko1hhh" path="res://Scenes/BaseLevel/BaseLevel.tscn" id="1_bvch1"]
 [ext_resource type="Script" path="res://Scenes/BaseLevel/Levels/Level2.gd" id="2_cifsv"]
 [ext_resource type="Texture2D" uid="uid://b8xotnufhbrvu" path="res://Assets/Originals/Tiny Cat Paw.png" id="3_meqrs"]
 [ext_resource type="Texture2D" uid="uid://1cveha7wu25h" path="res://Assets/Originals/Mother.png" id="4_htuup"]
-[ext_resource type="Texture2D" uid="uid://pdbcdeodrjpq" path="res://Assets/Originals/Tiny Ball.png" id="5_a85n4"]
+[ext_resource type="PackedScene" uid="uid://dt712yetu8qbs" path="res://Scenes/Ball/Ball.tscn" id="5_0j3p4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5lxkt"]
 atlas = ExtResource("3_meqrs")
@@ -35,46 +35,22 @@ animations = [{
 "speed": 1.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_een1r"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rxx7o"]
 size = Vector2(128, 128)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3s811"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_58qts"]
-atlas = ExtResource("5_a85n4")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pgtye"]
-atlas = ExtResource("5_a85n4")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vnngi"]
-atlas = ExtResource("5_a85n4")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_gt0qc"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_58qts")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pgtye")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vnngi")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_541to"]
 
 [node name="Level2" instance=ExtResource("1_bvch1")]
 script = ExtResource("2_cifsv")
+swat_force_mod = 750.0
+mother_throw_force = Vector2(250, -40)
+boy_throw_force = Vector2(-300, -80)
 opening_dialogue_title = "Story_2_1"
 
 [node name="Tiger" parent="." index="2"]
-position = Vector2(319, 109)
+position = Vector2(320, 104)
 max_energy = 4
 
 [node name="EnergyMeter" parent="Tiger" index="2"]
@@ -82,8 +58,18 @@ energy_sprite_frames = SubResource("SpriteFrames_gtbou")
 sprite_size = 16.0
 sprite_spacing = 2.0
 
+[node name="SmackArea2D" type="Area2D" parent="Tiger" index="4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiger/SmackArea2D" index="0"]
+position = Vector2(-24, 8)
+shape = SubResource("RectangleShape2D_een1r")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Tiger/SmackArea2D" index="1"]
+position = Vector2(24, 8)
+shape = SubResource("RectangleShape2D_een1r")
+
 [node name="ExitArea2D" parent="." index="3"]
-position = Vector2(656, 176)
+position = Vector2(840, -224)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." index="4"]
 position = Vector2(-112, 64)
@@ -94,18 +80,45 @@ shape = SubResource("RectangleShape2D_rxx7o")
 [node name="Mother" type="Sprite2D" parent="StaticBody2D" index="1"]
 texture = ExtResource("4_htuup")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="." index="5"]
-position = Vector2(0, 64)
-linear_velocity = Vector2(10, 0)
+[node name="StaticBody2D2" type="StaticBody2D" parent="." index="5"]
+position = Vector2(776, 64)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" index="0"]
-shape = SubResource("CircleShape2D_3s811")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" index="0"]
+shape = SubResource("RectangleShape2D_rxx7o")
 
-[node name="Ball" type="AnimatedSprite2D" parent="RigidBody2D" index="1"]
-sprite_frames = SubResource("SpriteFrames_gt0qc")
-autoplay = "default"
+[node name="Mother" type="Sprite2D" parent="StaticBody2D2" index="1"]
+texture = ExtResource("4_htuup")
+flip_h = true
 
-[node name="MainCamera2D" parent="." index="6"]
-position = Vector2(319, 45)
+[node name="Ball" parent="." index="6" instance=ExtResource("5_0j3p4")]
+
+[node name="MainCamera2D" parent="." index="7"]
+position = Vector2(320, 40)
+
+[node name="MomCatchesArea2D" type="Area2D" parent="." index="8"]
+position = Vector2(-48, 120)
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MomCatchesArea2D" index="0"]
+shape = SubResource("RectangleShape2D_541to")
+
+[node name="BoyCatchesArea2D" type="Area2D" parent="." index="9"]
+position = Vector2(712, 120)
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoyCatchesArea2D" index="0"]
+shape = SubResource("RectangleShape2D_541to")
+
+[node name="MotherThrowMarker2D" type="Marker2D" parent="." index="10"]
+position = Vector2(-40, 24)
+
+[node name="BoyThrowMarker2D" type="Marker2D" parent="." index="11"]
+position = Vector2(704, 24)
+
+[connection signal="body_entered" from="Tiger/SmackArea2D" to="." method="_on_smack_area_2d_body_entered"]
+[connection signal="body_entered" from="MomCatchesArea2D" to="." method="_on_mom_catches_area_2d_body_entered"]
+[connection signal="body_entered" from="BoyCatchesArea2D" to="." method="_on_boy_catches_area_2d_body_entered"]
 
 [editable path="Tiger"]

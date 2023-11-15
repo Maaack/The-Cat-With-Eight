@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bw6kt07m32bwd" path="res://Scenes/Tiger/EnergyMeter.tscn" id="3_ejjd1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_br1sc"]
+size = Vector2(32, 32)
 
 [node name="Tiger" type="CharacterBody2D" groups=["tiger"]]
 script = ExtResource("1_lvtha")
