@@ -59,13 +59,12 @@ My new family didn't keep animals indoors...
 => END
 
 ~ Story_2_1
-My new human family knew nothing about hunting.
-The mother and boy were clearly interested in a lesson, though.
+My new human family knew nothing about hunting. They needed lessons.
 I didn't have experience, but I demonstrated my keen instinct.
 => END
 
 ~ Paws_Keep_Pushing_It
-I wanted to grab that moving thing and hold onto it, but...
+I wanted to grab that rolling thing and hold onto it, but...
 -my instinct to smack it away with my paws was too strong.
 => END
 
@@ -90,9 +89,9 @@ Totally unintentional.
 => END
 
 ~ Story_2_2
-I got it! I got that pesky evasive rolling thing.
+I got it! I got that pesky rolling thing.
 The humans would never get it back-
--Oh, hey now. Come on. I just got it.
+-Oh, hey now. Come on.
 ...
 It seemed the humans wanted another lesson in hunting.
 => END
@@ -117,4 +116,10 @@ I'm tired.
 
 ~ Story_2_6
 What a brat!
+=> END
+
+~ Story_2_7
+The humans probably learned nothing.
+They still went to prepare my food, leaving me with the prey.
+I was too busy to be bothered with food by the time they returned.
 => END

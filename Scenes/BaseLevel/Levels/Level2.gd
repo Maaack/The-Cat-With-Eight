@@ -49,14 +49,29 @@ func _check_ball_catches():
 		await(DialogueManager.dialogue_ended)
 		boy_low_throws_ball()
 
+func _start_level_ending():
+	start_dialogue("Story_2_6")
+	await(DialogueManager.dialogue_ended)
+	var game_ui = get_tree().current_scene
+	game_ui.transition_close()
+	await(game_ui.transition_finished)
+	$Tiger.set_physics_process(false)
+	$MainCamera2D.enabled = false
+	$PlayingKittySprite2D/Camera2D.enabled = true
+	game_ui.transition_open()
+	await(game_ui.transition_finished)
+	start_dialogue("Story_2_7")
+	await(DialogueManager.dialogue_ended)
+	game_ui.transition_close()
+	await(game_ui.transition_finished)
+	end_level()
+
 func _on_smack_area_2d_body_entered(body):
 	if body.is_in_group(Constants.BALL_GROUP):
 		if third_capture:
 			$Tiger.velocity += Vector2(0, -350)
 			await(get_tree().create_timer(0.75, false).timeout)
-			start_dialogue("Story_2_6")
-			await(DialogueManager.dialogue_ended)
-			end_level()
+			_start_level_ending()
 			return
 		paws_smacked_ball_away += 1
 		var relative_to_tiger : Vector2 = body.position - $Tiger.position
@@ -81,8 +96,7 @@ func throw_ball(ball : RigidBody2D, from_position, throw_force):
 	ball.freeze = false
 	ball.update_position = from_position
 	await(get_tree().create_timer(0.2, false).timeout)
-	ball.set_collision_layer_value(1, true)
-	ball.set_collision_mask_value(1, true)
+	ball.set_collision_layer_value(2, true)
 	ball.sleeping = true
 	await(get_tree().create_timer(1.0 + wait_time, false).timeout)
 	ball.show()
@@ -116,7 +130,6 @@ func _on_boy_catches_area_2d_body_entered(body):
 func _on_capture_area_2d_body_entered(body):
 	if body.is_in_group(Constants.BALL_GROUP):
 		ball_captures += 1
-		body.set_collision_layer_value(1, false)
-		body.set_collision_mask_value(1, false)
+		body.set_collision_layer_value(2, false)
 		body.set_deferred("freeze", true)
 		_check_ball_catches()

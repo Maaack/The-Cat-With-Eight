@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://b8rjjuc5upk7g"]
+[gd_scene load_steps=19 format=3 uid="uid://b8rjjuc5upk7g"]
 
 [ext_resource type="PackedScene" uid="uid://d38nf5qko1hhh" path="res://Scenes/BaseLevel/BaseLevel.tscn" id="1_bvch1"]
 [ext_resource type="Script" path="res://Scenes/BaseLevel/Levels/Level2.gd" id="2_cifsv"]
 [ext_resource type="Texture2D" uid="uid://b8xotnufhbrvu" path="res://Assets/Originals/Tiny Cat Paw.png" id="3_meqrs"]
 [ext_resource type="Texture2D" uid="uid://1cveha7wu25h" path="res://Assets/Originals/Mother.png" id="4_htuup"]
 [ext_resource type="PackedScene" uid="uid://dt712yetu8qbs" path="res://Scenes/Ball/Ball.tscn" id="5_0j3p4"]
+[ext_resource type="Texture2D" uid="uid://cjfx8jql7iuh5" path="res://Assets/Originals/Playing Kitten.png" id="6_ysb6p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5lxkt"]
 atlas = ExtResource("3_meqrs")
@@ -44,6 +45,35 @@ size = Vector2(128, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_541to"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_42ycp"]
+atlas = ExtResource("6_ysb6p")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xo3cq"]
+atlas = ExtResource("6_ysb6p")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmjeq"]
+atlas = ExtResource("6_ysb6p")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1y232"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42ycp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xo3cq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jmjeq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
 [node name="Level2" instance=ExtResource("1_bvch1")]
 script = ExtResource("2_cifsv")
 swat_force_mod = 750.0
@@ -62,6 +92,9 @@ sprite_size = 16.0
 sprite_spacing = 2.0
 
 [node name="SmackArea2D" type="Area2D" parent="Tiger" index="4"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tiger/SmackArea2D" index="0"]
 position = Vector2(-24, 0)
@@ -72,6 +105,9 @@ position = Vector2(24, 0)
 shape = SubResource("RectangleShape2D_een1r")
 
 [node name="CaptureArea2D" type="Area2D" parent="Tiger" index="5"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tiger/CaptureArea2D" index="0"]
 position = Vector2(0, 16)
@@ -109,6 +145,7 @@ position = Vector2(320, 40)
 [node name="MomCatchesArea2D" type="Area2D" parent="." index="8"]
 position = Vector2(0, 122)
 collision_layer = 0
+collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MomCatchesArea2D" index="0"]
@@ -117,6 +154,7 @@ shape = SubResource("RectangleShape2D_541to")
 [node name="BoyCatchesArea2D" type="Area2D" parent="." index="9"]
 position = Vector2(642, 122)
 collision_layer = 0
+collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BoyCatchesArea2D" index="0"]
@@ -130,6 +168,16 @@ position = Vector2(634, 26)
 
 [node name="BoyLowThrowMarker2D" type="Marker2D" parent="." index="12"]
 position = Vector2(634, 98)
+
+[node name="PlayingKittySprite2D" type="AnimatedSprite2D" parent="." index="13"]
+process_mode = 3
+texture_filter = 1
+position = Vector2(320, -552)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_1y232")
+autoplay = "default"
+
+[node name="Camera2D" type="Camera2D" parent="PlayingKittySprite2D" index="0"]
 
 [connection signal="body_entered" from="Tiger/SmackArea2D" to="." method="_on_smack_area_2d_body_entered"]
 [connection signal="body_entered" from="Tiger/CaptureArea2D" to="." method="_on_capture_area_2d_body_entered"]

@@ -38,6 +38,7 @@ animations = [{
 
 [node name="Ball" type="RigidBody2D" groups=["ball"]]
 position = Vector2(64, 112)
+collision_layer = 2
 linear_velocity = Vector2(50, 0)
 script = ExtResource("1_b0vtl")
 metadata/_edit_group_ = true
