@@ -13,6 +13,8 @@ var first_capture : bool = false
 var second_capture : bool = false
 var third_throw : bool = false
 var third_capture : bool = false
+var hit_mothers_face : bool = false
+var hit_sons_face : bool = false
 
 
 func _ready():
@@ -78,6 +80,7 @@ func _on_smack_area_2d_body_entered(body):
 		relative_to_tiger.y = 0
 		relative_to_tiger = relative_to_tiger.normalized()
 		body.apply_impulse(relative_to_tiger * swat_force_mod)
+		$NoBallActionTimer.start()
 		_check_jump_hints()
 
 func _check_ball_throws():
@@ -101,6 +104,7 @@ func throw_ball(ball : RigidBody2D, from_position, throw_force):
 	await(get_tree().create_timer(1.0 + wait_time, false).timeout)
 	ball.show()
 	ball.apply_impulse(throw_force)
+	$NoBallActionTimer.start()
 	_check_ball_throws()
 
 func mother_throws_ball():
@@ -126,10 +130,28 @@ func _on_boy_catches_area_2d_body_entered(body):
 	if body.is_in_group(Constants.BALL_GROUP):
 		call_deferred("boy_throws_ball")
 
-
 func _on_capture_area_2d_body_entered(body):
 	if body.is_in_group(Constants.BALL_GROUP):
 		ball_captures += 1
 		body.set_collision_layer_value(2, false)
 		body.set_deferred("freeze", true)
+		$NoBallActionTimer.start()
 		_check_ball_catches()
+
+func _on_no_ball_action_timer_timeout():
+	start_dialogue("Should_Hunt_Ball")
+
+func _on_mother_face_area_2d_body_entered(body):
+	if body.is_in_group(Constants.TIGER_GROUP):
+		if not hit_mothers_face:
+			hit_mothers_face = true
+			start_dialogue("Human_No_Like_Kitty_In_Face")
+		body.velocity += Vector2(300, 0)
+
+func _on_sons_face_area_2d_body_entered(body):
+		if body.is_in_group(Constants.TIGER_GROUP):
+			if not hit_sons_face:
+				hit_sons_face = true
+				start_dialogue("Human_Like_Kitty_In_Face")
+			body.velocity += Vector2(-300, 0)
+

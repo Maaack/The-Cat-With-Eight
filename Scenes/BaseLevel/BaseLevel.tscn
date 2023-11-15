@@ -100,7 +100,7 @@ format = 2
 
 [node name="Tiger" parent="." instance=ExtResource("3_ya48t")]
 position = Vector2(112, 112)
-jump_velocity = 300.0
+jump_velocity = 350.0
 
 [node name="RemoteTransform2D" parent="Tiger" index="3"]
 remote_path = NodePath("../../MainCamera2D")

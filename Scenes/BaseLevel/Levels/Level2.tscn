@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b8rjjuc5upk7g"]
+[gd_scene load_steps=21 format=3 uid="uid://b8rjjuc5upk7g"]
 
 [ext_resource type="PackedScene" uid="uid://d38nf5qko1hhh" path="res://Scenes/BaseLevel/BaseLevel.tscn" id="1_bvch1"]
 [ext_resource type="Script" path="res://Scenes/BaseLevel/Levels/Level2.gd" id="2_cifsv"]
@@ -73,6 +73,10 @@ animations = [{
 "name": &"default",
 "speed": 1.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8yii4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h52ri"]
 
 [node name="Level2" instance=ExtResource("1_bvch1")]
 script = ExtResource("2_cifsv")
@@ -179,9 +183,31 @@ autoplay = "default"
 
 [node name="Camera2D" type="Camera2D" parent="PlayingKittySprite2D" index="0"]
 
+[node name="NoBallActionTimer" type="Timer" parent="." index="14"]
+wait_time = 20.0
+one_shot = true
+autostart = true
+
+[node name="MotherFaceArea2D" type="Area2D" parent="." index="15"]
+position = Vector2(0, 40)
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MotherFaceArea2D" index="0"]
+shape = SubResource("RectangleShape2D_8yii4")
+
+[node name="SonsFaceArea2D" type="Area2D" parent="." index="16"]
+position = Vector2(640, 40)
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SonsFaceArea2D" index="0"]
+shape = SubResource("RectangleShape2D_h52ri")
+
 [connection signal="body_entered" from="Tiger/SmackArea2D" to="." method="_on_smack_area_2d_body_entered"]
 [connection signal="body_entered" from="Tiger/CaptureArea2D" to="." method="_on_capture_area_2d_body_entered"]
 [connection signal="body_entered" from="MomCatchesArea2D" to="." method="_on_mom_catches_area_2d_body_entered"]
 [connection signal="body_entered" from="BoyCatchesArea2D" to="." method="_on_boy_catches_area_2d_body_entered"]
+[connection signal="timeout" from="NoBallActionTimer" to="." method="_on_no_ball_action_timer_timeout"]
+[connection signal="body_entered" from="MotherFaceArea2D" to="." method="_on_mother_face_area_2d_body_entered"]
+[connection signal="body_entered" from="SonsFaceArea2D" to="." method="_on_sons_face_area_2d_body_entered"]
 
 [editable path="Tiger"]

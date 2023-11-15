@@ -64,34 +64,39 @@ I didn't have experience, but I demonstrated my keen instinct.
 => END
 
 ~ Paws_Keep_Pushing_It
-I wanted to grab that rolling thing and hold onto it, but...
+I wanted to grab that round thing and hold onto it, but...
 -my instinct to smack it away with my paws was too strong.
 => END
 
 ~ Should_Attack_From_Above
-That darn evasive rolling thing.
+That darn evasive round thing.
 It always has an angle of escape.
 I should try attacking from the sky!
 => END
 
 ~ Should_Jump_On_Ball
-I should try jumping on that thing...
+I should try jumping on that round thing...
 => END
 
-~ Human_No_Like_Kitty_Jump
+~ Human_No_Like_Kitty_In_Face
 Human mother did not appreciate me landing on her face.
 So I catapulted off quickly.
 => END
 
-~ Human_Like_Kitty_Jump
+~ Human_Like_Kitty_In_Face
 Human boy laughed off my misjump into his face.
 Totally unintentional.
 => END
 
+~ Should_Hunt_Ball
+I should hunt that round thing.
+=> END
+
+
 ~ Story_2_2
-I got it! I got that pesky rolling thing.
+I got it! I got the evasive round thing.
 The humans would never get it back-
--Oh, hey now. Come on.
+-Oh, hey! Come on, meow.
 ...
 It seemed the humans wanted another lesson in hunting.
 => END
@@ -104,7 +109,7 @@ Fine, I relinquish the rolling thing. I've lost interest.
 => END
 
 ~ Story_2_4
-There's that thing again! It's rolling again!
+There's that round thing again! It's rolling again!
 My interest has peaked!
 => END
 
@@ -119,7 +124,7 @@ What a brat!
 => END
 
 ~ Story_2_7
-The humans probably learned nothing.
-They still went to prepare my food, leaving me with the prey.
-I was too busy to be bothered with food by the time they returned.
+The humans learned little about hunting that day.
+Still, they graciously went to prepare my evening feast, leaving me with the prey.
+I couldn't be bothered with their offerings by the time they returned.
 => END
