@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://deh4dcbrixegc"]
+
+[ext_resource type="PackedScene" uid="uid://d38nf5qko1hhh" path="res://Scenes/BaseLevel/BaseLevel.tscn" id="1_g4pos"]
+[ext_resource type="Script" path="res://Scenes/BaseLevel/Levels/Level3.gd" id="2_x8q7r"]
+
+[node name="Level3" instance=ExtResource("1_g4pos")]
+script = ExtResource("2_x8q7r")
+
+[editable path="Tiger"]

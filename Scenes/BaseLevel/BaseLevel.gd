@@ -10,7 +10,8 @@ signal dialogue_started(title : String)
 
 func _ready():
 	await(get_tree().create_timer(0.1, false).timeout)
-	start_dialogue(opening_dialogue_title)
+	if not opening_dialogue_title.is_empty():
+		start_dialogue(opening_dialogue_title)
 
 func end_level():
 	emit_signal("level_ended")
