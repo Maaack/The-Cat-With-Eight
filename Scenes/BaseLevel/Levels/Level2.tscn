@@ -66,11 +66,11 @@ collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tiger/SmackArea2D" index="0"]
-position = Vector2(-24, 0)
+position = Vector2(-32, 8)
 shape = SubResource("RectangleShape2D_een1r")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Tiger/SmackArea2D" index="1"]
-position = Vector2(24, 0)
+position = Vector2(32, 8)
 shape = SubResource("RectangleShape2D_een1r")
 
 [node name="CaptureArea2D" type="Area2D" parent="Tiger" index="5"]

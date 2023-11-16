@@ -1,11 +1,154 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqsr8ewmxco41"]
+[gd_scene load_steps=17 format=3 uid="uid://dqsr8ewmxco41"]
 
 [ext_resource type="Texture2D" uid="uid://d4gwa8spsv4tg" path="res://Assets/Originals/Cat.png" id="1_3gvpn"]
 [ext_resource type="Script" path="res://Scenes/Tiger/Tiger.gd" id="1_lvtha"]
 [ext_resource type="PackedScene" uid="uid://bw6kt07m32bwd" path="res://Scenes/Tiger/EnergyMeter.tscn" id="3_ejjd1"]
+[ext_resource type="Texture2D" uid="uid://bkqts1c3jfr0t" path="res://Assets/Originals/Tiger Walking.png" id="4_611tx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_br1sc"]
-size = Vector2(32, 32)
+size = Vector2(64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ikabd"]
+atlas = ExtResource("4_611tx")
+region = Rect2(64, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lcx0"]
+atlas = ExtResource("4_611tx")
+region = Rect2(0, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_heiw3"]
+atlas = ExtResource("4_611tx")
+region = Rect2(64, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlnry"]
+atlas = ExtResource("4_611tx")
+region = Rect2(128, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6vad"]
+atlas = ExtResource("4_611tx")
+region = Rect2(192, 0, 64, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eyfnh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ikabd")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3lcx0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_heiw3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlnry")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6vad")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 2.0
+}]
+
+[sub_resource type="Animation" id="Animation_5s620"]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+
+[sub_resource type="Animation" id="Animation_rfide"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+
+[sub_resource type="Animation" id="Animation_pfb6i"]
+resource_name = "WalkingL"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"walking"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ujb7f"]
+resource_name = "WalkingR"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"walking"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cmmrh"]
+_data = {
+"Idle": SubResource("Animation_5s620"),
+"RESET": SubResource("Animation_rfide"),
+"WalkingL": SubResource("Animation_pfb6i"),
+"WalkingR": SubResource("Animation_ujb7f")
+}
 
 [node name="Tiger" type="CharacterBody2D" groups=["tiger"]]
 script = ExtResource("1_lvtha")
@@ -16,6 +159,7 @@ friction = 1200.0
 shape = SubResource("RectangleShape2D_br1sc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("1_3gvpn")
 
 [node name="EnergyMeter" parent="." instance=ExtResource("3_ejjd1")]
@@ -25,3 +169,13 @@ energy_modulate = Color(0.352941, 0.352941, 0.352941, 1)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
 position = Vector2(0, -64)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_eyfnh")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cmmrh")
+}

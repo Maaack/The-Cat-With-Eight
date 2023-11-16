@@ -269,7 +269,7 @@ layer_0/tile_data = PackedInt32Array(65536, 1, 0, 65537, 1, 0, 65538, 1, 0, 6553
 layer_0/tile_data = PackedInt32Array(11, 0, 1, 65546, 0, 1)
 
 [node name="Tiger" parent="." index="2"]
-position = Vector2(144, 112)
+position = Vector2(144, 104)
 jump_velocity = 0.0
 
 [node name="EnergyMeter" parent="Tiger" index="2"]
@@ -399,7 +399,7 @@ autoplay = "default"
 enabled = false
 
 [node name="MainCamera2D" parent="." index="19"]
-position = Vector2(144, 48)
+position = Vector2(144, 40)
 
 [node name="InstructionsArea2D" type="Area2D" parent="." index="20"]
 position = Vector2(144, 104)

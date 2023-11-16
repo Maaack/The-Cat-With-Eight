@@ -9,6 +9,9 @@ signal transition_finished
 var balloon_packed_scene : PackedScene = preload("res://Scenes/DialogueBalloon/Balloon.tscn")
 var balloon
 
+func _unpause():
+	get_tree().paused = false
+
 func _on_dialogue_started(title : String):
 	balloon = balloon_packed_scene.instantiate()
 	get_tree().current_scene.add_child(balloon)
@@ -16,7 +19,7 @@ func _on_dialogue_started(title : String):
 	balloon.start(load("res://Resources/story.dialogue"), title)
 	await(DialogueManager.dialogue_ended)
 	balloon = null
-	get_tree().paused = false
+	call_deferred("_unpause") # Avoids input getting caught on same frame as closing dialogue
 
 func _on_base_level_dialogue_started(title):
 	_on_dialogue_started(title)

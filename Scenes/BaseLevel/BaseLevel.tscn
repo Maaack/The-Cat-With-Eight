@@ -99,7 +99,7 @@ tile_set = SubResource("TileSet_7xaj4")
 format = 2
 
 [node name="Tiger" parent="." instance=ExtResource("3_ya48t")]
-position = Vector2(112, 112)
+position = Vector2(112, 104)
 jump_velocity = 350.0
 
 [node name="RemoteTransform2D" parent="Tiger" index="3"]
@@ -114,7 +114,7 @@ shape = SubResource("RectangleShape2D_vvtya")
 
 [node name="MainCamera2D" type="Camera2D" parent="."]
 process_mode = 3
-position = Vector2(112, 48)
+position = Vector2(112, 40)
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 

@@ -31,7 +31,12 @@ var accessible_interactables : Array = []
 var active_node
 var is_dead : bool = false
 
-func face_direction(_in):
+func face_direction(direction_vector : Vector2):
+	if direction_vector.x > 0:
+		$AnimationPlayer.play("WalkingR")
+	elif direction_vector.x < 0:
+		$AnimationPlayer.play("WalkingL")
+
 	pass
 
 func start_jump():
@@ -83,6 +88,7 @@ func move_state(delta):
 		velocity = velocity.move_toward(desired_velocity, desired_acceleration)
 #		animation_state.travel("Walk")
 	elif is_on_floor():
+		$AnimationPlayer.play("Idle")
 		velocity = velocity.move_toward(Vector2.ZERO, friction * delta * speed_mod)
 #		animation_state.travel("Idle")
 	move_and_slide()
