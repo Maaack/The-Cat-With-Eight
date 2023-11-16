@@ -106,7 +106,6 @@ func _on_silent_timer_2_timeout():
 		start_dialogue("Stopped_Chatting_Longer")
 
 func _ready():
-	super._ready()
 	$Tiger/EnergyMeter.hide()
 
 func _on_wrong_way_area_2d_body_entered(body):
@@ -135,3 +134,9 @@ func _on_chatter_sprite_2d_frame_changed():
 	$ChatterSprite2D.position = $ChatterMarker2D.position + random_direction * CHATTER_OFFSET
 	$ChatterSprite2D.position.x += main_camera_offset
 	#$ChatterSprite2D.rotation = randf_range(-0.1*PI, 0.1*PI)
+
+func _on_instructions_area_2d_body_exited(body):
+	$MoveInstructionsTimer.stop()
+
+func _on_instructions_area_2d_2_body_exited(body):
+	$MoveInstructionsTimer2.stop()

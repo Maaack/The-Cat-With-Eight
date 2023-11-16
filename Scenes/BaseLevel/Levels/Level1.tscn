@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://c6qgji2fo51hf"]
+[gd_scene load_steps=51 format=3 uid="uid://c6qgji2fo51hf"]
 
 [ext_resource type="PackedScene" uid="uid://d38nf5qko1hhh" path="res://Scenes/BaseLevel/BaseLevel.tscn" id="1_q24ab"]
 [ext_resource type="Script" path="res://Scenes/BaseLevel/Levels/Level1.gd" id="2_8n7xk"]
@@ -39,7 +39,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2t0rq"]
-size = Vector2(96, 128)
+size = Vector2(192, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ihmsa"]
 atlas = ExtResource("3_2r2oh")
@@ -282,6 +282,12 @@ animations = [{
 "speed": 1.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5u0m3"]
+size = Vector2(48, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oh3hv"]
+size = Vector2(384, 48)
+
 [node name="Level1" instance=ExtResource("1_q24ab")]
 script = ExtResource("2_8n7xk")
 opening_dialogue_title = "Story_1_1"
@@ -307,15 +313,14 @@ update_rotation = false
 update_scale = false
 
 [node name="MeowArea2D" type="Area2D" parent="." index="3"]
-position = Vector2(592, 64)
+position = Vector2(672, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MeowArea2D" index="0"]
-position = Vector2(64, 0)
 shape = SubResource("RectangleShape2D_2t0rq")
 
 [node name="MoveInstructions" type="Node2D" parent="." index="4"]
 visible = false
-position = Vector2(80, 8)
+position = Vector2(144, 8)
 
 [node name="KeySprite2D" type="AnimatedSprite2D" parent="MoveInstructions" index="0"]
 position = Vector2(-36, -1)
@@ -383,34 +388,39 @@ position = Vector2(-264, 88)
 shape = SubResource("RectangleShape2D_gjxp1")
 
 [node name="MoveInstructionsTimer" type="Timer" parent="." index="10"]
-wait_time = 3.0
+wait_time = 5.0
 one_shot = true
 autostart = true
 
-[node name="MeowTimer" type="Timer" parent="." index="11"]
+[node name="MoveInstructionsTimer2" type="Timer" parent="." index="11"]
+wait_time = 18.0
+one_shot = true
+autostart = true
+
+[node name="MeowTimer" type="Timer" parent="." index="12"]
 wait_time = 5.0
 one_shot = true
 
-[node name="SilentTimer1" type="Timer" parent="." index="12"]
+[node name="SilentTimer1" type="Timer" parent="." index="13"]
 wait_time = 2.6
 one_shot = true
 
-[node name="SilentTimer2" type="Timer" parent="." index="13"]
+[node name="SilentTimer2" type="Timer" parent="." index="14"]
 wait_time = 4.5
 one_shot = true
 
-[node name="ExitArea2D" parent="." index="14"]
+[node name="ExitArea2D" parent="." index="15"]
 position = Vector2(609, 12)
 
-[node name="ChatterMarker2D" type="Marker2D" parent="." index="15"]
+[node name="ChatterMarker2D" type="Marker2D" parent="." index="16"]
 position = Vector2(720, -64)
 
-[node name="ChatterSprite2D" type="AnimatedSprite2D" parent="." index="16"]
+[node name="ChatterSprite2D" type="AnimatedSprite2D" parent="." index="17"]
 position = Vector2(720, -64)
 sprite_frames = SubResource("SpriteFrames_plhsn")
 autoplay = "default"
 
-[node name="SleepingKittySprite2D" type="AnimatedSprite2D" parent="." index="17"]
+[node name="SleepingKittySprite2D" type="AnimatedSprite2D" parent="." index="18"]
 process_mode = 3
 texture_filter = 1
 position = Vector2(0, -640)
@@ -421,16 +431,33 @@ autoplay = "default"
 [node name="Camera2D" type="Camera2D" parent="SleepingKittySprite2D" index="0"]
 enabled = false
 
-[node name="MainCamera2D" parent="." index="18"]
+[node name="MainCamera2D" parent="." index="19"]
 position = Vector2(144, 48)
+
+[node name="InstructionsArea2D" type="Area2D" parent="." index="20"]
+position = Vector2(144, 104)
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InstructionsArea2D" index="0"]
+shape = SubResource("RectangleShape2D_5u0m3")
+
+[node name="InstructionsArea2D2" type="Area2D" parent="." index="21"]
+position = Vector2(144, 104)
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InstructionsArea2D2" index="0"]
+shape = SubResource("RectangleShape2D_oh3hv")
 
 [connection signal="body_entered" from="MeowArea2D" to="." method="_on_meow_area_2d_body_entered"]
 [connection signal="body_exited" from="MeowArea2D" to="." method="_on_meow_area_2d_body_exited"]
 [connection signal="body_entered" from="WrongWayArea2D" to="." method="_on_wrong_way_area_2d_body_entered"]
 [connection signal="timeout" from="MoveInstructionsTimer" to="." method="_on_move_instructions_timer_timeout"]
+[connection signal="timeout" from="MoveInstructionsTimer2" to="." method="_on_move_instructions_timer_timeout"]
 [connection signal="timeout" from="MeowTimer" to="." method="_on_meow_timer_timeout"]
 [connection signal="timeout" from="SilentTimer1" to="." method="_on_silent_timer_1_timeout"]
 [connection signal="timeout" from="SilentTimer2" to="." method="_on_silent_timer_2_timeout"]
 [connection signal="frame_changed" from="ChatterSprite2D" to="." method="_on_chatter_sprite_2d_frame_changed"]
+[connection signal="body_exited" from="InstructionsArea2D" to="." method="_on_instructions_area_2d_body_exited"]
+[connection signal="body_exited" from="InstructionsArea2D2" to="." method="_on_instructions_area_2d_2_body_exited"]
 
 [editable path="Tiger"]

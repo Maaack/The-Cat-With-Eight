@@ -8,10 +8,11 @@ signal dialogue_started(title : String)
 @export var meow_offset : Vector2 = Vector2.ZERO
 @export var opening_dialogue_title : String
 
-func _ready():
-	await(get_tree().create_timer(0.1, false).timeout)
+func start_level():
 	if not opening_dialogue_title.is_empty():
 		start_dialogue(opening_dialogue_title)
+	else:
+		get_tree().paused = false
 
 func end_level():
 	emit_signal("level_ended")

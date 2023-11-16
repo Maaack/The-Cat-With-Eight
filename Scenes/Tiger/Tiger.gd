@@ -70,9 +70,9 @@ func move_state(delta):
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	input_vector = input_vector.normalized()
-	if Input.is_action_pressed("jump") and is_on_floor() and not is_jumping:
+	if Input.is_action_just_pressed("jump") and is_on_floor() and not is_jumping:
 		try_jumping()
-	if Input.is_action_pressed("interact") and not is_interacting:
+	if Input.is_action_just_pressed("interact") and not is_interacting:
 		try_interaction()
 	if input_vector != Vector2.ZERO:
 		face_direction(input_vector)

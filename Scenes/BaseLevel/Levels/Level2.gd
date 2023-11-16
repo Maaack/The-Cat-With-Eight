@@ -17,9 +17,6 @@ var hit_mothers_face : bool = false
 var hit_sons_face : bool = false
 
 
-func _ready():
-	super._ready()
-
 func _check_jump_hints():
 	await(get_tree().create_timer(1.5, false).timeout)
 	if paws_smacked_ball_away >= 3 and not first_jump_hint:

@@ -34,18 +34,19 @@ func _attach_level(level_resource : Resource):
 	instance.connect("dialogue_started", _on_dialogue_started)
 	instance.connect("level_ended", _load_next_level)
 	%SubViewport.call_deferred("add_child", instance)
+	return instance
 
 func _load_current_level():
 	_clear_level()
 	var level_file = %LevelLoader.get_current_level_file()
 	SceneLoader.load_scene(level_file, true)
 	await(SceneLoader.scene_loaded)
-	_attach_level(SceneLoader.get_resource())
+	var level = _attach_level(SceneLoader.get_resource())
 	get_tree().paused = true
 	transition.instant_close()
 	transition.open()
 	await(transition.transition_finished)
-	get_tree().paused = false
+	level.start_level()
 
 func _load_next_level():
 	%LevelLoader.increment_level()
