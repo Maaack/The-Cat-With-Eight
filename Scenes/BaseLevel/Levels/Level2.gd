@@ -5,6 +5,7 @@ extends BaseLevel
 @export var boy_throw_force : Vector2 = Vector2.ZERO
 @export var boy_low_throw_force : Vector2 = Vector2.ZERO
 
+var tiger_jumps : int = 0
 var paws_smacked_ball_away : int = 0
 var first_jump_hint : bool = false
 var second_jump_hint : bool = false
@@ -15,6 +16,7 @@ var third_throw : bool = false
 var third_capture : bool = false
 var hit_mothers_face : bool = false
 var hit_sons_face : bool = false
+var tiger_jumps_stronger : bool = false
 
 
 func _check_jump_hints():
@@ -152,3 +154,12 @@ func _on_sons_face_area_2d_body_entered(body):
 				start_dialogue("Human_Like_Kitty_In_Face")
 			body.velocity += Vector2(-300, 0)
 
+func tiger_jumped():
+	tiger_jumps += 1
+	if tiger_jumps >= 3 and not tiger_jumps_stronger:
+		tiger_jumps_stronger = true
+		await(get_tree().create_timer(0.2, false).timeout)
+		start_dialogue("Getting_Stronger_From_Jumping")
+		await(DialogueManager.dialogue_ended)
+		$Tiger.max_energy += 1
+	

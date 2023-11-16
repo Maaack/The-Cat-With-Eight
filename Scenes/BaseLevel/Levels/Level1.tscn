@@ -1,42 +1,12 @@
-[gd_scene load_steps=51 format=3 uid="uid://c6qgji2fo51hf"]
+[gd_scene load_steps=46 format=3 uid="uid://c6qgji2fo51hf"]
 
 [ext_resource type="PackedScene" uid="uid://d38nf5qko1hhh" path="res://Scenes/BaseLevel/BaseLevel.tscn" id="1_q24ab"]
 [ext_resource type="Script" path="res://Scenes/BaseLevel/Levels/Level1.gd" id="2_8n7xk"]
 [ext_resource type="Texture2D" uid="uid://broqhlpye6n5k" path="res://Assets/Originals/Keyboard Key.png" id="3_2r2oh"]
-[ext_resource type="Texture2D" uid="uid://b8xotnufhbrvu" path="res://Assets/Originals/Tiny Cat Paw.png" id="3_qwmh8"]
 [ext_resource type="Texture2D" uid="uid://dxi0brhoki1c3" path="res://Assets/Originals/Keyboard Keys.png" id="4_q06dn"]
 [ext_resource type="Texture2D" uid="uid://bm51vumae865o" path="res://Assets/Originals/Front Door.png" id="6_bxeii"]
 [ext_resource type="Texture2D" uid="uid://cjbjtp175xyt8" path="res://Assets/Originals/Chatter.png" id="7_w7v57"]
 [ext_resource type="Texture2D" uid="uid://bfpk6kt535vg4" path="res://Assets/Originals/Sleeping Kitten.png" id="8_ach5s"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5lxkt"]
-atlas = ExtResource("3_qwmh8")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bhs4y"]
-atlas = ExtResource("3_qwmh8")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x3b5a"]
-atlas = ExtResource("3_qwmh8")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_gtbou"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5lxkt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bhs4y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x3b5a")
-}],
-"loop": true,
-"name": &"default",
-"speed": 1.0
-}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2t0rq"]
 size = Vector2(192, 256)
@@ -296,17 +266,14 @@ opening_dialogue_title = "Story_1_1"
 layer_0/tile_data = PackedInt32Array(65536, 1, 0, 65537, 1, 0, 65538, 1, 0, 65539, 1, 0, 65540, 1, 0, 65541, 1, 0, 65542, 1, 0, 65543, 1, 0, 131071, 1, 0, 131070, 1, 0, 131069, 1, 0, 131068, 1, 0, 131067, 1, 0, 196603, 1, 1, 196604, 1, 1, 196605, 1, 1, 196606, 1, 1, 196607, 1, 1, 131072, 1, 1, 131073, 1, 1, 131074, 1, 1, 131075, 1, 1, 131076, 1, 1, 131077, 1, 1, 131078, 1, 1, 131079, 1, 1, 262139, 1, 1, 262140, 1, 1, 262141, 1, 1, 262142, 1, 1, 262143, 1, 1, 196608, 1, 1, 196609, 1, 1, 196610, 1, 1, 196611, 1, 1, 196612, 1, 1, 196613, 1, 1, 196614, 1, 1, 196615, 1, 1, 6, 1, 3)
 
 [node name="TileMap" parent="." index="1"]
-layer_0/tile_data = PackedInt32Array(131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 11, 0, 1, 65546, 0, 1)
+layer_0/tile_data = PackedInt32Array(11, 0, 1, 65546, 0, 1)
 
 [node name="Tiger" parent="." index="2"]
 position = Vector2(144, 112)
 jump_velocity = 0.0
 
 [node name="EnergyMeter" parent="Tiger" index="2"]
-energy_sprite_frames = SubResource("SpriteFrames_gtbou")
 energy_recharge_time = 3.0
-sprite_size = 16.0
-sprite_spacing = 2.0
 
 [node name="RemoteTransform2D" parent="Tiger" index="3"]
 update_rotation = false
