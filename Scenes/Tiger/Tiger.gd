@@ -68,10 +68,7 @@ func try_interaction():
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func move_state(delta):
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y += gravity * delta
-
+	velocity.y += gravity * delta
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	input_vector = input_vector.normalized()
