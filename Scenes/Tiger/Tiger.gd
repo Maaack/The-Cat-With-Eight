@@ -5,11 +5,14 @@ signal meowed
 signal jumped
 signal jump_tried
 signal meow_tried
+signal sprint_tried
 
 @export var acceleration : float = 600
 @export var max_speed : float = 7500
 @export var friction : float = 600
 @export var speed_mod : float = 1.0
+@export var sprint_speed_mod : float = 2.5
+@export var sprint_enabled : bool = true
 @export var jump_velocity : float = 100
 @export var jump_energy_cost : int = 3
 @export var meow_energy_cost : int = 1
@@ -78,8 +81,13 @@ func move_state(delta):
 		try_interaction()
 	if input_vector != Vector2.ZERO:
 		face_direction(input_vector)
-		var desired_velocity = (input_vector * max_speed * delta * speed_mod) + Vector2(0, velocity.y)
-		var desired_acceleration = acceleration * delta * speed_mod
+		var total_speed_mod = speed_mod
+		if Input.is_action_pressed("sprint"):
+			emit_signal("sprint_tried")
+			if sprint_enabled:
+				total_speed_mod *= sprint_speed_mod
+		var desired_velocity = (input_vector * max_speed * delta * total_speed_mod) + Vector2(0, velocity.y)
+		var desired_acceleration = acceleration * delta * total_speed_mod
 		if is_jumping:
 			desired_acceleration *= 0.2
 		velocity = velocity.move_toward(desired_velocity, desired_acceleration)

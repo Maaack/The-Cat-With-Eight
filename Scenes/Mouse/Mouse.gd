@@ -1,11 +1,14 @@
 extends CharacterBody2D
 
+signal left_hiding_spot
+
 @export var acceleration : float = 1800
 @export var max_speed : float = 9000
 @export var friction : float = 1800
 var fleeing : bool = false
 var current_threat
 var in_bush : bool = false
+var action_vector : Vector2 = Vector2.ZERO
 
 func _on_awareness_area_2d_body_entered(body):
 	if body.is_in_group(Constants.TIGER_GROUP):
@@ -21,6 +24,7 @@ func _on_alert_timer_timeout():
 	fleeing = false
 	current_threat = null
 	leave_bush()
+	action_vector.x = 1.0 if randf() > 0.5 else -1.0
 
 func face_direction(direction_vector : Vector2):
 	if direction_vector.x > 0:
@@ -32,7 +36,6 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func move_state(delta):
 	velocity.y += gravity * delta
-	var action_vector := Vector2.ZERO
 	if fleeing:
 		var direction_away : Vector2 = position - current_threat.position
 		direction_away.y = 0
@@ -51,13 +54,14 @@ func move_state(delta):
 func _physics_process(delta):
 	move_state(delta)
 
-func hide_in_bush():
-	if in_bush:
-		return
+func hide_in_bush() -> bool:
+	if in_bush or not fleeing:
+		return false
 	in_bush = true
 	set_physics_process(false)
 	set_collision_layer_value(2, false)
 	hide()
+	return true
 
 func leave_bush():
 	if not in_bush:
@@ -66,3 +70,4 @@ func leave_bush():
 	set_physics_process(true)
 	set_collision_layer_value(2, true)
 	show()
+	emit_signal("left_hiding_spot")

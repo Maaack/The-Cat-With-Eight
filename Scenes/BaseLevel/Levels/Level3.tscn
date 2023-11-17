@@ -35,8 +35,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Level3" instance=ExtResource("1_g4pos")]
+[node name="Level3" node_paths=PackedStringArray("mouse_hiding_spots") instance=ExtResource("1_g4pos")]
 script = ExtResource("2_x8q7r")
+mouse_hiding_spots = [NodePath("HidingBush"), NodePath("HidingBush2"), NodePath("HidingBush3")]
 opening_dialogue_title = "Story_3_1"
 
 [node name="BigTileMap" parent="." index="0"]
@@ -85,5 +86,7 @@ sprite_frames = SubResource("SpriteFrames_kd75p")
 
 [node name="Mouse" parent="." index="13" instance=ExtResource("3_e03w1")]
 position = Vector2(2144, 504)
+
+[connection signal="left_hiding_spot" from="Mouse" to="." method="_on_mouse_left_hiding_spot"]
 
 [editable path="Tiger"]

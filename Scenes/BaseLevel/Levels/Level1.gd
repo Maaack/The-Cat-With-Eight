@@ -13,6 +13,7 @@ var tried_wrong_way : bool = false
 var tried_jumping : bool = false
 var tried_jumping_by_door : bool = false
 var tried_stronger_jumping : bool = false
+var tried_sprinting : bool = false
 var meows_away_from_door : int = 0
 var meowed_away_from_door : bool = false
 var power_raised : bool = false
@@ -140,3 +141,8 @@ func _on_instructions_area_2d_body_exited(body):
 
 func _on_instructions_area_2d_2_body_exited(body):
 	$MoveInstructionsTimer2.stop()
+
+func _on_tiger_sprint_tried():
+	if not tried_sprinting:
+		tried_sprinting = true
+		start_dialogue("Too_Weak_To_Run")

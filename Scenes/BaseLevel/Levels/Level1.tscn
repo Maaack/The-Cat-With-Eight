@@ -1,12 +1,61 @@
-[gd_scene load_steps=46 format=3 uid="uid://c6qgji2fo51hf"]
+[gd_scene load_steps=53 format=3 uid="uid://c6qgji2fo51hf"]
 
 [ext_resource type="PackedScene" uid="uid://d38nf5qko1hhh" path="res://Scenes/BaseLevel/BaseLevel.tscn" id="1_q24ab"]
 [ext_resource type="Script" path="res://Scenes/BaseLevel/Levels/Level1.gd" id="2_8n7xk"]
 [ext_resource type="Texture2D" uid="uid://broqhlpye6n5k" path="res://Assets/Originals/Keyboard Key.png" id="3_2r2oh"]
+[ext_resource type="Texture2D" uid="uid://bkqts1c3jfr0t" path="res://Assets/Originals/Tiger Walking.png" id="3_mhsuv"]
 [ext_resource type="Texture2D" uid="uid://dxi0brhoki1c3" path="res://Assets/Originals/Keyboard Keys.png" id="4_q06dn"]
 [ext_resource type="Texture2D" uid="uid://bm51vumae865o" path="res://Assets/Originals/Front Door.png" id="6_bxeii"]
 [ext_resource type="Texture2D" uid="uid://cjbjtp175xyt8" path="res://Assets/Originals/Chatter.png" id="7_w7v57"]
 [ext_resource type="Texture2D" uid="uid://bfpk6kt535vg4" path="res://Assets/Originals/Sleeping Kitten.png" id="8_ach5s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ikabd"]
+atlas = ExtResource("3_mhsuv")
+region = Rect2(64, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lcx0"]
+atlas = ExtResource("3_mhsuv")
+region = Rect2(0, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_heiw3"]
+atlas = ExtResource("3_mhsuv")
+region = Rect2(64, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlnry"]
+atlas = ExtResource("3_mhsuv")
+region = Rect2(128, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6vad"]
+atlas = ExtResource("3_mhsuv")
+region = Rect2(192, 0, 64, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1ugaa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ikabd")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3lcx0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_heiw3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlnry")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6vad")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 4.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2t0rq"]
 size = Vector2(192, 256)
@@ -270,6 +319,8 @@ layer_0/tile_data = PackedInt32Array(11, 0, 1, 65546, 0, 1)
 
 [node name="Tiger" parent="." index="2"]
 position = Vector2(144, 104)
+max_speed = 4000.0
+sprint_enabled = false
 jump_velocity = 0.0
 
 [node name="EnergyMeter" parent="Tiger" index="2"]
@@ -278,6 +329,9 @@ energy_recharge_time = 3.0
 [node name="RemoteTransform2D" parent="Tiger" index="3"]
 update_rotation = false
 update_scale = false
+
+[node name="AnimatedSprite2D" parent="Tiger" index="4"]
+sprite_frames = SubResource("SpriteFrames_1ugaa")
 
 [node name="MeowArea2D" type="Area2D" parent="." index="3"]
 position = Vector2(672, 0)
@@ -425,6 +479,7 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InstructionsArea2D2" index="0"]
 shape = SubResource("RectangleShape2D_oh3hv")
 
+[connection signal="sprint_tried" from="Tiger" to="." method="_on_tiger_sprint_tried"]
 [connection signal="body_entered" from="MeowArea2D" to="." method="_on_meow_area_2d_body_entered"]
 [connection signal="body_exited" from="MeowArea2D" to="." method="_on_meow_area_2d_body_exited"]
 [connection signal="body_entered" from="WrongWayArea2D" to="." method="_on_wrong_way_area_2d_body_entered"]
