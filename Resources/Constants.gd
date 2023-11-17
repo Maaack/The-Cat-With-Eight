@@ -17,3 +17,4 @@ enum Periods{
 
 const TIGER_GROUP : String = "tiger"
 const BALL_GROUP : String = "ball"
+const MOUSE_GROUP : String = "mouse"

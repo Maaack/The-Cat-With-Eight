@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://dme03fmyfmgu0"]
+
+[ext_resource type="Script" path="res://Scenes/Mouse/Mouse.gd" id="1_qb64x"]
+[ext_resource type="Texture2D" uid="uid://b5e5x3wfdoxey" path="res://Assets/Originals/Mouse.png" id="1_qf7w5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lpd3"]
+atlas = ExtResource("1_qf7w5")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0lix"]
+atlas = ExtResource("1_qf7w5")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8010"]
+atlas = ExtResource("1_qf7w5")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nrdke"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2lpd3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f0lix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8010")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dnrhj"]
+size = Vector2(32, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_82v8i"]
+size = Vector2(192, 16)
+
+[node name="Mouse" type="CharacterBody2D" groups=["mouse"]]
+collision_layer = 2
+script = ExtResource("1_qb64x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_nrdke")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dnrhj")
+
+[node name="AwarenessArea2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AwarenessArea2D"]
+shape = SubResource("RectangleShape2D_82v8i")
+
+[node name="AlertTimer" type="Timer" parent="."]
+wait_time = 8.0
+one_shot = true
+
+[connection signal="body_entered" from="AwarenessArea2D" to="." method="_on_awareness_area_2d_body_entered"]
+[connection signal="body_exited" from="AwarenessArea2D" to="." method="_on_awareness_area_2d_body_exited"]
+[connection signal="timeout" from="AlertTimer" to="." method="_on_alert_timer_timeout"]

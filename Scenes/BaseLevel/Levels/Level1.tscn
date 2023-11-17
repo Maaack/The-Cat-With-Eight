@@ -281,6 +281,9 @@ update_scale = false
 
 [node name="MeowArea2D" type="Area2D" parent="." index="3"]
 position = Vector2(672, 0)
+collision_layer = 0
+collision_mask = 8
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MeowArea2D" index="0"]
 shape = SubResource("RectangleShape2D_2t0rq")
@@ -344,6 +347,9 @@ shape = SubResource("RectangleShape2D_k83b2")
 
 [node name="WrongWayArea2D" type="Area2D" parent="." index="8"]
 position = Vector2(-136, 88)
+collision_layer = 0
+collision_mask = 8
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WrongWayArea2D" index="0"]
 shape = SubResource("RectangleShape2D_lbhg3")
@@ -377,7 +383,7 @@ wait_time = 4.5
 one_shot = true
 
 [node name="ExitArea2D" parent="." index="15"]
-position = Vector2(609, 12)
+position = Vector2(1000, -72)
 
 [node name="ChatterMarker2D" type="Marker2D" parent="." index="16"]
 position = Vector2(720, -64)
@@ -403,6 +409,8 @@ position = Vector2(144, 40)
 
 [node name="InstructionsArea2D" type="Area2D" parent="." index="20"]
 position = Vector2(144, 104)
+collision_layer = 0
+collision_mask = 8
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InstructionsArea2D" index="0"]
@@ -410,6 +418,8 @@ shape = SubResource("RectangleShape2D_5u0m3")
 
 [node name="InstructionsArea2D2" type="Area2D" parent="." index="21"]
 position = Vector2(144, 104)
+collision_layer = 0
+collision_mask = 8
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InstructionsArea2D2" index="0"]

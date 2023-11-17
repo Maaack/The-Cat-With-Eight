@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://bk6pjrpl0olfi"]
+
+[ext_resource type="Texture2D" uid="uid://c8mrlcacqbqwd" path="res://Assets/Originals/Hiding Bush.png" id="1_4c5kr"]
+[ext_resource type="Script" path="res://Scenes/Foliage/HidingBush.gd" id="2_pphcc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62kch"]
+atlas = ExtResource("1_4c5kr")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7p7t"]
+atlas = ExtResource("1_4c5kr")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1p0f"]
+atlas = ExtResource("1_4c5kr")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i2xx5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62kch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7p7t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i1p0f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tgk7n"]
+size = Vector2(16, 16)
+
+[node name="HidingBush" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_i2xx5")
+autoplay = "default"
+script = ExtResource("2_pphcc")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 24)
+shape = SubResource("RectangleShape2D_tgk7n")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
