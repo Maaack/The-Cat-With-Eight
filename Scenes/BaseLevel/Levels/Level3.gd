@@ -7,6 +7,7 @@ var saw_hawk_flag : bool = false
 var saw_mouse_flag : bool = false
 var mouse_catches : int = 0
 var mouse_played_dead_flag : bool = false
+var dropped_trophy_flag : bool = false
 var mouse_hiding_spots : Array[Node2D] = []
 
 func _on_mouse_eating_area_2d_body_entered(body):
@@ -56,7 +57,10 @@ func _on_mouse_catch_area_2d_body_entered(body):
 			if mouse_catches >= 3:
 				body.play_dead()
 		else:
+			$Tiger.carrying_carcass = true
 			body.queue_free()
+			await(get_tree().create_timer(2, false).timeout)
+			start_dialogue("Not_Too_Heavy_To_Carry")
 
 func _on_mouse_played_dead():
 	if mouse_played_dead_flag:
@@ -72,3 +76,12 @@ func _ready():
 		if child.is_in_group(Constants.HIDING_BUSH_GROUP):
 			child.connect("mouse_squeaked", _on_mouse_squeaked)
 			mouse_hiding_spots.append(child)
+
+
+func _on_drop_trophy_area_2d_body_entered(body):
+	if body.is_in_group(Constants.TIGER_GROUP):
+		if dropped_trophy_flag or not body.carrying_carcass:
+			return
+		dropped_trophy_flag = true
+		body.carrying_carcass = false
+		start_dialogue("They_Werent_Coming_Soon")

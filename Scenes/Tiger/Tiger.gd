@@ -20,6 +20,7 @@ signal sprint_tried
 	set(value):
 		max_energy = value
 		$EnergyMeter.max_energy = max_energy
+@export var carrying_carcass : bool = false
 
 @onready var collision_shape_2d = $CollisionShape2D
 #@onready var animation_tree = %CharacterAnimationTree
@@ -34,11 +35,18 @@ var accessible_interactables : Array = []
 var active_node
 var is_dead : bool = false
 
+
 func face_direction(direction_vector : Vector2):
 	if direction_vector.x > 0:
-		$AnimationPlayer.play("WalkingR")
+		if carrying_carcass:
+			$AnimationPlayer.play("WalkingWithCarcassR")
+		else:
+			$AnimationPlayer.play("WalkingR")
 	elif direction_vector.x < 0:
-		$AnimationPlayer.play("WalkingL")
+		if carrying_carcass:
+			$AnimationPlayer.play("WalkingWithCarcassL")
+		else:
+			$AnimationPlayer.play("WalkingL")
 
 	pass
 
@@ -93,7 +101,10 @@ func move_state(delta):
 		velocity = velocity.move_toward(desired_velocity, desired_acceleration)
 #		animation_state.travel("Walk")
 	elif is_on_floor():
-		$AnimationPlayer.play("Idle")
+		if carrying_carcass:
+			$AnimationPlayer.play("IdleWithCarcass")
+		else:
+			$AnimationPlayer.play("Idle")
 		velocity = velocity.move_toward(Vector2.ZERO, friction * delta * speed_mod)
 #		animation_state.travel("Idle")
 	move_and_slide()

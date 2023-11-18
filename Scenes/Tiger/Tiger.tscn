@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://dqsr8ewmxco41"]
+[gd_scene load_steps=26 format=3 uid="uid://dqsr8ewmxco41"]
 
 [ext_resource type="Texture2D" uid="uid://d4gwa8spsv4tg" path="res://Assets/Originals/Cat.png" id="1_3gvpn"]
 [ext_resource type="Script" path="res://Scenes/Tiger/Tiger.gd" id="1_lvtha"]
 [ext_resource type="PackedScene" uid="uid://bw6kt07m32bwd" path="res://Scenes/Tiger/EnergyMeter.tscn" id="3_ejjd1"]
 [ext_resource type="Texture2D" uid="uid://bkqts1c3jfr0t" path="res://Assets/Originals/Tiger Walking.png" id="4_611tx"]
+[ext_resource type="Texture2D" uid="uid://ghuiw3858gyq" path="res://Assets/Originals/Walking Kitten.png" id="5_x1g0g"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6k3m0"]
 radius = 24.0
@@ -13,21 +14,41 @@ height = 64.0
 atlas = ExtResource("4_611tx")
 region = Rect2(64, 0, 64, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3lcx0"]
-atlas = ExtResource("4_611tx")
+[sub_resource type="AtlasTexture" id="AtlasTexture_jcgqy"]
+atlas = ExtResource("5_x1g0g")
+region = Rect2(64, 48, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gs1k0"]
+atlas = ExtResource("5_x1g0g")
 region = Rect2(0, 0, 64, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_heiw3"]
-atlas = ExtResource("4_611tx")
+[sub_resource type="AtlasTexture" id="AtlasTexture_r51n5"]
+atlas = ExtResource("5_x1g0g")
 region = Rect2(64, 0, 64, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vlnry"]
-atlas = ExtResource("4_611tx")
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmvsr"]
+atlas = ExtResource("5_x1g0g")
 region = Rect2(128, 0, 64, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a6vad"]
-atlas = ExtResource("4_611tx")
+[sub_resource type="AtlasTexture" id="AtlasTexture_mwyfd"]
+atlas = ExtResource("5_x1g0g")
 region = Rect2(192, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ybh7v"]
+atlas = ExtResource("5_x1g0g")
+region = Rect2(0, 48, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2j7b"]
+atlas = ExtResource("5_x1g0g")
+region = Rect2(64, 48, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7ayt"]
+atlas = ExtResource("5_x1g0g")
+region = Rect2(128, 48, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ook7r"]
+atlas = ExtResource("5_x1g0g")
+region = Rect2(192, 48, 64, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eyfnh"]
 animations = [{
@@ -41,19 +62,44 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3lcx0")
+"texture": SubResource("AtlasTexture_jcgqy")
+}],
+"loop": true,
+"name": &"idle_with_carcass",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gs1k0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_heiw3")
+"texture": SubResource("AtlasTexture_r51n5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vlnry")
+"texture": SubResource("AtlasTexture_jmvsr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a6vad")
+"texture": SubResource("AtlasTexture_mwyfd")
 }],
 "loop": true,
 "name": &"walking",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ybh7v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2j7b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7ayt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ook7r")
+}],
+"loop": true,
+"name": &"walking_with_carcass",
 "speed": 6.0
 }]
 
@@ -143,12 +189,86 @@ tracks/1/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_i7si7"]
+resource_name = "WalkingWithCarcassL"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"walking_with_carcass"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_2dcfb"]
+resource_name = "WalkingWithCarcassR"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"walking_with_carcass"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_yqneo"]
+resource_name = "IdleWithCarcass"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle_with_carcass"]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cmmrh"]
 _data = {
 "Idle": SubResource("Animation_5s620"),
+"IdleWithCarcass": SubResource("Animation_yqneo"),
 "RESET": SubResource("Animation_rfide"),
 "WalkingL": SubResource("Animation_pfb6i"),
-"WalkingR": SubResource("Animation_ujb7f")
+"WalkingR": SubResource("Animation_ujb7f"),
+"WalkingWithCarcassL": SubResource("Animation_i7si7"),
+"WalkingWithCarcassR": SubResource("Animation_2dcfb")
 }
 
 [node name="Tiger" type="CharacterBody2D" groups=["tiger"]]

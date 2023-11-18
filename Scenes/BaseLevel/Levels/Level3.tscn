@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://deh4dcbrixegc"]
+[gd_scene load_steps=21 format=3 uid="uid://deh4dcbrixegc"]
 
 [ext_resource type="PackedScene" uid="uid://d38nf5qko1hhh" path="res://Scenes/BaseLevel/BaseLevel.tscn" id="1_g4pos"]
 [ext_resource type="Script" path="res://Scenes/BaseLevel/Levels/Level3.gd" id="2_x8q7r"]
@@ -77,6 +77,9 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_21yd6"]
 size = Vector2(128, 256)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ofv7a"]
+size = Vector2(32, 128)
 
 [node name="Level3" instance=ExtResource("1_g4pos")]
 script = ExtResource("2_x8q7r")
@@ -266,11 +269,22 @@ autoplay = "default"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FrontDoorSprite2D/StaticBody2D" index="0"]
 shape = SubResource("RectangleShape2D_21yd6")
 
+[node name="DropTrophyArea2D" type="Area2D" parent="." index="34"]
+position = Vector2(-336, -48)
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DropTrophyArea2D" index="0"]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_ofv7a")
+
 [connection signal="left_hiding_spot" from="Mouse" to="." method="_on_mouse_left_hiding_spot"]
 [connection signal="played_dead" from="Mouse" to="." method="_on_mouse_played_dead"]
 [connection signal="body_entered" from="Tiger/MouseCatchArea2D" to="." method="_on_mouse_catch_area_2d_body_entered"]
 [connection signal="body_entered" from="MouseEatingArea2D" to="." method="_on_mouse_eating_area_2d_body_entered"]
 [connection signal="body_entered" from="SawHawkArea2D" to="." method="_on_saw_hawk_area_2d_body_entered"]
 [connection signal="body_entered" from="SawMouseArea2D" to="." method="_on_saw_mouse_area_2d_body_entered"]
+[connection signal="body_entered" from="DropTrophyArea2D" to="." method="_on_drop_trophy_area_2d_body_entered"]
 
 [editable path="Tiger"]
