@@ -71,6 +71,9 @@ func start_interaction():
 	is_interacting = false
 
 func try_interaction():
+	emit_signal("meow_tried")
+	if carrying_carcass:
+		return
 	if not $EnergyMeter.lower_energy(meow_energy_cost):
 		return
 	start_interaction()

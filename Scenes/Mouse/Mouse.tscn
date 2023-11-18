@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dme03fmyfmgu0"]
+[gd_scene load_steps=16 format=3 uid="uid://dme03fmyfmgu0"]
 
 [ext_resource type="Script" path="res://Scenes/Mouse/Mouse.gd" id="1_qb64x"]
 [ext_resource type="Texture2D" uid="uid://b5e5x3wfdoxey" path="res://Assets/Originals/Mouse.png" id="1_qf7w5"]
@@ -94,6 +94,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(32, 16)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AwarenessArea2D/CollisionShape2D:shape")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("RectangleShape2D_82v8i")]
+}
 
 [sub_resource type="Animation" id="Animation_apea3"]
 resource_name = "Rolling"
@@ -113,8 +125,27 @@ tracks/0/keys = {
 "values": [0.0, 3.14159, 6.28319]
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nwj4s"]
+size = Vector2(512, 64)
+
+[sub_resource type="Animation" id="Animation_xvqae"]
+resource_name = "Aware"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AwarenessArea2D/CollisionShape2D:shape")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [SubResource("RectangleShape2D_nwj4s"), SubResource("RectangleShape2D_82v8i")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bkdbh"]
 _data = {
+"Aware": SubResource("Animation_xvqae"),
 "Dead": SubResource("Animation_32qvb"),
 "RESET": SubResource("Animation_o2o10"),
 "Rolling": SubResource("Animation_apea3")

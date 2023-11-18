@@ -11,6 +11,9 @@ var dropped_trophy_flag : bool = false
 var is_by_door : bool = false
 var mouse_hiding_spots : Array[Node2D] = []
 var meows_by_door : int = 0
+var tried_meowing_while_carrying_flag : bool = false
+var meow_hint_one : bool = false
+var meow_hint_two : bool = false
 
 func _on_mouse_eating_area_2d_body_entered(body):
 	if body.is_in_group(Constants.MOUSE_GROUP):
@@ -32,13 +35,14 @@ func _on_saw_mouse_area_2d_body_entered(body):
 		start_dialogue("Story_3_4")
 
 func _on_mouse_left_hiding_spot():
+	$HidingTimer.stop()
 	await(get_tree().create_timer(0.5).timeout)
 	for hiding_spot in mouse_hiding_spots:
 		hiding_spot.enable_spot()
 
 func _on_mouse_catch_area_2d_body_entered(body):
 	if body.is_in_group(Constants.MOUSE_GROUP):
-		if not is_instance_valid(body):
+		if not is_instance_valid(body) or body.in_bush:
 			return
 		mouse_catches += 1
 		body.set_collision_layer_value(2, false)
@@ -86,7 +90,8 @@ func _on_drop_trophy_area_2d_body_entered(body):
 			return
 		dropped_trophy_flag = true
 		body.carrying_carcass = false
-		start_dialogue("They_Werent_Coming_Soon")
+		start_dialogue("Left_Trophy_At_Door")
+		$MeowTimer.start()
 
 func _on_meow_area_2d_body_entered(body):
 	if body.is_in_group(Constants.TIGER_GROUP):
@@ -115,7 +120,32 @@ func _start_level_ending():
 
 func tiger_meowed(tiger_position : Vector2):
 	super.tiger_meowed(tiger_position)
+	if is_instance_valid($Mouse):
+		$Mouse.extra_aware()
 	if is_by_door and dropped_trophy_flag:
 		meows_by_door += 1
 		if meows_by_door > 2:
 			_start_level_ending()
+			return
+		$MeowTimer.start()
+
+func _on_mouse_entered_hiding_spot():
+	$HidingTimer.start()
+
+func _on_hiding_timer_timeout():
+	start_dialogue("Leave_The_Bush_Alone")
+
+func tiger_meow_tried():
+	if $Tiger.carrying_carcass:
+		if tried_meowing_while_carrying_flag:
+			return
+		tried_meowing_while_carrying_flag = true
+		start_dialogue("No_Meow_While_Carrying")
+
+func _on_meow_timer_timeout():
+	if not meow_hint_one:
+		meow_hint_one = true
+		start_dialogue("Need_To_Get_Attention")
+	elif not meow_hint_two:
+		meow_hint_two = true
+		start_dialogue("Need_To_Meow_Again")

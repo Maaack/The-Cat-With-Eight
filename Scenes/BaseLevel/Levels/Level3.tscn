@@ -216,7 +216,8 @@ sprite_frames = SubResource("SpriteFrames_kd75p")
 
 [node name="Mouse" parent="." index="26" instance=ExtResource("3_e03w1")]
 position = Vector2(3008, 504)
-catapult_vector = Vector2(100, -600)
+catapult_min = Vector2(100, -600)
+catapult_max = Vector2(200, -700)
 
 [node name="Tiger" parent="." index="27"]
 max_energy = 6
@@ -332,6 +333,14 @@ autoplay = "default"
 
 [node name="Camera2D" type="Camera2D" parent="PlayingKittySprite2D" index="0"]
 
+[node name="HidingTimer" type="Timer" parent="." index="37"]
+wait_time = 20.0
+
+[node name="MeowTimer" type="Timer" parent="." index="38"]
+wait_time = 8.0
+one_shot = true
+
+[connection signal="entered_hiding_spot" from="Mouse" to="." method="_on_mouse_entered_hiding_spot"]
 [connection signal="left_hiding_spot" from="Mouse" to="." method="_on_mouse_left_hiding_spot"]
 [connection signal="played_dead" from="Mouse" to="." method="_on_mouse_played_dead"]
 [connection signal="body_entered" from="Tiger/MouseCatchArea2D" to="." method="_on_mouse_catch_area_2d_body_entered"]
@@ -341,5 +350,7 @@ autoplay = "default"
 [connection signal="body_entered" from="DropTrophyArea2D" to="." method="_on_drop_trophy_area_2d_body_entered"]
 [connection signal="body_entered" from="MeowArea2D" to="." method="_on_meow_area_2d_body_entered"]
 [connection signal="body_exited" from="MeowArea2D" to="." method="_on_meow_area_2d_body_exited"]
+[connection signal="timeout" from="HidingTimer" to="." method="_on_hiding_timer_timeout"]
+[connection signal="timeout" from="MeowTimer" to="." method="_on_meow_timer_timeout"]
 
 [editable path="Tiger"]

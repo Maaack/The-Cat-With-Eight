@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+signal entered_hiding_spot
 signal left_hiding_spot
 signal played_dead
 
@@ -7,7 +8,9 @@ signal played_dead
 @export var max_speed : float = 9000
 @export var friction : float = 1800
 @export var sprint_speed_mod : float = 2.5
-@export var catapult_vector : Vector2 = Vector2.ZERO
+@export var catapult_min : Vector2 = Vector2.ZERO
+@export var catapult_max : Vector2 = Vector2.ZERO
+
 var fleeing : bool = false
 var current_threat
 var in_bush : bool = false
@@ -68,6 +71,9 @@ func move_state(delta):
 	move_and_slide()
 
 func catapult():
+	var catapult_vector = Vector2.ZERO
+	catapult_vector.x = randf_range(catapult_min.x, catapult_max.x)
+	catapult_vector.y = randf_range(catapult_min.y, catapult_max.y)
 	velocity = catapult_vector
 	if randf() > 0.5:
 		velocity.x = -velocity.x
@@ -85,6 +91,7 @@ func hide_in_bush(bush : Node2D) -> bool:
 	set_physics_process(false)
 	set_collision_layer_value(2, false)
 	hide()
+	emit_signal("entered_hiding_spot")
 	return true
 
 func leave_bush():
@@ -105,3 +112,8 @@ func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "Dead":
 		emit_signal("played_dead")
 		set_collision_layer_value(2, true)
+
+func extra_aware():
+	if playing_dead:
+		return
+	$AnimationPlayer.play("Aware")
