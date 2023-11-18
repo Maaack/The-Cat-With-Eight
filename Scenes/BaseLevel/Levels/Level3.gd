@@ -8,7 +8,9 @@ var saw_mouse_flag : bool = false
 var mouse_catches : int = 0
 var mouse_played_dead_flag : bool = false
 var dropped_trophy_flag : bool = false
+var is_by_door : bool = false
 var mouse_hiding_spots : Array[Node2D] = []
+var meows_by_door : int = 0
 
 func _on_mouse_eating_area_2d_body_entered(body):
 	if body.is_in_group(Constants.MOUSE_GROUP):
@@ -85,3 +87,35 @@ func _on_drop_trophy_area_2d_body_entered(body):
 		dropped_trophy_flag = true
 		body.carrying_carcass = false
 		start_dialogue("They_Werent_Coming_Soon")
+
+func _on_meow_area_2d_body_entered(body):
+	if body.is_in_group(Constants.TIGER_GROUP):
+		is_by_door = true
+
+func _on_meow_area_2d_body_exited(body):
+	if body.is_in_group(Constants.TIGER_GROUP):
+		is_by_door = false
+
+func _start_level_ending():
+	start_dialogue("Story_3_End")
+	await(DialogueManager.dialogue_ended)
+	var game_ui = get_tree().current_scene
+	game_ui.transition_close()
+	await(game_ui.transition_finished)
+	$Tiger.set_physics_process(false)
+	$MainCamera2D.enabled = false
+	$PlayingKittySprite2D/Camera2D.enabled = true
+	game_ui.transition_open()
+	await(game_ui.transition_finished)
+	start_dialogue("Story_3_End_2")
+	await(DialogueManager.dialogue_ended)
+	game_ui.transition_close()
+	await(game_ui.transition_finished)
+	end_level()
+
+func tiger_meowed(tiger_position : Vector2):
+	super.tiger_meowed(tiger_position)
+	if is_by_door and dropped_trophy_flag:
+		meows_by_door += 1
+		if meows_by_door > 2:
+			_start_level_ending()

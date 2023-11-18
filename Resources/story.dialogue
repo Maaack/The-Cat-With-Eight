@@ -213,7 +213,10 @@ I need to meow again to get someone to come to the door.
 
 ~ Story_3_End
 I could tell by the footsteps that the mother was coming.
-I thought she would be delighted when she opened the door.
+She was going to be delighted when she opened that door.
+=> END
+
+~ Story_3_End_2
 When she saw my gift, the noises she made were not those of gratitude, nor praise.
 I decided I would keep my trophies to myself from then on.
 => END

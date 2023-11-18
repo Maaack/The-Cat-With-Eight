@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://deh4dcbrixegc"]
+[gd_scene load_steps=27 format=3 uid="uid://deh4dcbrixegc"]
 
 [ext_resource type="PackedScene" uid="uid://d38nf5qko1hhh" path="res://Scenes/BaseLevel/BaseLevel.tscn" id="1_g4pos"]
 [ext_resource type="Script" path="res://Scenes/BaseLevel/Levels/Level3.gd" id="2_x8q7r"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://rj8jr1dj3rql" path="res://Assets/Originals/Little Bush.png" id="4_l6u23"]
 [ext_resource type="PackedScene" uid="uid://bk6pjrpl0olfi" path="res://Scenes/Foliage/HidingBush.tscn" id="4_pvg18"]
 [ext_resource type="Texture2D" uid="uid://bm51vumae865o" path="res://Assets/Originals/Front Door.png" id="6_nao2v"]
+[ext_resource type="Texture2D" uid="uid://cjfx8jql7iuh5" path="res://Assets/Originals/Playing Kitten.png" id="8_grnli"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bacwv"]
 atlas = ExtResource("4_l6u23")
@@ -80,6 +81,38 @@ size = Vector2(128, 256)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ofv7a"]
 size = Vector2(32, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3c833"]
+size = Vector2(128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42ycp"]
+atlas = ExtResource("8_grnli")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xo3cq"]
+atlas = ExtResource("8_grnli")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmjeq"]
+atlas = ExtResource("8_grnli")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dv0t0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42ycp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xo3cq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jmjeq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
 
 [node name="Level3" instance=ExtResource("1_g4pos")]
 script = ExtResource("2_x8q7r")
@@ -279,6 +312,26 @@ monitorable = false
 position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_ofv7a")
 
+[node name="MeowArea2D" type="Area2D" parent="." index="35"]
+position = Vector2(-320, -48)
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeowArea2D" index="0"]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_3c833")
+
+[node name="PlayingKittySprite2D" type="AnimatedSprite2D" parent="." index="36"]
+process_mode = 3
+texture_filter = 1
+position = Vector2(320, -896)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_dv0t0")
+autoplay = "default"
+
+[node name="Camera2D" type="Camera2D" parent="PlayingKittySprite2D" index="0"]
+
 [connection signal="left_hiding_spot" from="Mouse" to="." method="_on_mouse_left_hiding_spot"]
 [connection signal="played_dead" from="Mouse" to="." method="_on_mouse_played_dead"]
 [connection signal="body_entered" from="Tiger/MouseCatchArea2D" to="." method="_on_mouse_catch_area_2d_body_entered"]
@@ -286,5 +339,7 @@ shape = SubResource("RectangleShape2D_ofv7a")
 [connection signal="body_entered" from="SawHawkArea2D" to="." method="_on_saw_hawk_area_2d_body_entered"]
 [connection signal="body_entered" from="SawMouseArea2D" to="." method="_on_saw_mouse_area_2d_body_entered"]
 [connection signal="body_entered" from="DropTrophyArea2D" to="." method="_on_drop_trophy_area_2d_body_entered"]
+[connection signal="body_entered" from="MeowArea2D" to="." method="_on_meow_area_2d_body_entered"]
+[connection signal="body_exited" from="MeowArea2D" to="." method="_on_meow_area_2d_body_exited"]
 
 [editable path="Tiger"]
