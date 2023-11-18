@@ -39,9 +39,9 @@ render_target_update_mode = 4
 [node name="LevelLoader" parent="." instance=ExtResource("4_7vduj")]
 unique_name_in_owner = true
 level_files = Array[String](["res://Scenes/BaseLevel/Levels/Level1.tscn", "res://Scenes/BaseLevel/Levels/Level2.tscn", "res://Scenes/BaseLevel/Levels/Level3.tscn"])
-force_level = 2
 
 [node name="Transition" parent="." instance=ExtResource("5_cufeh")]
 layout_mode = 1
+color = Color(0, 0.105882, 0.180392, 1)
 
 [connection signal="transition_finished" from="Transition" to="." method="_on_transition_transition_finished"]
