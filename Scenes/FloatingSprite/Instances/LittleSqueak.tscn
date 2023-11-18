@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://b6iy0kp3lkrfl"]
+
+[ext_resource type="PackedScene" uid="uid://c1xext4fpsefb" path="res://Scenes/FloatingSprite/FloatingSprite.tscn" id="1_46rlh"]
+[ext_resource type="Texture2D" uid="uid://b7u7ar33d5j8p" path="res://Assets/Originals/Squeak.png" id="2_218ba"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4sqi7"]
+atlas = ExtResource("2_218ba")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2pcy"]
+atlas = ExtResource("2_218ba")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yiyqy"]
+atlas = ExtResource("2_218ba")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4pfyw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4sqi7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2pcy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yiyqy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.5
+}]
+
+[node name="LittleSqueak" instance=ExtResource("1_46rlh")]
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_4pfyw")
+autoplay = "default"
+frame_progress = 0.455864

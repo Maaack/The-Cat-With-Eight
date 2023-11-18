@@ -149,24 +149,70 @@ I was a little too immature at the time to share the space.
 => END
 
 ~ Story_3_3
-What was that?
-I had to go see!
+What was that? In the sky?
+A hawk carrying off a mouse!
+I want one!
 => END
 
 ~ Story_3_4
-It was a mouse!
-I really wanted to hunt the mouse. I thought it'd be fun.
-I thought the mouse would find it fun, too.
+Another mouse! All alone...
+Did the hawk take your playmate?
+Don't be lonely, I'll play with you.
 => END
 
 ~ Story_3_5
-Hmmm, it stopped moving.
-Its insides sure did taste good, though.
-I decided I would share some of my hunt with my family.
-They would certainly be impressed.
+Got you! Hey, you're pretty light.
+Bet I could throw you up pretty high!
 => END
 
 ~ Story_3_6
+Wasn't that fun! Did you see you friend up there?
+You went so high! I'll show you how high.
+=> END
+
+~ Story_3_7
+Do you think your friend and the hawk are having as much fun as us?
+=> END
+
+~ Story_3_8
+Hmmm, the mouse stopped moving.
+Did it get tired?
+=> END
+
+~ Story_3_9
+Oh, it's just playing dead. That's a silly game.
+Cat-apult!
+=> END
+
+~ Story_3_10
+How sad! It's struggling to breath. I'll try biting some holes into its lungs.
+That might have been the heart. I just got a gush of something very warm.
+Now the mouse is being really boring, but delicious.
+Still, a decent playmate. I could see why the hawk wanted one.
+...
+I should share it with my family!
+=> END
+
+~ Not_Too_Heavy_To_Carry
+The mouse is not too heavy to carry.
+Especially since I shed some of its excess weight.
+=> END
+
+~ They_Werent_Coming_Soon
+No one was going to come to the door on their own.
+And I couldn't meow with the trophy in my mouth.
+=> END
+
+~ Need_To_Get_Attention
+I wanted to see just how impressed my family would be with my trophy.
+I needed to get their attention.
+=> END
+
+~ Need_To_Meow_Again
+I need to meow again to get someone to come to the door.
+=> END
+
+~ Story_3_End
 I could tell by the footsteps that the mother was coming.
 I thought she would be delighted when she opened the door.
 When she saw my gift, the noises she made were not those of gratitude, nor praise.

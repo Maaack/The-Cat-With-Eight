@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://deh4dcbrixegc"]
+[gd_scene load_steps=20 format=3 uid="uid://deh4dcbrixegc"]
 
 [ext_resource type="PackedScene" uid="uid://d38nf5qko1hhh" path="res://Scenes/BaseLevel/BaseLevel.tscn" id="1_g4pos"]
 [ext_resource type="Script" path="res://Scenes/BaseLevel/Levels/Level3.gd" id="2_x8q7r"]
 [ext_resource type="PackedScene" uid="uid://dme03fmyfmgu0" path="res://Scenes/Mouse/Mouse.tscn" id="3_e03w1"]
+[ext_resource type="PackedScene" uid="uid://b6iy0kp3lkrfl" path="res://Scenes/FloatingSprite/Instances/LittleSqueak.tscn" id="3_pu7t3"]
 [ext_resource type="Texture2D" uid="uid://rj8jr1dj3rql" path="res://Assets/Originals/Little Bush.png" id="4_l6u23"]
 [ext_resource type="PackedScene" uid="uid://bk6pjrpl0olfi" path="res://Scenes/Foliage/HidingBush.tscn" id="4_pvg18"]
+[ext_resource type="Texture2D" uid="uid://bm51vumae865o" path="res://Assets/Originals/Front Door.png" id="6_nao2v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bacwv"]
 atlas = ExtResource("4_l6u23")
@@ -35,9 +37,51 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Level3" node_paths=PackedStringArray("mouse_hiding_spots") instance=ExtResource("1_g4pos")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y3bbn"]
+size = Vector2(16, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ad7xd"]
+size = Vector2(8, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gnnlk"]
+size = Vector2(16, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8gt8"]
+atlas = ExtResource("6_nao2v")
+region = Rect2(0, 0, 128, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6up43"]
+atlas = ExtResource("6_nao2v")
+region = Rect2(128, 0, 128, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7ush"]
+atlas = ExtResource("6_nao2v")
+region = Rect2(256, 0, 128, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_717m5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8gt8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6up43")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7ush")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_21yd6"]
+size = Vector2(128, 256)
+
+[node name="Level3" instance=ExtResource("1_g4pos")]
 script = ExtResource("2_x8q7r")
-mouse_hiding_spots = [NodePath("HidingBush"), NodePath("HidingBush2"), NodePath("HidingBush3")]
+floating_squeak_scene = ExtResource("3_pu7t3")
+squeak_offset = Vector2(0, -16)
 opening_dialogue_title = "Story_3_1"
 
 [node name="BigTileMap" parent="." index="0"]
@@ -46,47 +90,187 @@ layer_0/tile_data = PackedInt32Array(65536, 1, 0, 65537, 1, 0, 65538, 1, 0, 6553
 [node name="TileMap" parent="." index="1"]
 layer_0/tile_data = PackedInt32Array(65532, 0, 2, 131069, 0, 2)
 
-[node name="Tiger" parent="." index="2"]
+[node name="HidingBush" parent="." index="2" instance=ExtResource("4_pvg18")]
+position = Vector2(1888, 480)
+
+[node name="HidingBush2" parent="." index="3" instance=ExtResource("4_pvg18")]
+position = Vector2(2208, 480)
+
+[node name="HidingBush3" parent="." index="4" instance=ExtResource("4_pvg18")]
+position = Vector2(2528, 480)
+
+[node name="LittleBush" type="AnimatedSprite2D" parent="." index="5"]
+position = Vector2(2016, 496)
+sprite_frames = SubResource("SpriteFrames_kd75p")
+
+[node name="LittleBush2" type="AnimatedSprite2D" parent="." index="6"]
+position = Vector2(1760, 496)
+sprite_frames = SubResource("SpriteFrames_kd75p")
+
+[node name="LittleBush16" type="AnimatedSprite2D" parent="." index="7"]
+position = Vector2(1696, 496)
+sprite_frames = SubResource("SpriteFrames_kd75p")
+
+[node name="LittleBush3" type="AnimatedSprite2D" parent="." index="8"]
+position = Vector2(2336, 496)
+sprite_frames = SubResource("SpriteFrames_kd75p")
+
+[node name="LittleBush4" type="AnimatedSprite2D" parent="." index="9"]
+position = Vector2(2080, 496)
+sprite_frames = SubResource("SpriteFrames_kd75p")
+
+[node name="LittleBush5" type="AnimatedSprite2D" parent="." index="10"]
+position = Vector2(2400, 496)
+sprite_frames = SubResource("SpriteFrames_kd75p")
+
+[node name="HidingBush4" parent="." index="11" instance=ExtResource("4_pvg18")]
+position = Vector2(2848, 480)
+
+[node name="LittleBush6" type="AnimatedSprite2D" parent="." index="12"]
+position = Vector2(2656, 496)
+sprite_frames = SubResource("SpriteFrames_kd75p")
+
+[node name="LittleBush7" type="AnimatedSprite2D" parent="." index="13"]
+position = Vector2(2720, 496)
+sprite_frames = SubResource("SpriteFrames_kd75p")
+
+[node name="HidingBush5" parent="." index="14" instance=ExtResource("4_pvg18")]
+position = Vector2(3168, 480)
+
+[node name="LittleBush8" type="AnimatedSprite2D" parent="." index="15"]
+position = Vector2(2976, 496)
+sprite_frames = SubResource("SpriteFrames_kd75p")
+
+[node name="LittleBush9" type="AnimatedSprite2D" parent="." index="16"]
+position = Vector2(3040, 496)
+sprite_frames = SubResource("SpriteFrames_kd75p")
+
+[node name="HidingBush6" parent="." index="17" instance=ExtResource("4_pvg18")]
+position = Vector2(3488, 480)
+
+[node name="LittleBush10" type="AnimatedSprite2D" parent="." index="18"]
+position = Vector2(3296, 496)
+sprite_frames = SubResource("SpriteFrames_kd75p")
+
+[node name="LittleBush11" type="AnimatedSprite2D" parent="." index="19"]
+position = Vector2(3360, 496)
+sprite_frames = SubResource("SpriteFrames_kd75p")
+
+[node name="HidingBush7" parent="." index="20" instance=ExtResource("4_pvg18")]
+position = Vector2(3808, 480)
+
+[node name="LittleBush12" type="AnimatedSprite2D" parent="." index="21"]
+position = Vector2(3616, 496)
+sprite_frames = SubResource("SpriteFrames_kd75p")
+
+[node name="LittleBush13" type="AnimatedSprite2D" parent="." index="22"]
+position = Vector2(3680, 496)
+sprite_frames = SubResource("SpriteFrames_kd75p")
+
+[node name="HidingBush8" parent="." index="23" instance=ExtResource("4_pvg18")]
+position = Vector2(1568, 480)
+
+[node name="LittleBush14" type="AnimatedSprite2D" parent="." index="24"]
+position = Vector2(3936, 496)
+sprite_frames = SubResource("SpriteFrames_kd75p")
+
+[node name="LittleBush15" type="AnimatedSprite2D" parent="." index="25"]
+position = Vector2(4000, 496)
+sprite_frames = SubResource("SpriteFrames_kd75p")
+
+[node name="Mouse" parent="." index="26" instance=ExtResource("3_e03w1")]
+position = Vector2(3008, 504)
+catapult_vector = Vector2(100, -600)
+
+[node name="Tiger" parent="." index="27"]
 max_energy = 6
 
-[node name="ExitArea2D" parent="." index="3"]
+[node name="MouseCatchArea2D" type="Area2D" parent="Tiger" index="6"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiger/MouseCatchArea2D" index="0"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_y3bbn")
+
+[node name="ExitArea2D" parent="." index="28"]
 position = Vector2(-635, -51)
 
 [node name="CollisionShape2D" parent="ExitArea2D" index="0"]
-position = Vector2(187, -21)
+position = Vector2(-21, -21)
 
-[node name="HidingBush" parent="." index="5" instance=ExtResource("4_pvg18")]
-position = Vector2(2016, 480)
+[node name="MouseEatingArea2D" type="Area2D" parent="." index="30"]
+position = Vector2(3008, 496)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
 
-[node name="HidingBush2" parent="." index="6" instance=ExtResource("4_pvg18")]
-position = Vector2(2272, 480)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseEatingArea2D" index="0"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_ad7xd")
 
-[node name="HidingBush3" parent="." index="7" instance=ExtResource("4_pvg18")]
-position = Vector2(2528, 480)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="MouseEatingArea2D" index="1"]
+position = Vector2(-320, 8)
+shape = SubResource("RectangleShape2D_ad7xd")
 
-[node name="LittleBush" type="AnimatedSprite2D" parent="." index="8"]
-position = Vector2(2112, 496)
-sprite_frames = SubResource("SpriteFrames_kd75p")
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="MouseEatingArea2D" index="2"]
+position = Vector2(-640, 8)
+shape = SubResource("RectangleShape2D_ad7xd")
 
-[node name="LittleBush2" type="AnimatedSprite2D" parent="." index="9"]
-position = Vector2(1920, 496)
-sprite_frames = SubResource("SpriteFrames_kd75p")
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="MouseEatingArea2D" index="3"]
+position = Vector2(-960, 8)
+shape = SubResource("RectangleShape2D_ad7xd")
 
-[node name="LittleBush3" type="AnimatedSprite2D" parent="." index="10"]
-position = Vector2(2368, 496)
-sprite_frames = SubResource("SpriteFrames_kd75p")
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="MouseEatingArea2D" index="4"]
+position = Vector2(-1280, 8)
+shape = SubResource("RectangleShape2D_ad7xd")
 
-[node name="LittleBush4" type="AnimatedSprite2D" parent="." index="11"]
-position = Vector2(2176, 496)
-sprite_frames = SubResource("SpriteFrames_kd75p")
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="MouseEatingArea2D" index="5"]
+position = Vector2(320, 8)
+shape = SubResource("RectangleShape2D_ad7xd")
 
-[node name="LittleBush5" type="AnimatedSprite2D" parent="." index="12"]
-position = Vector2(2432, 496)
-sprite_frames = SubResource("SpriteFrames_kd75p")
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="MouseEatingArea2D" index="6"]
+position = Vector2(640, 8)
+shape = SubResource("RectangleShape2D_ad7xd")
 
-[node name="Mouse" parent="." index="13" instance=ExtResource("3_e03w1")]
-position = Vector2(2144, 504)
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="MouseEatingArea2D" index="7"]
+position = Vector2(960, 8)
+shape = SubResource("RectangleShape2D_ad7xd")
+
+[node name="SawHawkArea2D" type="Area2D" parent="." index="31"]
+position = Vector2(896, 144)
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SawHawkArea2D" index="0"]
+shape = SubResource("RectangleShape2D_gnnlk")
+
+[node name="SawMouseArea2D" type="Area2D" parent="." index="32"]
+position = Vector2(2760, 384)
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SawMouseArea2D" index="0"]
+shape = SubResource("RectangleShape2D_gnnlk")
+
+[node name="FrontDoorSprite2D" type="AnimatedSprite2D" parent="." index="33"]
+position = Vector2(-448, -128)
+sprite_frames = SubResource("SpriteFrames_717m5")
+autoplay = "default"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="FrontDoorSprite2D" index="0"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FrontDoorSprite2D/StaticBody2D" index="0"]
+shape = SubResource("RectangleShape2D_21yd6")
 
 [connection signal="left_hiding_spot" from="Mouse" to="." method="_on_mouse_left_hiding_spot"]
+[connection signal="played_dead" from="Mouse" to="." method="_on_mouse_played_dead"]
+[connection signal="body_entered" from="Tiger/MouseCatchArea2D" to="." method="_on_mouse_catch_area_2d_body_entered"]
+[connection signal="body_entered" from="MouseEatingArea2D" to="." method="_on_mouse_eating_area_2d_body_entered"]
+[connection signal="body_entered" from="SawHawkArea2D" to="." method="_on_saw_hawk_area_2d_body_entered"]
+[connection signal="body_entered" from="SawMouseArea2D" to="." method="_on_saw_mouse_area_2d_body_entered"]
 
 [editable path="Tiger"]
