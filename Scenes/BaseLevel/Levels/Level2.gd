@@ -17,6 +17,8 @@ var third_capture : bool = false
 var hit_mothers_face : bool = false
 var hit_sons_face : bool = false
 var tiger_jumps_stronger : bool = false
+var humans_needed_reminding : bool = false
+var throw_force_cache : Vector2
 
 
 func _check_jump_hints():
@@ -31,7 +33,7 @@ func _check_jump_hints():
 		start_dialogue("Should_Jump_On_Ball")
 
 func _check_ball_catches():
-	await(get_tree().create_timer(1.5, false).timeout)
+	await(get_tree().create_timer(0.5, false).timeout)
 	if ball_captures >= 1 and not first_capture:
 		first_capture = true
 		start_dialogue("Story_2_2")
@@ -90,27 +92,38 @@ func _check_ball_throws():
 		third_throw = true
 		start_dialogue("Story_2_4")
 
-func throw_ball(ball : RigidBody2D, from_position, throw_force):
+func _prepare_to_throw(ball : RigidBody2D, from_position, ball_throw_force, wait_time):
 	$MomCatchesArea2D.monitoring = false
 	$BoyCatchesArea2D.monitoring = false
-	var wait_time = max(0,randfn(2,1))
 	ball.hide()
 	ball.freeze = false
 	ball.update_position = from_position
+	throw_force_cache = ball_throw_force
 	await(get_tree().create_timer(0.2, false).timeout)
 	ball.set_collision_layer_value(2, true)
 	ball.sleeping = true
-	await(get_tree().create_timer(1.0 + wait_time, false).timeout)
-	ball.show()
-	ball.apply_impulse(throw_force)
+	$HoldingBallTimer.start(1.0 + wait_time)
+	$BallReminderTimer.start()
+	
+func throw_ball():
+	$Ball.show()
+	$Ball.apply_impulse(throw_force_cache)
 	$NoBallActionTimer.start()
 	_check_ball_throws()
 
 func mother_throws_ball():
-	throw_ball($Ball, $MotherThrowMarker2D.position, mother_throw_force * (1 + randf()))
+	var throw_timer = 1 + max(0,randfn(2,1))
+	if randf() > 0.9:
+		throw_timer += randf_range(6, 10)
+	var throw_force = mother_throw_force * (1 + randf())
+	_prepare_to_throw($Ball, $MotherThrowMarker2D.position, throw_force, throw_timer)
 
 func boy_throws_ball():
-	throw_ball($Ball, $BoyThrowMarker2D.position, boy_throw_force * (1 + randf()))
+	var throw_timer = 1 + max(0,randfn(2,1))
+	if randf() > 0.8:
+		throw_timer += randf_range(6, 16)
+	var throw_force = boy_throw_force * (1 + randf())
+	_prepare_to_throw($Ball, $BoyThrowMarker2D.position, throw_force, throw_timer)
 
 func random_throws_ball():
 	if randf() < 0.5:
@@ -119,7 +132,7 @@ func random_throws_ball():
 		boy_throws_ball()
 
 func boy_low_throws_ball():
-	throw_ball($Ball, $BoyLowThrowMarker2D.position, boy_low_throw_force)
+	_prepare_to_throw($Ball, $BoyLowThrowMarker2D.position, boy_low_throw_force, 1)
 
 func _on_mom_catches_area_2d_body_entered(body):
 	if body.is_in_group(Constants.BALL_GROUP):
@@ -163,3 +176,19 @@ func tiger_jumped():
 		await(DialogueManager.dialogue_ended)
 		$Tiger.max_energy += 1
 	
+func tiger_meowed(tiger_position : Vector2):
+	super.tiger_meowed(tiger_position)
+	if $HoldingBallTimer.is_stopped():
+		return
+	var time_left = $HoldingBallTimer.time_left * 0.2
+	$HoldingBallTimer.start(time_left)
+
+func _on_holding_ball_timer_timeout():
+	$BallReminderTimer.stop()
+	throw_ball()
+
+func _on_ball_reminder_timer_timeout():
+	if humans_needed_reminding:
+		return
+	humans_needed_reminding = true
+	start_dialogue("Remind_Humans_About_Ball")

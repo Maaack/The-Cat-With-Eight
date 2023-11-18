@@ -171,6 +171,13 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SonsFaceArea2D" index="0"]
 shape = SubResource("RectangleShape2D_h52ri")
 
+[node name="HoldingBallTimer" type="Timer" parent="." index="17"]
+one_shot = true
+
+[node name="BallReminderTimer" type="Timer" parent="." index="18"]
+wait_time = 6.0
+one_shot = true
+
 [connection signal="body_entered" from="Tiger/SmackArea2D" to="." method="_on_smack_area_2d_body_entered"]
 [connection signal="body_entered" from="Tiger/CaptureArea2D" to="." method="_on_capture_area_2d_body_entered"]
 [connection signal="body_entered" from="MomCatchesArea2D" to="." method="_on_mom_catches_area_2d_body_entered"]
@@ -178,5 +185,7 @@ shape = SubResource("RectangleShape2D_h52ri")
 [connection signal="timeout" from="NoBallActionTimer" to="." method="_on_no_ball_action_timer_timeout"]
 [connection signal="body_entered" from="MotherFaceArea2D" to="." method="_on_mother_face_area_2d_body_entered"]
 [connection signal="body_entered" from="SonsFaceArea2D" to="." method="_on_sons_face_area_2d_body_entered"]
+[connection signal="timeout" from="HoldingBallTimer" to="." method="_on_holding_ball_timer_timeout"]
+[connection signal="timeout" from="BallReminderTimer" to="." method="_on_ball_reminder_timer_timeout"]
 
 [editable path="Tiger"]
