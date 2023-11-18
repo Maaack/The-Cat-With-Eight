@@ -25,6 +25,7 @@ func _gui_input(event):
 		next()
 
 func _finished_animating():
+	GameLog.opening_seen()
 	await(get_tree().create_timer(end_delay).timeout)
 	next()
 
@@ -37,6 +38,8 @@ func _animate_images():
 	_finished_animating()
 
 func _ready():
+	if GameLog.has_seen_opening():
+		next()
 	_add_textures_to_container(images)
 	await(get_tree().create_timer(start_delay).timeout)
 	_animate_images()
