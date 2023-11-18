@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cjfx8jql7iuh5" path="res://Assets/Originals/Playing Kitten.png" id="6_ysb6p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_een1r"]
+size = Vector2(16, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0jwt5"]
 
@@ -66,11 +67,11 @@ collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tiger/SmackArea2D" index="0"]
-position = Vector2(-32, 8)
+position = Vector2(-32, 0)
 shape = SubResource("RectangleShape2D_een1r")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Tiger/SmackArea2D" index="1"]
-position = Vector2(32, 8)
+position = Vector2(32, 0)
 shape = SubResource("RectangleShape2D_een1r")
 
 [node name="CaptureArea2D" type="Area2D" parent="Tiger" index="5"]

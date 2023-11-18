@@ -171,7 +171,7 @@ func tiger_jumped():
 	tiger_jumps += 1
 	if tiger_jumps >= 3 and not tiger_jumps_stronger:
 		tiger_jumps_stronger = true
-		await(get_tree().create_timer(0.2, false).timeout)
+		await(get_tree().create_timer(0.75, false).timeout)
 		start_dialogue("Getting_Stronger_From_Jumping")
 		await(DialogueManager.dialogue_ended)
 		$Tiger.max_energy += 1
