@@ -59,7 +59,7 @@ opening_dialogue_title = "Story_2_1"
 
 [node name="Tiger" parent="." index="2"]
 position = Vector2(320, 104)
-max_energy = 4
+max_energy = 5
 
 [node name="SmackArea2D" type="Area2D" parent="Tiger" index="4"]
 collision_layer = 0

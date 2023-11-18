@@ -32,7 +32,7 @@ Even with the added strength, I was too weak to do anything more than meow.
 => END
 
 ~ Need_To_Wait
-I needed to wait to gather my maximum strength.
+I needed to wait to gather my maximum strength, then meow several times.
 => END
 
 ~ Meow_Twice_In_A_Row
@@ -43,10 +43,18 @@ If I waited to gather my strength, I could meow twice in a row faster.
 They did stop talking for longer that time. A few meows in a row should get their attention.
 => END
 
+~ Stopped_Chatting_Longer_Again
+The first two meows got them to quiet down longer. Three in a row should do it.
+=> END
+
+~ Take_A_Breath_Meow_Again
+Meow twice. Take a breath. Meow again. That should get their attention.
+=> END
+
 ~ Story_1_2
-They stopped talking for a moment, but I couldn't seize the chance fast enough.
-My voice was weak from hunger and thirst.
-I knew I had to get their attention though, so...
+They stopped talking for a moment, so they must hear something,
+-but my voice was too weak to seize the opportunity.
+I knew I had to get their attention though with more meowing, so...
 -I gathered all the strength that I had.
 => END
 

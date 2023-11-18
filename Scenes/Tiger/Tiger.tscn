@@ -276,6 +276,8 @@ collision_layer = 8
 script = ExtResource("1_lvtha")
 acceleration = 1200.0
 friction = 1200.0
+jump_velocity = 375.0
+jump_down_gravity_mod = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
@@ -302,3 +304,8 @@ autoplay = "idle"
 libraries = {
 "": SubResource("AnimationLibrary_cmmrh")
 }
+
+[node name="JumpGravityTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.3
+one_shot = true

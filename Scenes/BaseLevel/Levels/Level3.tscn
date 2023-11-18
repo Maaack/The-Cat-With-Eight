@@ -206,7 +206,7 @@ catapult_min = Vector2(100, -600)
 catapult_max = Vector2(200, -700)
 
 [node name="Tiger" parent="." index="27"]
-max_energy = 6
+max_energy = 8
 
 [node name="MouseCatchArea2D" type="Area2D" parent="Tiger" index="6"]
 collision_layer = 0

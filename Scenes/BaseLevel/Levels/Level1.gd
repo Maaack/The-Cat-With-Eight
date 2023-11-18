@@ -18,7 +18,9 @@ var meows_away_from_door : int = 0
 var meowed_away_from_door : bool = false
 var power_raised : bool = false
 var longer_chatting_pause : bool = false
+var longer_chatting_pause_again : bool = false
 var consecutive_unheard_meows : int = 0
+var longer_pauses : int = 0
 
 func _on_move_instructions_timer_timeout():
 	$MoveInstructions.show()
@@ -102,9 +104,14 @@ func _on_silent_timer_1_timeout():
 
 func _on_silent_timer_2_timeout():
 	family_talking = true
-	if not longer_chatting_pause:
-		longer_chatting_pause = true
-		start_dialogue("Stopped_Chatting_Longer")
+	longer_pauses += 1
+	match(longer_pauses):
+		1:
+			start_dialogue("Stopped_Chatting_Longer")
+		3:
+			start_dialogue("Stopped_Chatting_Longer_Again")
+		5:
+			start_dialogue("Take_A_Breath_Meow_Again")
 
 func _ready():
 	$Tiger/EnergyMeter.hide()

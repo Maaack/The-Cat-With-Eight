@@ -15,6 +15,7 @@ signal sprint_tried
 @export var sprint_enabled : bool = true
 @export var jump_velocity : float = 100
 @export var jump_energy_cost : int = 3
+@export var jump_down_gravity_mod : float = 2.0
 @export var meow_energy_cost : int = 1
 @export var max_energy : int = 1 :
 	set(value):
@@ -53,8 +54,10 @@ func face_direction(direction_vector : Vector2):
 func start_jump():
 	jump_input_flag = false
 	velocity.y -= jump_velocity
+	velocity.x *= 1.5
 	is_jumping = true
 	emit_signal("jumped")
+	$JumpGravityTimer.start()
 	await(get_tree().create_timer(0.5).timeout)
 	is_jumping = false
 
@@ -82,7 +85,10 @@ func try_interaction():
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func move_state(delta):
-	velocity.y += gravity * delta
+	var total_gravity = gravity * delta
+	if is_jumping and not is_on_floor() and $JumpGravityTimer.is_stopped():
+		total_gravity *= jump_down_gravity_mod
+	velocity.y += total_gravity
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	input_vector = input_vector.normalized()
