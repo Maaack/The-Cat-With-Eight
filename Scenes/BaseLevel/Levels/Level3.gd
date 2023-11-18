@@ -109,7 +109,7 @@ func _start_level_ending():
 	await(game_ui.transition_finished)
 	$Tiger.set_physics_process(false)
 	$MainCamera2D.enabled = false
-	$PlayingKittySprite2D/Camera2D.enabled = true
+	$ProudKittySprite2D/Camera2D.enabled = true
 	game_ui.transition_open()
 	await(game_ui.transition_finished)
 	start_dialogue("Story_3_End_2")

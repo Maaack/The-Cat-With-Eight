@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://deh4dcbrixegc"]
+[gd_scene load_steps=25 format=3 uid="uid://deh4dcbrixegc"]
 
 [ext_resource type="PackedScene" uid="uid://d38nf5qko1hhh" path="res://Scenes/BaseLevel/BaseLevel.tscn" id="1_g4pos"]
 [ext_resource type="Script" path="res://Scenes/BaseLevel/Levels/Level3.gd" id="2_x8q7r"]
@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://rj8jr1dj3rql" path="res://Assets/Originals/Little Bush.png" id="4_l6u23"]
 [ext_resource type="PackedScene" uid="uid://bk6pjrpl0olfi" path="res://Scenes/Foliage/HidingBush.tscn" id="4_pvg18"]
 [ext_resource type="Texture2D" uid="uid://bm51vumae865o" path="res://Assets/Originals/Front Door.png" id="6_nao2v"]
-[ext_resource type="Texture2D" uid="uid://cjfx8jql7iuh5" path="res://Assets/Originals/Playing Kitten.png" id="8_grnli"]
+[ext_resource type="Texture2D" uid="uid://bi813humfood6" path="res://Assets/Originals/Proud Kitten.png" id="8_gu2h8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bacwv"]
 atlas = ExtResource("4_l6u23")
@@ -85,33 +85,19 @@ size = Vector2(32, 128)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3c833"]
 size = Vector2(128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_42ycp"]
-atlas = ExtResource("8_grnli")
+[sub_resource type="AtlasTexture" id="AtlasTexture_hh835"]
+atlas = ExtResource("8_gu2h8")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xo3cq"]
-atlas = ExtResource("8_grnli")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jmjeq"]
-atlas = ExtResource("8_grnli")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_dv0t0"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_uoavq"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_42ycp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xo3cq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jmjeq")
+"texture": SubResource("AtlasTexture_hh835")
 }],
 "loop": true,
 "name": &"default",
-"speed": 1.0
+"speed": 5.0
 }]
 
 [node name="Level3" instance=ExtResource("1_g4pos")]
@@ -323,15 +309,15 @@ monitorable = false
 position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_3c833")
 
-[node name="PlayingKittySprite2D" type="AnimatedSprite2D" parent="." index="36"]
+[node name="ProudKittySprite2D" type="AnimatedSprite2D" parent="." index="36"]
 process_mode = 3
 texture_filter = 1
 position = Vector2(320, -896)
 scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_dv0t0")
+sprite_frames = SubResource("SpriteFrames_uoavq")
 autoplay = "default"
 
-[node name="Camera2D" type="Camera2D" parent="PlayingKittySprite2D" index="0"]
+[node name="Camera2D" type="Camera2D" parent="ProudKittySprite2D" index="0"]
 
 [node name="HidingTimer" type="Timer" parent="." index="37"]
 wait_time = 20.0
