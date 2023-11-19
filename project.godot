@@ -37,6 +37,16 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 theme/custom="res://App/Themes/BaseTheme.tres"
 common/drop_mouse_on_gui_input_disabled=true
 
+[importer_defaults]
+
+oggvorbisstr={
+"bar_beats": 4,
+"beat_count": 0,
+"bpm": 0,
+"loop": true,
+"loop_offset": 0
+}
+
 [input]
 
 ui_accept={

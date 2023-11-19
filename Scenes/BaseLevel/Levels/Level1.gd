@@ -8,6 +8,7 @@ var family_talking : bool = true :
 		family_talking = value
 		if is_inside_tree():
 			$ChatterSprite2D.visible = family_talking
+			$ChatterStreamPlayer2D.stream_paused = !family_talking
 var is_by_door : bool = false
 var tried_wrong_way : bool = false
 var tried_jumping : bool = false
@@ -41,6 +42,7 @@ func _on_meow_timer_timeout():
 
 func _start_level_ending():
 	$SilentTimer2.stop()
+	$ChatterStreamPlayer2D.stop()
 	await(get_tree().create_timer(2.5, false).timeout)
 	start_dialogue("Story_1_3")
 	await(DialogueManager.dialogue_ended)
@@ -75,7 +77,7 @@ func _check_meow_by_door():
 	meow_counter += 1
 	if not $SilentTimer2.is_stopped():
 		_start_level_ending()
-	if not $SilentTimer1.is_stopped():
+	elif not $SilentTimer1.is_stopped():
 		$SilentTimer1.stop()
 		$SilentTimer2.start()
 	else:

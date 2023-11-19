@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://deh4dcbrixegc"]
+[gd_scene load_steps=46 format=3 uid="uid://deh4dcbrixegc"]
 
 [ext_resource type="PackedScene" uid="uid://d38nf5qko1hhh" path="res://Scenes/BaseLevel/BaseLevel.tscn" id="1_g4pos"]
 [ext_resource type="Script" path="res://Scenes/BaseLevel/Levels/Level3.gd" id="2_x8q7r"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://f7k8cl0bupew" path="res://Assets/Originals/Shift Key.png" id="9_6fmqc"]
 [ext_resource type="Texture2D" uid="uid://dxi0brhoki1c3" path="res://Assets/Originals/Keyboard Keys.png" id="10_c35no"]
 [ext_resource type="Texture2D" uid="uid://b54h1rg7f6gd5" path="res://Assets/Originals/Mouse Carcass.png" id="11_4gbwy"]
+[ext_resource type="AudioStream" uid="uid://dqbhcakhs5vuu" path="res://Assets/Sourced/SFX/Outdoor Morning Ambience.ogg" id="12_vebsl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bacwv"]
 atlas = ExtResource("4_l6u23")
@@ -494,6 +495,13 @@ visible = false
 position = Vector2(-448, 16)
 sprite_frames = SubResource("SpriteFrames_kqtk5")
 autoplay = "default"
+
+[node name="AmbienceStreamPlayer" type="AudioStreamPlayer" parent="." index="41"]
+process_mode = 3
+stream = ExtResource("12_vebsl")
+volume_db = -8.0
+autoplay = true
+bus = &"SFX"
 
 [connection signal="entered_hiding_spot" from="Mouse" to="." method="_on_mouse_entered_hiding_spot"]
 [connection signal="left_hiding_spot" from="Mouse" to="." method="_on_mouse_left_hiding_spot"]
