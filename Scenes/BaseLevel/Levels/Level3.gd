@@ -121,8 +121,9 @@ func _start_level_ending():
 
 func tiger_meowed(tiger_position : Vector2):
 	super.tiger_meowed(tiger_position)
-	if is_instance_valid($Mouse):
-		$Mouse.extra_aware()
+	var mouse_node = get_node_or_null("Mouse")
+	if mouse_node:
+		mouse_node.extra_aware()
 	if is_by_door and dropped_trophy_flag:
 		meows_by_door += 1
 		if meows_by_door > 2:
