@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://deh4dcbrixegc"]
+[gd_scene load_steps=45 format=3 uid="uid://deh4dcbrixegc"]
 
 [ext_resource type="PackedScene" uid="uid://d38nf5qko1hhh" path="res://Scenes/BaseLevel/BaseLevel.tscn" id="1_g4pos"]
 [ext_resource type="Script" path="res://Scenes/BaseLevel/Levels/Level3.gd" id="2_x8q7r"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bi813humfood6" path="res://Assets/Originals/Proud Kitten.png" id="8_gu2h8"]
 [ext_resource type="Texture2D" uid="uid://f7k8cl0bupew" path="res://Assets/Originals/Shift Key.png" id="9_6fmqc"]
 [ext_resource type="Texture2D" uid="uid://dxi0brhoki1c3" path="res://Assets/Originals/Keyboard Keys.png" id="10_c35no"]
+[ext_resource type="Texture2D" uid="uid://b54h1rg7f6gd5" path="res://Assets/Originals/Mouse Carcass.png" id="11_4gbwy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bacwv"]
 atlas = ExtResource("4_l6u23")
@@ -191,6 +192,35 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hx54p"]
 size = Vector2(16, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ji2m"]
+atlas = ExtResource("11_4gbwy")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ouh1q"]
+atlas = ExtResource("11_4gbwy")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpado"]
+atlas = ExtResource("11_4gbwy")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kqtk5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ji2m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ouh1q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpado")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
 
 [node name="Level3" instance=ExtResource("1_g4pos")]
 script = ExtResource("2_x8q7r")
@@ -380,7 +410,7 @@ autoplay = "default"
 shape = SubResource("RectangleShape2D_21yd6")
 
 [node name="DropTrophyArea2D" type="Area2D" parent="." index="33"]
-position = Vector2(-336, -48)
+position = Vector2(-352, -48)
 collision_layer = 0
 collision_mask = 8
 monitorable = false
@@ -442,6 +472,12 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SprintInstructionArea2D" index="0"]
 shape = SubResource("RectangleShape2D_hx54p")
+
+[node name="MouseCarcassSprite2D" type="AnimatedSprite2D" parent="." index="40"]
+visible = false
+position = Vector2(-448, 16)
+sprite_frames = SubResource("SpriteFrames_kqtk5")
+autoplay = "default"
 
 [connection signal="entered_hiding_spot" from="Mouse" to="." method="_on_mouse_entered_hiding_spot"]
 [connection signal="left_hiding_spot" from="Mouse" to="." method="_on_mouse_left_hiding_spot"]

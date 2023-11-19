@@ -93,6 +93,7 @@ func _on_drop_trophy_area_2d_body_entered(body):
 		body.carrying_carcass = false
 		start_dialogue("Left_Trophy_At_Door")
 		$MeowTimer.start()
+		$MouseCarcassSprite2D.show()
 
 func _on_meow_area_2d_body_entered(body):
 	if body.is_in_group(Constants.TIGER_GROUP):
