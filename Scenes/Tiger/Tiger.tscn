@@ -1,10 +1,18 @@
-[gd_scene load_steps=26 format=3 uid="uid://dqsr8ewmxco41"]
+[gd_scene load_steps=35 format=3 uid="uid://dqsr8ewmxco41"]
 
 [ext_resource type="Texture2D" uid="uid://d4gwa8spsv4tg" path="res://Assets/Originals/Cat.png" id="1_3gvpn"]
 [ext_resource type="Script" path="res://Scenes/Tiger/Tiger.gd" id="1_lvtha"]
 [ext_resource type="PackedScene" uid="uid://bw6kt07m32bwd" path="res://Scenes/Tiger/EnergyMeter.tscn" id="3_ejjd1"]
 [ext_resource type="Texture2D" uid="uid://bkqts1c3jfr0t" path="res://Assets/Originals/Tiger Walking.png" id="4_611tx"]
 [ext_resource type="Texture2D" uid="uid://ghuiw3858gyq" path="res://Assets/Originals/Walking Kitten.png" id="5_x1g0g"]
+[ext_resource type="AudioStream" uid="uid://lxafbr1s8hw4" path="res://Assets/Sourced/SFX/Meow1.mp3" id="6_u43gn"]
+[ext_resource type="AudioStream" uid="uid://cva280tvcxq7b" path="res://Assets/Sourced/SFX/Meow2.mp3" id="7_q4r70"]
+[ext_resource type="AudioStream" uid="uid://x3xmmm5ghd3e" path="res://Assets/Sourced/SFX/Meow3.mp3" id="8_gu256"]
+[ext_resource type="AudioStream" uid="uid://bv1qcwb5fs0bu" path="res://Assets/Sourced/SFX/Meow4.mp3" id="9_3rva0"]
+[ext_resource type="AudioStream" uid="uid://c5fvyxkygmbn" path="res://Assets/Sourced/SFX/Meow5.mp3" id="10_7781k"]
+[ext_resource type="AudioStream" uid="uid://dirmxnoeys10h" path="res://Assets/Sourced/SFX/Meow6.mp3" id="11_k1p5e"]
+[ext_resource type="AudioStream" uid="uid://j8mjsakot5x4" path="res://Assets/Sourced/SFX/Meow7.mp3" id="12_1tryi"]
+[ext_resource type="AudioStream" uid="uid://ofym4ymaneh7" path="res://Assets/Sourced/SFX/Meow8.mp3" id="13_aport"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6k3m0"]
 radius = 24.0
@@ -271,6 +279,25 @@ _data = {
 "WalkingWithCarcassR": SubResource("Animation_2dcfb")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ce1ro"]
+streams_count = 8
+stream_0/stream = ExtResource("6_u43gn")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("7_q4r70")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("8_gu256")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("9_3rva0")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("10_7781k")
+stream_4/weight = 1.0
+stream_5/stream = ExtResource("11_k1p5e")
+stream_5/weight = 1.0
+stream_6/stream = ExtResource("12_1tryi")
+stream_6/weight = 1.0
+stream_7/stream = ExtResource("13_aport")
+stream_7/weight = 1.0
+
 [node name="Tiger" type="CharacterBody2D" groups=["tiger"]]
 collision_layer = 8
 script = ExtResource("1_lvtha")
@@ -309,3 +336,8 @@ libraries = {
 process_callback = 0
 wait_time = 0.3
 one_shot = true
+
+[node name="MeowStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_ce1ro")
+volume_db = -6.0
+bus = &"SFX"

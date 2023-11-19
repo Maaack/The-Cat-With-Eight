@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://dme03fmyfmgu0"]
+[gd_scene load_steps=18 format=3 uid="uid://dme03fmyfmgu0"]
 
 [ext_resource type="Script" path="res://Scenes/Mouse/Mouse.gd" id="1_qb64x"]
 [ext_resource type="Texture2D" uid="uid://b5e5x3wfdoxey" path="res://Assets/Originals/Mouse.png" id="1_qf7w5"]
+[ext_resource type="AudioStream" uid="uid://bwt5dgr0qb22" path="res://Assets/Sourced/SFX/Squeal1.mp3" id="3_dqn7m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2lpd3"]
 atlas = ExtResource("1_qf7w5")
@@ -151,6 +152,11 @@ _data = {
 "Rolling": SubResource("Animation_apea3")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xsibd"]
+streams_count = 1
+stream_0/stream = ExtResource("3_dqn7m")
+stream_0/weight = 1.0
+
 [node name="Mouse" type="CharacterBody2D" groups=["mouse"]]
 collision_layer = 2
 script = ExtResource("1_qb64x")
@@ -181,6 +187,11 @@ one_shot = true
 libraries = {
 "": SubResource("AnimationLibrary_bkdbh")
 }
+
+[node name="SquealStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_xsibd")
+volume_db = -2.0
+bus = &"SFX"
 
 [connection signal="body_entered" from="AwarenessArea2D" to="." method="_on_awareness_area_2d_body_entered"]
 [connection signal="body_exited" from="AwarenessArea2D" to="." method="_on_awareness_area_2d_body_exited"]

@@ -78,6 +78,7 @@ func catapult():
 	if randf() > 0.5:
 		velocity.x = -velocity.x
 	$AnimationPlayer.play("Rolling")
+	$SquealStreamPlayer2D.play()
 
 func _physics_process(delta):
 	move_state(delta)

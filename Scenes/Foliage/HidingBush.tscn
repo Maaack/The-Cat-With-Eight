@@ -1,7 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bk6pjrpl0olfi"]
+[gd_scene load_steps=13 format=3 uid="uid://bk6pjrpl0olfi"]
 
 [ext_resource type="Texture2D" uid="uid://c8mrlcacqbqwd" path="res://Assets/Originals/Hiding Bush.png" id="1_4c5kr"]
 [ext_resource type="Script" path="res://Scenes/Foliage/HidingBush.gd" id="2_pphcc"]
+[ext_resource type="AudioStream" uid="uid://db8nicfp7f105" path="res://Assets/Sourced/SFX/Squeak1.mp3" id="3_m475s"]
+[ext_resource type="AudioStream" uid="uid://dyjg5qy127qpb" path="res://Assets/Sourced/SFX/Squeak2.mp3" id="4_fpoki"]
+[ext_resource type="AudioStream" uid="uid://c0oem03dceovc" path="res://Assets/Sourced/SFX/Squeak3.mp3" id="5_qqqgh"]
+[ext_resource type="AudioStream" uid="uid://c8ntvu3ebsvmw" path="res://Assets/Sourced/SFX/Squeak4.mp3" id="6_ptltp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_62kch"]
 atlas = ExtResource("1_4c5kr")
@@ -35,6 +39,17 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tgk7n"]
 size = Vector2(16, 16)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2byti"]
+streams_count = 4
+stream_0/stream = ExtResource("3_m475s")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("4_fpoki")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("5_qqqgh")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("6_ptltp")
+stream_3/weight = 1.0
+
 [node name="HidingBush" type="AnimatedSprite2D" groups=["hiding_bush"]]
 sprite_frames = SubResource("SpriteFrames_i2xx5")
 autoplay = "default"
@@ -51,6 +66,11 @@ shape = SubResource("RectangleShape2D_tgk7n")
 
 [node name="SqueakTimer" type="Timer" parent="."]
 wait_time = 3.0
+
+[node name="SqueakStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_2byti")
+volume_db = -8.0
+bus = &"SFX"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="SqueakTimer" to="." method="_on_timer_timeout"]

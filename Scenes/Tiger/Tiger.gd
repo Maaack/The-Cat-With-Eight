@@ -70,7 +70,8 @@ func try_jumping():
 func start_interaction():
 	is_interacting = true
 	emit_signal("meowed")
-	await(get_tree().create_timer(1.5).timeout)
+	$MeowStreamPlayer2D.play()
+	await(get_tree().create_timer(1.0).timeout)
 	is_interacting = false
 
 func try_interaction():

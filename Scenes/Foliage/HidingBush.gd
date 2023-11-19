@@ -21,4 +21,5 @@ func disable_spot():
 	$Area2D.set_deferred("monitoring", false)
 
 func _on_timer_timeout():
+	$SqueakStreamPlayer2D.play()
 	emit_signal("mouse_squeaked", self.position)
