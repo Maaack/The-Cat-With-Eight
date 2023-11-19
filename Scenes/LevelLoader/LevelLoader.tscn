@@ -4,5 +4,5 @@
 
 [node name="LevelLoader" type="Node"]
 script = ExtResource("1_a6xy4")
-level_files = Array[String](["res://Scenes/BaseLevel/Levels/Level1.tscn", "res://Scenes/BaseLevel/Levels/Level2.tscn"])
+level_files = Array[String](["res://Scenes/BaseLevel/Levels/Level1.tscn", "res://Scenes/BaseLevel/Levels/Level2.tscn", "res://Scenes/BaseLevel/Levels/Level3.tscn", "res://Scenes/BaseLevel/Levels/Level4.tscn"])
 level_dir = "res://Scenes/BaseLevel/Levels"
