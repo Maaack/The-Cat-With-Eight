@@ -39,10 +39,11 @@ size_flags_horizontal = 3
 size_flags_vertical = 5
 bbcode_enabled = true
 text = "[center]
-[font_size=64]Game & Art By[/font_size]
+[font_size=64]Game By[/font_size]
 [url=https://maaack.itch.io/]Maaack[/url]  
 
-[font_size=64]Sourced / Unaffiliated[/font_size]
+
+[font_size=64]Sourced Assets[/font_size]
 [font_size=48]Music[/font_size]
 Author: [url=https://pixabay.com/users/juan_sanchez_music-8771929/]Juan_Sanchez_Music[/url]  
 Source: [url=https://pixabay.com/music/main-title-into-the-night-150226/]pixabay : main-title-into-the-night-150226[/url]  
@@ -81,6 +82,16 @@ Author: [url=https://godotengine.org/contact]Juan Linietsky, Ariel Manzur, and c
 Source: [url=https://godotengine.org/]godotengine.org[/url]  
 License: [url=https://github.com/godotengine/godot/blob/master/LICENSE.txt]MIT License[/url] 
 
+[font_size=32]Dialogue Manager[/font_size]
+Author: [url=https://nathanhoad.itch.io/]Nathan Hoad[/url]  
+Source: [url=https://nathanhoad.itch.io/godot-dialogue-manager]itch.io: godot-dialogue-manager[/url]  
+License: [url=https://github.com/nathanhoad/godot_dialogue_manager/blob/main/LICENSE]MIT License[/url] 
+
+[font_size=32]Piskel[/font_size]
+Author: [url=https://github.com/juliandescottes]Julian Descottes[/url]  
+Source: [url=https://www.piskelapp.com/]piskelapp.com[/url]  
+License: [url=https://github.com/piskelapp/piskel/blob/master/LICENSE]Apache License 2.0[/url]  
+
 [font_size=32]Git[/font_size]
 Author: [url=https://github.com/torvalds]Linus Torvalds[/url]  
 Source: [url=https://git-scm.com/downloads]git-scm.com[/url]  
@@ -90,7 +101,6 @@ License: [url=https://opensource.org/licenses/GPL-2.0]GNU General Public License
 Author: [url=https://github.com/Maaack]Marek Belski[/url]  
 Source: [url=https://github.com/Maaack/Godot-Game-Template]github: Godot-Game-Template[/url]  
 License: [url=LICENSE.txt]MIT License[/url]  
-
 
 
 

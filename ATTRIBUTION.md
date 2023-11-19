@@ -1,8 +1,9 @@
 # Attribution
-## Game & Art By
+## Game By
 [Maaack](https://maaack.itch.io/)  
 
-## Sourced / Unaffiliated
+
+## Sourced Assets
 ### Music
 Author: [Juan_Sanchez_Music](https://pixabay.com/users/juan_sanchez_music-8771929/)  
 Source: [pixabay : main-title-into-the-night-150226](https://pixabay.com/music/main-title-into-the-night-150226/)  
@@ -41,6 +42,16 @@ Author: [Juan Linietsky, Ariel Manzur, and contributors](https://godotengine.org
 Source: [godotengine.org](https://godotengine.org/)  
 License: [MIT License](https://github.com/godotengine/godot/blob/master/LICENSE.txt) 
 
+#### Dialogue Manager
+Author: [Nathan Hoad](https://nathanhoad.itch.io/)  
+Source: [itch.io: godot-dialogue-manager](https://nathanhoad.itch.io/godot-dialogue-manager)  
+License: [MIT License](https://github.com/nathanhoad/godot_dialogue_manager/blob/main/LICENSE) 
+
+#### Piskel
+Author: [Julian Descottes](https://github.com/juliandescottes)  
+Source: [piskelapp.com](https://www.piskelapp.com/)  
+License: [Apache License 2.0](https://github.com/piskelapp/piskel/blob/master/LICENSE)  
+
 #### Git
 Author: [Linus Torvalds](https://github.com/torvalds)  
 Source: [git-scm.com](https://git-scm.com/downloads)  
@@ -50,7 +61,6 @@ License: [GNU General Public License version 2](https://opensource.org/licenses/
 Author: [Marek Belski](https://github.com/Maaack)  
 Source: [github: Godot-Game-Template](https://github.com/Maaack/Godot-Game-Template)  
 License: [MIT License](LICENSE.txt)  
-
 
 
 
