@@ -155,6 +155,12 @@ position = Vector2(112, 40)
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 
+[node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+volume_db = -10.0
+autoplay = true
+bus = &"Music"
+
 [connection signal="jump_tried" from="Tiger" to="." method="_on_tiger_jump_tried"]
 [connection signal="jumped" from="Tiger" to="." method="_on_tiger_jumped"]
 [connection signal="meow_tried" from="Tiger" to="." method="_on_tiger_meow_tried"]

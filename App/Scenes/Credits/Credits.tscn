@@ -10,10 +10,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4")
-h1_font_size = 64
-h2_font_size = 48
-h3_font_size = 32
-h4_font_size = 24
+h1_font_size = 80
+h2_font_size = 64
+h3_font_size = 48
+h4_font_size = 32
 scroll_active = false
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
@@ -29,22 +29,40 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="HeaderSpace" type="Control" parent="ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 648)
+custom_minimum_size = Vector2(0, 360)
 layout_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(1152, 0)
+custom_minimum_size = Vector2(640, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 5
 bbcode_enabled = true
 text = "[center]
-[font_size=48]Collaborators[/font_size]
+[font_size=48]Game & Art By[/font_size]
+[url=https://maaack.itch.io/]Maaack[/url]  
 
-[font_size=32]Godot Game Template[/font_size]
-Author: [url=https://github.com/Maaack]Marek Belski[/url]  
-Source: [url=https://github.com/Maaack/Godot-Game-Template]github: Godot-Game-Template[/url]  
-License: [url=LICENSE.txt]MIT License[/url]  
+[font_size=48]Sourced / Unaffiliated[/font_size]
+[font_size=32]SFX[/font_size]
+[font_size=24]Ambience[/font_size]
+Author: [url=https://pixabay.com/users/pixabay-1/]Pixabay[/url]  
+Source: [url=https://pixabay.com/sound-effects/ambience-night-rural-campground-new-zeala-17140/]pixabay : ambience-night-rural-campground-new-zeala-17140[/url]  
+License: [url=https://pixabay.com/service/license-summary/]Custom Free NC[/url]  
+
+Author: [url=https://pixabay.com/users/pixabay-1/]Pixabay[/url]  
+Source: [url=https://pixabay.com/sound-effects/pa-am-birds-2-16939/]pixabay : pa-am-birds-2-16939[/url]  
+License: [url=https://pixabay.com/service/license-summary/]Custom Free NC[/url]  
+
+
+[font_size=24]Meows[/font_size]
+Author: [url=https://pixabay.com/users/pixabay-1/]Pixabay[/url]  
+Source: [url=https://pixabay.com/sound-effects/kitten-meows-67154/]pixabay : kitten-meows-67154[/url]  
+License: [url=https://pixabay.com/service/license-summary/]Custom Free NC[/url]  
+
+[font_size=24]Squeaks[/font_size]
+Author: [url=https://pixabay.com/users/pixabay-1/]Pixabay[/url]  
+Source: [url=https://pixabay.com/sound-effects/mouse-squeaks-68287/]pixabay : mouse-squeaks-68287[/url]  
+License: [url=https://pixabay.com/service/license-summary/]Custom Free NC[/url]  
 
 [font_size=48]Tools[/font_size]
 [font_size=24]Godot[/font_size]
@@ -55,12 +73,23 @@ License: [url=https://github.com/godotengine/godot/blob/master/LICENSE.txt]MIT L
 [font_size=24]Git[/font_size]
 Author: [url=https://github.com/torvalds]Linus Torvalds[/url]  
 Source: [url=https://git-scm.com/downloads]git-scm.com[/url]  
-License: [url=https://opensource.org/licenses/GPL-2.0]GNU General Public License version 2[/url][/center]"
+License: [url=https://opensource.org/licenses/GPL-2.0]GNU General Public License version 2[/url]
+
+[font_size=24]Godot Game Template[/font_size]
+Author: [url=https://github.com/Maaack]Marek Belski[/url]  
+Source: [url=https://github.com/Maaack/Godot-Game-Template]github: Godot-Game-Template[/url]  
+License: [url=LICENSE.txt]MIT License[/url]  
+
+
+
+
+[font_size=48]Dedicated to[/font_size]
+Tiger (my childhood cat)[/center]"
 fit_content = true
 scroll_active = false
 
 [node name="FooterSpace" type="Control" parent="ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 648)
+custom_minimum_size = Vector2(0, 360)
 layout_mode = 2
 
 [node name="ScrollResetTimer" type="Timer" parent="."]

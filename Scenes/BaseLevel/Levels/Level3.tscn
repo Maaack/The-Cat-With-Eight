@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://deh4dcbrixegc"]
+[gd_scene load_steps=47 format=3 uid="uid://deh4dcbrixegc"]
 
 [ext_resource type="PackedScene" uid="uid://d38nf5qko1hhh" path="res://Scenes/BaseLevel/BaseLevel.tscn" id="1_g4pos"]
 [ext_resource type="Script" path="res://Scenes/BaseLevel/Levels/Level3.gd" id="2_x8q7r"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dxi0brhoki1c3" path="res://Assets/Originals/Keyboard Keys.png" id="10_c35no"]
 [ext_resource type="Texture2D" uid="uid://b54h1rg7f6gd5" path="res://Assets/Originals/Mouse Carcass.png" id="11_4gbwy"]
 [ext_resource type="AudioStream" uid="uid://dqbhcakhs5vuu" path="res://Assets/Sourced/SFX/Outdoor Morning Ambience.ogg" id="12_vebsl"]
+[ext_resource type="AudioStream" uid="uid://csn5trwqyp5rj" path="res://Assets/Sourced/Music/woolgathering-114683.mp3" id="13_0py32"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bacwv"]
 atlas = ExtResource("4_l6u23")
@@ -502,6 +503,9 @@ stream = ExtResource("12_vebsl")
 volume_db = -8.0
 autoplay = true
 bus = &"SFX"
+
+[node name="MusicStreamPlayer" parent="." index="42"]
+stream = ExtResource("13_0py32")
 
 [connection signal="entered_hiding_spot" from="Mouse" to="." method="_on_mouse_entered_hiding_spot"]
 [connection signal="left_hiding_spot" from="Mouse" to="." method="_on_mouse_left_hiding_spot"]

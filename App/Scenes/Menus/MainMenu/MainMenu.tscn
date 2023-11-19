@@ -1,10 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://c6k5nnpbypshi"]
+[gd_scene load_steps=24 format=3 uid="uid://c6k5nnpbypshi"]
 
 [ext_resource type="Script" path="res://App/Scenes/Menus/MainMenu/MainMenu.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://bvwl11s2p0hd" path="res://App/Scenes/Menus/OptionsMenu/MasterOptionsMenu.tscn" id="2_ewwbc"]
 [ext_resource type="PackedScene" uid="uid://t2dui8ppm3a4" path="res://App/Scenes/Credits/Credits.tscn" id="3_lcwf5"]
 [ext_resource type="Script" path="res://App/Scripts/CaptureFocus.gd" id="4_l1ebe"]
 [ext_resource type="PackedScene" uid="uid://doj1dmgtf0a71" path="res://App/Scenes/UI/SoundButton/SoundButton.tscn" id="5"]
+[ext_resource type="AudioStream" uid="uid://1uwhud2483nm" path="res://Assets/Sourced/Music/rebirth-110327.mp3" id="6_so3r1"]
 
 [sub_resource type="Animation" id="5"]
 resource_name = "CloseSubMenu"
@@ -473,6 +474,13 @@ anchor_bottom = 1.0
 offset_top = -40.0
 offset_right = 62.0
 text = "Back"
+
+[node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("6_so3r1")
+volume_db = -6.0
+autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MenuMargin/MenuButtons/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MenuMargin/MenuButtons/OptionsButton" to="." method="_on_options_button_pressed"]

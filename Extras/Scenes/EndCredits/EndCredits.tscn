@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://djoy112dkgjda"]
+[gd_scene load_steps=5 format=3 uid="uid://djoy112dkgjda"]
 
 [ext_resource type="PackedScene" uid="uid://t2dui8ppm3a4" path="res://App/Scenes/Credits/Credits.tscn" id="1_h6cgt"]
 [ext_resource type="Script" path="res://Extras/Scenes/EndCredits/EndCredits.gd" id="2_p3aca"]
 [ext_resource type="Script" path="res://App/Scripts/CaptureFocus.gd" id="3_j7is3"]
+[ext_resource type="AudioStream" uid="uid://rtalbgcqe8go" path="res://Assets/Sourced/Music/childhood-memories-139994.mp3" id="4_342dy"]
 
 [node name="EndCredits" instance=ExtResource("1_h6cgt")]
 script = ExtResource("2_p3aca")
@@ -11,6 +12,60 @@ scroll_active = true
 
 [node name="ScrollContainer" parent="." index="0"]
 scroll_vertical = 0
+
+[node name="RichTextLabel" parent="ScrollContainer/VBoxContainer" index="1"]
+text = "[center]
+[font_size=64]Game & Art By[/font_size]
+[url=https://maaack.itch.io/]Maaack[/url]  
+
+[font_size=64]Sourced / Unaffiliated[/font_size]
+[font_size=48]Music[/font_size]
+Author: [url=https://pixabay.com/users/juan_sanchez_music-8771929/]Juan_Sanchez_Music[/url]  
+Source: [url=https://pixabay.com/sound-effects/ambience-night-rural-campground-new-zeala-17140/]pixabay : ambience-night-rural-campground-new-zeala-17140[/url]  
+License: [url=https://pixabay.com/service/license-summary/]Custom Free NC[/url]  
+
+
+[font_size=48]SFX[/font_size]
+[font_size=32]Ambience[/font_size]
+Author: [url=https://pixabay.com/users/pixabay-1/]Pixabay[/url]  
+Source: [url=https://pixabay.com/sound-effects/ambience-night-rural-campground-new-zeala-17140/]pixabay : ambience-night-rural-campground-new-zeala-17140[/url]  
+License: [url=https://pixabay.com/service/license-summary/]Custom Free NC[/url]  
+
+Author: [url=https://pixabay.com/users/pixabay-1/]Pixabay[/url]  
+Source: [url=https://pixabay.com/sound-effects/pa-am-birds-2-16939/]pixabay : pa-am-birds-2-16939[/url]  
+License: [url=https://pixabay.com/service/license-summary/]Custom Free NC[/url]  
+
+[font_size=32]Meows[/font_size]
+Author: [url=https://pixabay.com/users/pixabay-1/]Pixabay[/url]  
+Source: [url=https://pixabay.com/sound-effects/kitten-meows-67154/]pixabay : kitten-meows-67154[/url]  
+License: [url=https://pixabay.com/service/license-summary/]Custom Free NC[/url]  
+
+[font_size=32]Squeaks[/font_size]
+Author: [url=https://pixabay.com/users/pixabay-1/]Pixabay[/url]  
+Source: [url=https://pixabay.com/sound-effects/mouse-squeaks-68287/]pixabay : mouse-squeaks-68287[/url]  
+License: [url=https://pixabay.com/service/license-summary/]Custom Free NC[/url]  
+
+[font_size=64]Tools[/font_size]
+[font_size=32]Godot[/font_size]
+Author: [url=https://godotengine.org/contact]Juan Linietsky, Ariel Manzur, and contributors[/url]  
+Source: [url=https://godotengine.org/]godotengine.org[/url]  
+License: [url=https://github.com/godotengine/godot/blob/master/LICENSE.txt]MIT License[/url] 
+
+[font_size=32]Git[/font_size]
+Author: [url=https://github.com/torvalds]Linus Torvalds[/url]  
+Source: [url=https://git-scm.com/downloads]git-scm.com[/url]  
+License: [url=https://opensource.org/licenses/GPL-2.0]GNU General Public License version 2[/url]
+
+[font_size=32]Godot Game Template[/font_size]
+Author: [url=https://github.com/Maaack]Marek Belski[/url]  
+Source: [url=https://github.com/Maaack/Godot-Game-Template]github: Godot-Game-Template[/url]  
+License: [url=LICENSE.txt]MIT License[/url]  
+
+
+
+
+[font_size=64]Dedicated to[/font_size]
+Tiger (my childhood cat)[/center]"
 
 [node name="CenterContainer" type="CenterContainer" parent="." index="1"]
 layout_mode = 0
@@ -65,6 +120,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Exit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="3"]
+stream = ExtResource("4_342dy")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="CenterContainer/EndMessagePanel/VBoxContainer/CenterContainer/HBoxContainer/MenuButton" to="." method="_on_MenuButton_pressed"]
 [connection signal="pressed" from="CenterContainer/EndMessagePanel/VBoxContainer/CenterContainer/HBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]
