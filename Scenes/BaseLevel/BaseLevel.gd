@@ -20,10 +20,6 @@ func end_level():
 func start_dialogue(dialogue_title : String):
 	emit_signal("dialogue_started", dialogue_title)
 
-func _on_exit_area_2d_body_entered(body):
-	if body.is_in_group(Constants.TIGER_GROUP):
-		end_level()
-
 func spawn_floating_sprite(sprite_position : Vector2, floating_sprite_scene : PackedScene):
 	var floating_sprite_instance = floating_sprite_scene.instantiate()
 	call_deferred("add_child", floating_sprite_instance)

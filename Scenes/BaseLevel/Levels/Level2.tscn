@@ -231,8 +231,8 @@ monitorable = false
 position = Vector2(0, 16)
 shape = SubResource("RectangleShape2D_0jwt5")
 
-[node name="ExitArea2D" parent="." index="3"]
-position = Vector2(840, -224)
+[node name="MainCamera2D" parent="." index="3"]
+position = Vector2(320, 40)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." index="4"]
 position = Vector2(-64, 66)
@@ -258,10 +258,7 @@ autoplay = "default"
 position = Vector2(576, 112)
 linear_velocity = Vector2(-50, 0)
 
-[node name="MainCamera2D" parent="." index="7"]
-position = Vector2(320, 40)
-
-[node name="MomCatchesArea2D" type="Area2D" parent="." index="8"]
+[node name="MomCatchesArea2D" type="Area2D" parent="." index="7"]
 position = Vector2(0, 122)
 collision_layer = 0
 collision_mask = 2
@@ -270,7 +267,7 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MomCatchesArea2D" index="0"]
 shape = SubResource("RectangleShape2D_541to")
 
-[node name="BoyCatchesArea2D" type="Area2D" parent="." index="9"]
+[node name="BoyCatchesArea2D" type="Area2D" parent="." index="8"]
 position = Vector2(642, 122)
 collision_layer = 0
 collision_mask = 2
@@ -279,16 +276,16 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BoyCatchesArea2D" index="0"]
 shape = SubResource("RectangleShape2D_541to")
 
-[node name="MotherThrowMarker2D" type="Marker2D" parent="." index="10"]
+[node name="MotherThrowMarker2D" type="Marker2D" parent="." index="9"]
 position = Vector2(8, 26)
 
-[node name="BoyThrowMarker2D" type="Marker2D" parent="." index="11"]
+[node name="BoyThrowMarker2D" type="Marker2D" parent="." index="10"]
 position = Vector2(634, 26)
 
-[node name="BoyLowThrowMarker2D" type="Marker2D" parent="." index="12"]
+[node name="BoyLowThrowMarker2D" type="Marker2D" parent="." index="11"]
 position = Vector2(634, 98)
 
-[node name="PlayingKittySprite2D" type="AnimatedSprite2D" parent="." index="13"]
+[node name="PlayingKittySprite2D" type="AnimatedSprite2D" parent="." index="12"]
 process_mode = 3
 texture_filter = 1
 position = Vector2(320, -552)
@@ -298,12 +295,12 @@ autoplay = "default"
 
 [node name="Camera2D" type="Camera2D" parent="PlayingKittySprite2D" index="0"]
 
-[node name="NoBallActionTimer" type="Timer" parent="." index="14"]
+[node name="NoBallActionTimer" type="Timer" parent="." index="13"]
 wait_time = 20.0
 one_shot = true
 autostart = true
 
-[node name="MotherFaceArea2D" type="Area2D" parent="." index="15"]
+[node name="MotherFaceArea2D" type="Area2D" parent="." index="14"]
 position = Vector2(0, 40)
 collision_layer = 0
 collision_mask = 8
@@ -312,7 +309,7 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MotherFaceArea2D" index="0"]
 shape = SubResource("RectangleShape2D_8yii4")
 
-[node name="SonsFaceArea2D" type="Area2D" parent="." index="16"]
+[node name="SonsFaceArea2D" type="Area2D" parent="." index="15"]
 position = Vector2(640, 40)
 collision_layer = 0
 collision_mask = 8
@@ -321,14 +318,14 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SonsFaceArea2D" index="0"]
 shape = SubResource("RectangleShape2D_h52ri")
 
-[node name="HoldingBallTimer" type="Timer" parent="." index="17"]
+[node name="HoldingBallTimer" type="Timer" parent="." index="16"]
 one_shot = true
 
-[node name="BallReminderTimer" type="Timer" parent="." index="18"]
+[node name="BallReminderTimer" type="Timer" parent="." index="17"]
 wait_time = 6.0
 one_shot = true
 
-[node name="JumpInstructions" type="Node2D" parent="." index="19"]
+[node name="JumpInstructions" type="Node2D" parent="." index="18"]
 position = Vector2(352, -16)
 
 [node name="KeySprite2D" type="AnimatedSprite2D" parent="JumpInstructions" index="0"]
@@ -345,12 +342,12 @@ position = Vector2(40, 0)
 sprite_frames = SubResource("SpriteFrames_tnsib")
 autoplay = "default"
 
-[node name="JumpInstructionTimer" type="Timer" parent="." index="20"]
+[node name="JumpInstructionTimer" type="Timer" parent="." index="19"]
 wait_time = 10.0
 one_shot = true
 autostart = true
 
-[node name="JumpInstructionTimer2" type="Timer" parent="." index="21"]
+[node name="JumpInstructionTimer2" type="Timer" parent="." index="20"]
 wait_time = 30.0
 one_shot = true
 autostart = true

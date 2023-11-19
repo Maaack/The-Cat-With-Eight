@@ -436,8 +436,8 @@ one_shot = true
 wait_time = 4.5
 one_shot = true
 
-[node name="ExitArea2D" parent="." index="15"]
-position = Vector2(1000, -72)
+[node name="MainCamera2D" parent="." index="15"]
+position = Vector2(144, 40)
 
 [node name="ChatterMarker2D" type="Marker2D" parent="." index="16"]
 position = Vector2(720, -64)
@@ -458,10 +458,7 @@ autoplay = "default"
 [node name="Camera2D" type="Camera2D" parent="SleepingKittySprite2D" index="0"]
 enabled = false
 
-[node name="MainCamera2D" parent="." index="19"]
-position = Vector2(144, 40)
-
-[node name="InstructionsArea2D" type="Area2D" parent="." index="20"]
+[node name="InstructionsArea2D" type="Area2D" parent="." index="19"]
 position = Vector2(144, 104)
 collision_layer = 0
 collision_mask = 8
@@ -470,7 +467,7 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InstructionsArea2D" index="0"]
 shape = SubResource("RectangleShape2D_5u0m3")
 
-[node name="InstructionsArea2D2" type="Area2D" parent="." index="21"]
+[node name="InstructionsArea2D2" type="Area2D" parent="." index="20"]
 position = Vector2(144, 104)
 collision_layer = 0
 collision_mask = 8

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d38nf5qko1hhh"]
+[gd_scene load_steps=10 format=3 uid="uid://d38nf5qko1hhh"]
 
 [ext_resource type="Script" path="res://Scenes/BaseLevel/BaseLevel.gd" id="1_1shd5"]
 [ext_resource type="Texture2D" uid="uid://khw6g0nng2ng" path="res://Assets/Originals/Big Ground.png" id="2_80kej"]
@@ -128,9 +128,6 @@ tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_5xnud")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vvtya"]
-size = Vector2(186, 141)
-
 [node name="BaseLevel" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_1shd5")
@@ -152,14 +149,6 @@ position = Vector2(112, 104)
 [node name="RemoteTransform2D" parent="Tiger" index="3"]
 remote_path = NodePath("../../MainCamera2D")
 
-[node name="ExitArea2D" type="Area2D" parent="."]
-position = Vector2(560, 56)
-collision_layer = 0
-collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitArea2D"]
-shape = SubResource("RectangleShape2D_vvtya")
-
 [node name="MainCamera2D" type="Camera2D" parent="."]
 process_mode = 3
 position = Vector2(112, 40)
@@ -170,6 +159,5 @@ drag_horizontal_enabled = true
 [connection signal="jumped" from="Tiger" to="." method="_on_tiger_jumped"]
 [connection signal="meow_tried" from="Tiger" to="." method="_on_tiger_meow_tried"]
 [connection signal="meowed" from="Tiger" to="." method="_on_tiger_meowed"]
-[connection signal="body_entered" from="ExitArea2D" to="." method="_on_exit_area_2d_body_entered"]
 
 [editable path="Tiger"]

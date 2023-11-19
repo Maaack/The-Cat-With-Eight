@@ -310,16 +310,10 @@ monitorable = false
 position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_y3bbn")
 
-[node name="ExitArea2D" parent="." index="28"]
-position = Vector2(-635, -51)
-
-[node name="CollisionShape2D" parent="ExitArea2D" index="0"]
-position = Vector2(-21, -21)
-
-[node name="MainCamera2D" parent="." index="29"]
+[node name="MainCamera2D" parent="." index="28"]
 position = Vector2(-224, -88)
 
-[node name="MouseEatingArea2D" type="Area2D" parent="." index="30"]
+[node name="MouseEatingArea2D" type="Area2D" parent="." index="29"]
 position = Vector2(3008, 496)
 collision_layer = 0
 collision_mask = 2
@@ -357,7 +351,7 @@ shape = SubResource("RectangleShape2D_ad7xd")
 position = Vector2(960, 8)
 shape = SubResource("RectangleShape2D_ad7xd")
 
-[node name="SawHawkArea2D" type="Area2D" parent="." index="31"]
+[node name="SawHawkArea2D" type="Area2D" parent="." index="30"]
 position = Vector2(896, 144)
 collision_layer = 0
 collision_mask = 8
@@ -366,7 +360,7 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SawHawkArea2D" index="0"]
 shape = SubResource("RectangleShape2D_gnnlk")
 
-[node name="SawMouseArea2D" type="Area2D" parent="." index="32"]
+[node name="SawMouseArea2D" type="Area2D" parent="." index="31"]
 position = Vector2(2760, 384)
 collision_layer = 0
 collision_mask = 8
@@ -375,7 +369,7 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SawMouseArea2D" index="0"]
 shape = SubResource("RectangleShape2D_gnnlk")
 
-[node name="FrontDoorSprite2D" type="AnimatedSprite2D" parent="." index="33"]
+[node name="FrontDoorSprite2D" type="AnimatedSprite2D" parent="." index="32"]
 position = Vector2(-448, -128)
 sprite_frames = SubResource("SpriteFrames_717m5")
 autoplay = "default"
@@ -385,7 +379,7 @@ autoplay = "default"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FrontDoorSprite2D/StaticBody2D" index="0"]
 shape = SubResource("RectangleShape2D_21yd6")
 
-[node name="DropTrophyArea2D" type="Area2D" parent="." index="34"]
+[node name="DropTrophyArea2D" type="Area2D" parent="." index="33"]
 position = Vector2(-336, -48)
 collision_layer = 0
 collision_mask = 8
@@ -395,7 +389,7 @@ monitorable = false
 position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_ofv7a")
 
-[node name="MeowArea2D" type="Area2D" parent="." index="35"]
+[node name="MeowArea2D" type="Area2D" parent="." index="34"]
 position = Vector2(-320, -48)
 collision_layer = 0
 collision_mask = 8
@@ -405,7 +399,7 @@ monitorable = false
 position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_3c833")
 
-[node name="ProudKittySprite2D" type="AnimatedSprite2D" parent="." index="36"]
+[node name="ProudKittySprite2D" type="AnimatedSprite2D" parent="." index="35"]
 process_mode = 3
 texture_filter = 1
 position = Vector2(320, -896)
@@ -415,14 +409,14 @@ autoplay = "default"
 
 [node name="Camera2D" type="Camera2D" parent="ProudKittySprite2D" index="0"]
 
-[node name="HidingTimer" type="Timer" parent="." index="37"]
+[node name="HidingTimer" type="Timer" parent="." index="36"]
 wait_time = 20.0
 
-[node name="MeowTimer" type="Timer" parent="." index="38"]
+[node name="MeowTimer" type="Timer" parent="." index="37"]
 wait_time = 8.0
 one_shot = true
 
-[node name="SprintInstructions" type="Node2D" parent="." index="39"]
+[node name="SprintInstructions" type="Node2D" parent="." index="38"]
 visible = false
 position = Vector2(472, -16)
 
@@ -440,7 +434,7 @@ position = Vector2(40, 0)
 sprite_frames = SubResource("SpriteFrames_10seu")
 autoplay = "default"
 
-[node name="SprintInstructionArea2D" type="Area2D" parent="." index="40"]
+[node name="SprintInstructionArea2D" type="Area2D" parent="." index="39"]
 position = Vector2(472, 8)
 collision_layer = 0
 collision_mask = 8
