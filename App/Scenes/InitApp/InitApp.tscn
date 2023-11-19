@@ -4,4 +4,5 @@
 
 [node name="InitApp" type="Node"]
 script = ExtResource("1_gvtll")
-next_scene = "res://App/Scenes/Menus/MainMenu/MainMenu.tscn"
+opening_scene = "res://Extras/Scenes/Opening/Opening.tscn"
+main_menu_scene = "res://Extras/Scenes/Menus/MainMenu/MainMenu.tscn"
