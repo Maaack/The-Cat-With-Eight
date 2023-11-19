@@ -206,6 +206,7 @@ catapult_min = Vector2(100, -600)
 catapult_max = Vector2(200, -700)
 
 [node name="Tiger" parent="." index="27"]
+position = Vector2(-224, -24)
 max_energy = 8
 
 [node name="MouseCatchArea2D" type="Area2D" parent="Tiger" index="6"]
@@ -222,6 +223,9 @@ position = Vector2(-635, -51)
 
 [node name="CollisionShape2D" parent="ExitArea2D" index="0"]
 position = Vector2(-21, -21)
+
+[node name="MainCamera2D" parent="." index="29"]
+position = Vector2(-224, -88)
 
 [node name="MouseEatingArea2D" type="Area2D" parent="." index="30"]
 position = Vector2(3008, 496)
