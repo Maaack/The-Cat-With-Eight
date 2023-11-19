@@ -39,43 +39,54 @@ size_flags_horizontal = 3
 size_flags_vertical = 5
 bbcode_enabled = true
 text = "[center]
-[font_size=48]Game & Art By[/font_size]
+[font_size=64]Game & Art By[/font_size]
 [url=https://maaack.itch.io/]Maaack[/url]  
 
-[font_size=48]Sourced / Unaffiliated[/font_size]
-[font_size=32]SFX[/font_size]
-[font_size=24]Ambience[/font_size]
-Author: [url=https://pixabay.com/users/pixabay-1/]Pixabay[/url]  
-Source: [url=https://pixabay.com/sound-effects/ambience-night-rural-campground-new-zeala-17140/]pixabay : ambience-night-rural-campground-new-zeala-17140[/url]  
+[font_size=64]Sourced / Unaffiliated[/font_size]
+[font_size=48]Music[/font_size]
+Author: [url=https://pixabay.com/users/juan_sanchez_music-8771929/]Juan_Sanchez_Music[/url]  
+Source: [url=https://pixabay.com/music/main-title-into-the-night-150226/]pixabay : main-title-into-the-night-150226[/url]  
+Source: [url=https://pixabay.com/music/modern-classical-childhood-memories-139994/]pixabay : modern-classical-childhood-memories-139994[/url]  
+Source: [url=https://pixabay.com/music/modern-classical-rebirth-110327/]pixabay : modern-classical-rebirth-110327[/url]  
+Source: [url=https://pixabay.com/music/modern-classical-woolgathering-114683/]pixabay : modern-classical-woolgathering-114683[/url]  
+Source: [url=https://pixabay.com/music/solo-piano-emotional-piano-improvisation-1-120959/]pixabay : solo-piano-emotional-piano-improvisation-1-120959[/url]  
 License: [url=https://pixabay.com/service/license-summary/]Custom Free NC[/url]  
 
+
+[font_size=48]SFX[/font_size]
+[font_size=32]Ambience[/font_size]
 Author: [url=https://pixabay.com/users/pixabay-1/]Pixabay[/url]  
+Source: [url=https://pixabay.com/sound-effects/ambience-night-rural-campground-new-zeala-17140/]pixabay : ambience-night-rural-campground-new-zeala-17140[/url]  
 Source: [url=https://pixabay.com/sound-effects/pa-am-birds-2-16939/]pixabay : pa-am-birds-2-16939[/url]  
 License: [url=https://pixabay.com/service/license-summary/]Custom Free NC[/url]  
 
-
-[font_size=24]Meows[/font_size]
+[font_size=32]Meows[/font_size]
 Author: [url=https://pixabay.com/users/pixabay-1/]Pixabay[/url]  
 Source: [url=https://pixabay.com/sound-effects/kitten-meows-67154/]pixabay : kitten-meows-67154[/url]  
 License: [url=https://pixabay.com/service/license-summary/]Custom Free NC[/url]  
 
-[font_size=24]Squeaks[/font_size]
+[font_size=32]Squeaks[/font_size]
 Author: [url=https://pixabay.com/users/pixabay-1/]Pixabay[/url]  
 Source: [url=https://pixabay.com/sound-effects/mouse-squeaks-68287/]pixabay : mouse-squeaks-68287[/url]  
 License: [url=https://pixabay.com/service/license-summary/]Custom Free NC[/url]  
 
-[font_size=48]Tools[/font_size]
-[font_size=24]Godot[/font_size]
+[font_size=32]Ball Bounces[/font_size]
+Author: [url=https://pixabay.com/users/pixabay-1/]Pixabay[/url]  
+Source: [url=https://pixabay.com/sound-effects/bouncing-ball-on-a-wooden-floor-24661/]pixabay : bouncing-ball-on-a-wooden-floor-24661[/url]  
+License: [url=https://pixabay.com/service/license-summary/]Custom Free NC[/url]  
+
+[font_size=64]Tools[/font_size]
+[font_size=32]Godot[/font_size]
 Author: [url=https://godotengine.org/contact]Juan Linietsky, Ariel Manzur, and contributors[/url]  
 Source: [url=https://godotengine.org/]godotengine.org[/url]  
 License: [url=https://github.com/godotengine/godot/blob/master/LICENSE.txt]MIT License[/url] 
 
-[font_size=24]Git[/font_size]
+[font_size=32]Git[/font_size]
 Author: [url=https://github.com/torvalds]Linus Torvalds[/url]  
 Source: [url=https://git-scm.com/downloads]git-scm.com[/url]  
 License: [url=https://opensource.org/licenses/GPL-2.0]GNU General Public License version 2[/url]
 
-[font_size=24]Godot Game Template[/font_size]
+[font_size=32]Godot Game Template[/font_size]
 Author: [url=https://github.com/Maaack]Marek Belski[/url]  
 Source: [url=https://github.com/Maaack/Godot-Game-Template]github: Godot-Game-Template[/url]  
 License: [url=LICENSE.txt]MIT License[/url]  
@@ -83,8 +94,11 @@ License: [url=LICENSE.txt]MIT License[/url]
 
 
 
-[font_size=48]Dedicated to[/font_size]
-Tiger (my childhood cat)[/center]"
+
+
+[font_size=64]Dedicated to[/font_size]
+Tiger  
+(my childhood cat)[/center]"
 fit_content = true
 scroll_active = false
 
