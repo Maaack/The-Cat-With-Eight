@@ -326,6 +326,7 @@ wait_time = 6.0
 one_shot = true
 
 [node name="JumpInstructions" type="Node2D" parent="." index="18"]
+visible = false
 position = Vector2(352, -16)
 
 [node name="KeySprite2D" type="AnimatedSprite2D" parent="JumpInstructions" index="0"]

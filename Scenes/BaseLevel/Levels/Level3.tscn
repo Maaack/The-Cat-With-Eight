@@ -38,7 +38,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 1.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y3bbn"]
@@ -246,26 +246,32 @@ position = Vector2(2528, 480)
 [node name="LittleBush" type="AnimatedSprite2D" parent="." index="5"]
 position = Vector2(2016, 496)
 sprite_frames = SubResource("SpriteFrames_kd75p")
+autoplay = "default"
 
 [node name="LittleBush2" type="AnimatedSprite2D" parent="." index="6"]
 position = Vector2(1760, 496)
 sprite_frames = SubResource("SpriteFrames_kd75p")
+autoplay = "default"
 
 [node name="LittleBush16" type="AnimatedSprite2D" parent="." index="7"]
 position = Vector2(1696, 496)
 sprite_frames = SubResource("SpriteFrames_kd75p")
+autoplay = "default"
 
 [node name="LittleBush3" type="AnimatedSprite2D" parent="." index="8"]
 position = Vector2(2336, 496)
 sprite_frames = SubResource("SpriteFrames_kd75p")
+autoplay = "default"
 
 [node name="LittleBush4" type="AnimatedSprite2D" parent="." index="9"]
 position = Vector2(2080, 496)
 sprite_frames = SubResource("SpriteFrames_kd75p")
+autoplay = "default"
 
 [node name="LittleBush5" type="AnimatedSprite2D" parent="." index="10"]
 position = Vector2(2400, 496)
 sprite_frames = SubResource("SpriteFrames_kd75p")
+autoplay = "default"
 
 [node name="HidingBush4" parent="." index="11" instance=ExtResource("4_pvg18")]
 position = Vector2(2848, 480)
@@ -273,10 +279,12 @@ position = Vector2(2848, 480)
 [node name="LittleBush6" type="AnimatedSprite2D" parent="." index="12"]
 position = Vector2(2656, 496)
 sprite_frames = SubResource("SpriteFrames_kd75p")
+autoplay = "default"
 
 [node name="LittleBush7" type="AnimatedSprite2D" parent="." index="13"]
 position = Vector2(2720, 496)
 sprite_frames = SubResource("SpriteFrames_kd75p")
+autoplay = "default"
 
 [node name="HidingBush5" parent="." index="14" instance=ExtResource("4_pvg18")]
 position = Vector2(3168, 480)
@@ -284,10 +292,12 @@ position = Vector2(3168, 480)
 [node name="LittleBush8" type="AnimatedSprite2D" parent="." index="15"]
 position = Vector2(2976, 496)
 sprite_frames = SubResource("SpriteFrames_kd75p")
+autoplay = "default"
 
 [node name="LittleBush9" type="AnimatedSprite2D" parent="." index="16"]
 position = Vector2(3040, 496)
 sprite_frames = SubResource("SpriteFrames_kd75p")
+autoplay = "default"
 
 [node name="HidingBush6" parent="." index="17" instance=ExtResource("4_pvg18")]
 position = Vector2(3488, 480)
@@ -295,10 +305,12 @@ position = Vector2(3488, 480)
 [node name="LittleBush10" type="AnimatedSprite2D" parent="." index="18"]
 position = Vector2(3296, 496)
 sprite_frames = SubResource("SpriteFrames_kd75p")
+autoplay = "default"
 
 [node name="LittleBush11" type="AnimatedSprite2D" parent="." index="19"]
 position = Vector2(3360, 496)
 sprite_frames = SubResource("SpriteFrames_kd75p")
+autoplay = "default"
 
 [node name="HidingBush7" parent="." index="20" instance=ExtResource("4_pvg18")]
 position = Vector2(3808, 480)
@@ -306,10 +318,12 @@ position = Vector2(3808, 480)
 [node name="LittleBush12" type="AnimatedSprite2D" parent="." index="21"]
 position = Vector2(3616, 496)
 sprite_frames = SubResource("SpriteFrames_kd75p")
+autoplay = "default"
 
 [node name="LittleBush13" type="AnimatedSprite2D" parent="." index="22"]
 position = Vector2(3680, 496)
 sprite_frames = SubResource("SpriteFrames_kd75p")
+autoplay = "default"
 
 [node name="HidingBush8" parent="." index="23" instance=ExtResource("4_pvg18")]
 position = Vector2(1568, 480)
@@ -317,10 +331,12 @@ position = Vector2(1568, 480)
 [node name="LittleBush14" type="AnimatedSprite2D" parent="." index="24"]
 position = Vector2(3936, 496)
 sprite_frames = SubResource("SpriteFrames_kd75p")
+autoplay = "default"
 
 [node name="LittleBush15" type="AnimatedSprite2D" parent="." index="25"]
 position = Vector2(4000, 496)
 sprite_frames = SubResource("SpriteFrames_kd75p")
+autoplay = "default"
 
 [node name="Mouse" parent="." index="26" instance=ExtResource("3_e03w1")]
 position = Vector2(3008, 504)
