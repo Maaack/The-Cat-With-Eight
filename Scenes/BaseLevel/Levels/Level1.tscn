@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cjbjtp175xyt8" path="res://Assets/Originals/Chatter.png" id="7_w7v57"]
 [ext_resource type="Texture2D" uid="uid://bfpk6kt535vg4" path="res://Assets/Originals/Sleeping Kitten.png" id="8_ach5s"]
 [ext_resource type="AudioStream" uid="uid://ba1ypjonfe1tn" path="res://Assets/Sourced/SFX/Nighttime Ambience.ogg" id="10_prn0g"]
-[ext_resource type="AudioStream" uid="uid://da7o8nij382n2" path="res://Assets/Sourced/Music/into-the-night-150226.mp3" id="11_u0xe1"]
+[ext_resource type="AudioStream" uid="uid://b4uq4hh5osf70" path="res://Assets/Sourced/Music/into-the-night-low.mp3" id="11_n3g11"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ikabd"]
 atlas = ExtResource("3_mhsuv")
@@ -493,7 +493,7 @@ autoplay = true
 bus = &"SFX"
 
 [node name="MusicStreamPlayer" parent="." index="23"]
-stream = ExtResource("11_u0xe1")
+stream = ExtResource("11_n3g11")
 volume_db = -16.0
 
 [connection signal="sprint_tried" from="Tiger" to="." method="_on_tiger_sprint_tried"]

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://t2dui8ppm3a4" path="res://App/Scenes/Credits/Credits.tscn" id="1_h6cgt"]
 [ext_resource type="Script" path="res://Extras/Scenes/EndCredits/EndCredits.gd" id="2_p3aca"]
 [ext_resource type="Script" path="res://App/Scripts/CaptureFocus.gd" id="3_j7is3"]
-[ext_resource type="AudioStream" uid="uid://rtalbgcqe8go" path="res://Assets/Sourced/Music/childhood-memories-139994.mp3" id="4_342dy"]
+[ext_resource type="AudioStream" uid="uid://6186m8yj668n" path="res://Assets/Sourced/Music/childhood-memories-low.mp3" id="4_am4x5"]
 
 [node name="EndCredits" instance=ExtResource("1_h6cgt")]
 script = ExtResource("2_p3aca")
@@ -68,7 +68,7 @@ size_flags_vertical = 3
 text = "Exit"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="3"]
-stream = ExtResource("4_342dy")
+stream = ExtResource("4_am4x5")
 volume_db = -10.0
 autoplay = true
 bus = &"Music"

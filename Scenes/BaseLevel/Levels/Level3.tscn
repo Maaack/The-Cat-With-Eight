@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dxi0brhoki1c3" path="res://Assets/Originals/Keyboard Keys.png" id="10_c35no"]
 [ext_resource type="Texture2D" uid="uid://b54h1rg7f6gd5" path="res://Assets/Originals/Mouse Carcass.png" id="11_4gbwy"]
 [ext_resource type="AudioStream" uid="uid://dqbhcakhs5vuu" path="res://Assets/Sourced/SFX/Outdoor Morning Ambience.ogg" id="12_vebsl"]
-[ext_resource type="AudioStream" uid="uid://csn5trwqyp5rj" path="res://Assets/Sourced/Music/woolgathering-114683.mp3" id="13_0py32"]
+[ext_resource type="AudioStream" uid="uid://cb2a0h1jsdlp0" path="res://Assets/Sourced/Music/woolgathering-low.mp3" id="13_1xn2w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bacwv"]
 atlas = ExtResource("4_l6u23")
@@ -505,7 +505,7 @@ autoplay = true
 bus = &"SFX"
 
 [node name="MusicStreamPlayer" parent="." index="42"]
-stream = ExtResource("13_0py32")
+stream = ExtResource("13_1xn2w")
 
 [connection signal="entered_hiding_spot" from="Mouse" to="." method="_on_mouse_entered_hiding_spot"]
 [connection signal="left_hiding_spot" from="Mouse" to="." method="_on_mouse_left_hiding_spot"]
