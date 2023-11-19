@@ -192,3 +192,11 @@ func _on_ball_reminder_timer_timeout():
 		return
 	humans_needed_reminding = true
 	start_dialogue("Remind_Humans_About_Ball")
+
+func _on_jump_instruction_timer_timeout():
+	if tiger_jumps < 1:
+		$JumpInstructions.show()
+
+func _on_jump_instruction_timer_2_timeout():
+	if tiger_jumps < 2:
+		$JumpInstructions.show()

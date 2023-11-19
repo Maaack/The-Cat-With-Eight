@@ -14,6 +14,7 @@ var meows_by_door : int = 0
 var tried_meowing_while_carrying_flag : bool = false
 var meow_hint_one : bool = false
 var meow_hint_two : bool = false
+var has_sprinted : bool = false
 
 func _on_mouse_eating_area_2d_body_entered(body):
 	if body.is_in_group(Constants.MOUSE_GROUP):
@@ -149,3 +150,10 @@ func _on_meow_timer_timeout():
 	elif not meow_hint_two:
 		meow_hint_two = true
 		start_dialogue("Need_To_Meow_Again")
+
+func _on_tiger_sprint_tried():
+	has_sprinted = true
+
+func _on_sprint_instruction_area_2d_body_entered(body):
+	if body.is_in_group(Constants.TIGER_GROUP) and not has_sprinted:
+		$SprintInstructions.show()

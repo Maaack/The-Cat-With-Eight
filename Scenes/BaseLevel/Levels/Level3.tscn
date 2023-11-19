@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://deh4dcbrixegc"]
+[gd_scene load_steps=40 format=3 uid="uid://deh4dcbrixegc"]
 
 [ext_resource type="PackedScene" uid="uid://d38nf5qko1hhh" path="res://Scenes/BaseLevel/BaseLevel.tscn" id="1_g4pos"]
 [ext_resource type="Script" path="res://Scenes/BaseLevel/Levels/Level3.gd" id="2_x8q7r"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://bk6pjrpl0olfi" path="res://Scenes/Foliage/HidingBush.tscn" id="4_pvg18"]
 [ext_resource type="Texture2D" uid="uid://bm51vumae865o" path="res://Assets/Originals/Front Door.png" id="6_nao2v"]
 [ext_resource type="Texture2D" uid="uid://bi813humfood6" path="res://Assets/Originals/Proud Kitten.png" id="8_gu2h8"]
+[ext_resource type="Texture2D" uid="uid://f7k8cl0bupew" path="res://Assets/Originals/Shift Key.png" id="9_6fmqc"]
+[ext_resource type="Texture2D" uid="uid://dxi0brhoki1c3" path="res://Assets/Originals/Keyboard Keys.png" id="10_c35no"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bacwv"]
 atlas = ExtResource("4_l6u23")
@@ -99,6 +101,96 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtouo"]
+atlas = ExtResource("9_6fmqc")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbadv"]
+atlas = ExtResource("9_6fmqc")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tb8vg"]
+atlas = ExtResource("9_6fmqc")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1jpu0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtouo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbadv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tb8vg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1013u"]
+atlas = ExtResource("10_c35no")
+region = Rect2(0, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvqr4"]
+atlas = ExtResource("10_c35no")
+region = Rect2(32, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1y00"]
+atlas = ExtResource("10_c35no")
+region = Rect2(64, 224, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8r8lv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1013u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvqr4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1y00")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1tlwg"]
+atlas = ExtResource("10_c35no")
+region = Rect2(0, 288, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8tbn0"]
+atlas = ExtResource("10_c35no")
+region = Rect2(32, 288, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdwrk"]
+atlas = ExtResource("10_c35no")
+region = Rect2(64, 288, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_10seu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1tlwg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8tbn0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdwrk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hx54p"]
+size = Vector2(16, 256)
 
 [node name="Level3" instance=ExtResource("1_g4pos")]
 script = ExtResource("2_x8q7r")
@@ -330,9 +422,37 @@ wait_time = 20.0
 wait_time = 8.0
 one_shot = true
 
+[node name="SprintInstructions" type="Node2D" parent="." index="39"]
+visible = false
+position = Vector2(472, -16)
+
+[node name="KeySprite2D" type="AnimatedSprite2D" parent="SprintInstructions" index="0"]
+position = Vector2(-56, 0)
+sprite_frames = SubResource("SpriteFrames_1jpu0")
+autoplay = "default"
+
+[node name="ToSprite2D" type="AnimatedSprite2D" parent="SprintInstructions" index="1"]
+sprite_frames = SubResource("SpriteFrames_8r8lv")
+autoplay = "default"
+
+[node name="ActionSprite2D" type="AnimatedSprite2D" parent="SprintInstructions" index="2"]
+position = Vector2(40, 0)
+sprite_frames = SubResource("SpriteFrames_10seu")
+autoplay = "default"
+
+[node name="SprintInstructionArea2D" type="Area2D" parent="." index="40"]
+position = Vector2(472, 8)
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SprintInstructionArea2D" index="0"]
+shape = SubResource("RectangleShape2D_hx54p")
+
 [connection signal="entered_hiding_spot" from="Mouse" to="." method="_on_mouse_entered_hiding_spot"]
 [connection signal="left_hiding_spot" from="Mouse" to="." method="_on_mouse_left_hiding_spot"]
 [connection signal="played_dead" from="Mouse" to="." method="_on_mouse_played_dead"]
+[connection signal="sprint_tried" from="Tiger" to="." method="_on_tiger_sprint_tried"]
 [connection signal="body_entered" from="Tiger/MouseCatchArea2D" to="." method="_on_mouse_catch_area_2d_body_entered"]
 [connection signal="body_entered" from="MouseEatingArea2D" to="." method="_on_mouse_eating_area_2d_body_entered"]
 [connection signal="body_entered" from="SawHawkArea2D" to="." method="_on_saw_hawk_area_2d_body_entered"]
@@ -342,5 +462,6 @@ one_shot = true
 [connection signal="body_exited" from="MeowArea2D" to="." method="_on_meow_area_2d_body_exited"]
 [connection signal="timeout" from="HidingTimer" to="." method="_on_hiding_timer_timeout"]
 [connection signal="timeout" from="MeowTimer" to="." method="_on_meow_timer_timeout"]
+[connection signal="body_entered" from="SprintInstructionArea2D" to="." method="_on_sprint_instruction_area_2d_body_entered"]
 
 [editable path="Tiger"]

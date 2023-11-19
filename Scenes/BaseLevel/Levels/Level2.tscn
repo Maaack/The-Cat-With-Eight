@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b8rjjuc5upk7g"]
+[gd_scene load_steps=39 format=3 uid="uid://b8rjjuc5upk7g"]
 
 [ext_resource type="PackedScene" uid="uid://d38nf5qko1hhh" path="res://Scenes/BaseLevel/BaseLevel.tscn" id="1_bvch1"]
 [ext_resource type="Script" path="res://Scenes/BaseLevel/Levels/Level2.gd" id="2_cifsv"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://1cveha7wu25h" path="res://Assets/Originals/Mother.png" id="4_htuup"]
 [ext_resource type="PackedScene" uid="uid://dt712yetu8qbs" path="res://Scenes/Ball/Ball.tscn" id="5_0j3p4"]
 [ext_resource type="Texture2D" uid="uid://cjfx8jql7iuh5" path="res://Assets/Originals/Playing Kitten.png" id="6_ysb6p"]
+[ext_resource type="Texture2D" uid="uid://borj86y3mg1hw" path="res://Assets/Originals/Space Bar Key.png" id="7_hiqh7"]
+[ext_resource type="Texture2D" uid="uid://dxi0brhoki1c3" path="res://Assets/Originals/Keyboard Keys.png" id="8_ft1f8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_een1r"]
 size = Vector2(16, 32)
@@ -107,6 +109,93 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8yii4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h52ri"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4a27g"]
+atlas = ExtResource("7_hiqh7")
+region = Rect2(0, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yp80i"]
+atlas = ExtResource("7_hiqh7")
+region = Rect2(96, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6onr"]
+atlas = ExtResource("7_hiqh7")
+region = Rect2(192, 0, 96, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x8mbx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4a27g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yp80i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y6onr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1013u"]
+atlas = ExtResource("8_ft1f8")
+region = Rect2(0, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvqr4"]
+atlas = ExtResource("8_ft1f8")
+region = Rect2(32, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1y00"]
+atlas = ExtResource("8_ft1f8")
+region = Rect2(64, 224, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lexx7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1013u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvqr4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1y00")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7br0c"]
+atlas = ExtResource("8_ft1f8")
+region = Rect2(0, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyyya"]
+atlas = ExtResource("8_ft1f8")
+region = Rect2(32, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o56kl"]
+atlas = ExtResource("8_ft1f8")
+region = Rect2(64, 256, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tnsib"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7br0c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oyyya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o56kl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
 
 [node name="Level2" instance=ExtResource("1_bvch1")]
 script = ExtResource("2_cifsv")
@@ -239,6 +328,33 @@ one_shot = true
 wait_time = 6.0
 one_shot = true
 
+[node name="JumpInstructions" type="Node2D" parent="." index="19"]
+position = Vector2(352, -16)
+
+[node name="KeySprite2D" type="AnimatedSprite2D" parent="JumpInstructions" index="0"]
+position = Vector2(-72, 0)
+sprite_frames = SubResource("SpriteFrames_x8mbx")
+autoplay = "default"
+
+[node name="ToSprite2D" type="AnimatedSprite2D" parent="JumpInstructions" index="1"]
+sprite_frames = SubResource("SpriteFrames_lexx7")
+autoplay = "default"
+
+[node name="ActionSprite2D" type="AnimatedSprite2D" parent="JumpInstructions" index="2"]
+position = Vector2(40, 0)
+sprite_frames = SubResource("SpriteFrames_tnsib")
+autoplay = "default"
+
+[node name="JumpInstructionTimer" type="Timer" parent="." index="20"]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="JumpInstructionTimer2" type="Timer" parent="." index="21"]
+wait_time = 30.0
+one_shot = true
+autostart = true
+
 [connection signal="body_entered" from="Tiger/SmackArea2D" to="." method="_on_smack_area_2d_body_entered"]
 [connection signal="body_entered" from="Tiger/CaptureArea2D" to="." method="_on_capture_area_2d_body_entered"]
 [connection signal="body_entered" from="MomCatchesArea2D" to="." method="_on_mom_catches_area_2d_body_entered"]
@@ -248,5 +364,7 @@ one_shot = true
 [connection signal="body_entered" from="SonsFaceArea2D" to="." method="_on_sons_face_area_2d_body_entered"]
 [connection signal="timeout" from="HoldingBallTimer" to="." method="_on_holding_ball_timer_timeout"]
 [connection signal="timeout" from="BallReminderTimer" to="." method="_on_ball_reminder_timer_timeout"]
+[connection signal="timeout" from="JumpInstructionTimer" to="." method="_on_jump_instruction_timer_timeout"]
+[connection signal="timeout" from="JumpInstructionTimer2" to="." method="_on_jump_instruction_timer_2_timeout"]
 
 [editable path="Tiger"]
