@@ -41,6 +41,24 @@ size = Vector2(256, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_32a1e"]
 size = Vector2(64, 40)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nwj4s"]
+size = Vector2(512, 64)
+
+[sub_resource type="Animation" id="Animation_xvqae"]
+resource_name = "Aware"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AwarenessArea2D/CollisionShape2D:shape")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [SubResource("RectangleShape2D_nwj4s"), SubResource("RectangleShape2D_82v8i")]
+}
+
 [sub_resource type="Animation" id="Animation_32qvb"]
 resource_name = "Dead"
 tracks/0/type = "value"
@@ -123,24 +141,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [0.0, 3.14159, 6.28319]
-}
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nwj4s"]
-size = Vector2(512, 64)
-
-[sub_resource type="Animation" id="Animation_xvqae"]
-resource_name = "Aware"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AwarenessArea2D/CollisionShape2D:shape")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [SubResource("RectangleShape2D_nwj4s"), SubResource("RectangleShape2D_82v8i")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bkdbh"]

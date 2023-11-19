@@ -21,7 +21,7 @@ theme_override_constants/margin_bottom = 4
 
 [node name="Balloon" type="Panel" parent="MarginContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 112)
+custom_minimum_size = Vector2(0, 72)
 layout_mode = 2
 size_flags_vertical = 8
 
@@ -93,7 +93,7 @@ offset_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_type_variation = &"SkipButton"
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 12
 text = "skip"
 icon_alignment = 2
 

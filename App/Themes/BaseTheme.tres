@@ -1,3 +1,52 @@
-[gd_resource type="Theme" format=2]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://djqcl3tcmv0oi"]
+
+[ext_resource type="Texture2D" uid="uid://b4f786bhujr4h" path="res://Assets/Originals/Panels.png" id="1_2asy7"]
+[ext_resource type="Texture2D" uid="uid://ddcq7cmfgxej8" path="res://Assets/Originals/Buttons.png" id="1_c5xs3"]
+[ext_resource type="FontFile" uid="uid://b7ip1omv4vs40" path="res://Assets/Sourced/Fonts/Amatic-Bold.ttf" id="2_6u4dk"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_b4cui"]
+load_path = "res://.godot/imported/Buttons.png-0b0962ebc5d88e384f5c8141a786a27d.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_47ief"]
+texture = SubResource("CompressedTexture2D_b4cui")
+texture_margin_left = 8.0
+texture_margin_top = 4.0
+texture_margin_right = 8.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(0, 0, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_co8km"]
+texture = ExtResource("1_c5xs3")
+texture_margin_left = 8.0
+texture_margin_top = 4.0
+texture_margin_right = 8.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(0, 32, 32, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mftqe"]
+load_path = "res://.godot/imported/Buttons.png-0b0962ebc5d88e384f5c8141a786a27d.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_euxfj"]
+texture = SubResource("CompressedTexture2D_mftqe")
+texture_margin_left = 8.0
+texture_margin_top = 4.0
+texture_margin_right = 8.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(32, 0, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cghpf"]
+texture = ExtResource("1_2asy7")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(32, 48, 16, 16)
 
 [resource]
+default_font = ExtResource("2_6u4dk")
+default_font_size = 24
+Button/styles/focus = SubResource("StyleBoxTexture_47ief")
+Button/styles/hover = SubResource("StyleBoxTexture_47ief")
+Button/styles/normal = SubResource("StyleBoxTexture_co8km")
+Button/styles/pressed = SubResource("StyleBoxTexture_euxfj")
+Panel/styles/panel = SubResource("StyleBoxTexture_cghpf")

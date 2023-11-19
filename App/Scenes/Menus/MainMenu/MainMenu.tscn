@@ -329,6 +329,7 @@ grow_vertical = 2
 script = ExtResource("1")
 options_packed_scene = ExtResource("2_ewwbc")
 credits_packed_scene = ExtResource("3_lcwf5")
+version_name = "0.1.0"
 
 [node name="MenuAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -370,7 +371,7 @@ layout_mode = 2
 
 [node name="TitlesMargin" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_top = 16
+theme_override_constants/margin_top = 8
 theme_override_constants/margin_bottom = 16
 
 [node name="TitlesContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TitlesMargin"]
@@ -395,7 +396,9 @@ vertical_alignment = 1
 [node name="MenuMargin" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/margin_left = 256
 theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 256
 theme_override_constants/margin_bottom = 16
 
 [node name="MenuButtons" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MenuMargin"]
