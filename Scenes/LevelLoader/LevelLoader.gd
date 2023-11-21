@@ -5,6 +5,8 @@ extends Node
 @export_dir var level_dir : String :
 	set(value):
 		level_dir = value
+		if not is_inside_tree() or not get_tree().is_editor_hint():
+			return
 		var dir_access = DirAccess.open(level_dir)
 		if dir_access:
 			level_files.clear()
@@ -15,6 +17,9 @@ extends Node
 @export var force_level : int = -1
 
 func get_current_level_file():
+	if level_files.is_empty():
+		print("No levels to load!")
+		return
 	var current_level = GameLevelLog.get_current_level() if force_level == -1 else force_level
 	if current_level < 0 or current_level >= level_files.size():
 		current_level = 0

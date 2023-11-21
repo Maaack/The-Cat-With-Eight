@@ -10,14 +10,14 @@ func reload_current_scene() -> void:
 	get_tree().reload_current_scene()
 
 func load_scene(path : String, in_background : bool = false) -> void:
-	if path == "":
+	if path == null or path.is_empty():
+		print("no path given to load")
 		return
 	if scene_to_load != path:
 		scene_to_load = path
 		ResourceLoader.load_threaded_request(scene_to_load)
 	else:
-		await(get_tree().create_timer(0.1).timeout)
-		emit_signal("scene_loaded")
+		call_deferred("emit_signal", "scene_loaded")
 		return
 	get_tree().paused = false
 	if in_background:
